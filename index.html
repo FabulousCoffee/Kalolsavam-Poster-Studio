@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Kalolsavam Poster Studio | Kannur Sub-District & State Winner Poster Maker</title>
+
+  <!-- Google Fonts: Anek Malayalam (with wdth 75..125 for Condensed), Noto Serif Malayalam, Cinzel, Plus Jakarta Sans, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wdth,wght@75..125,400..800&family=Cinzel:wght@600;700;800;900&family=Noto+Serif+Malayalam:wght@400;600;700;800;900&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Anek Malayalam"', 'system-ui', 'sans-serif'],
+            display: ['"Cinzel"', '"Noto Serif Malayalam"', 'serif'],
+            anek: ['"Anek Malayalam"', 'sans-serif'],
+            notoserif: ['"Noto Serif Malayalam"', 'serif'],
+            ui: ['"Outfit"', '"Anek Malayalam"', 'sans-serif']
+          },
+          colors: {
+            obsidian: {
+              950: '#040711',
+              900: '#080E1E',
+              850: '#0C142B',
+              800: '#111C3B',
+              700: '#1A2952'
+            },
+            kasavu: {
+              300: '#FDE68A',
+              400: '#F59E0B',
+              500: '#D97706',
+              600: '#B45309'
+            },
+            cyanGlow: '#00F2FE',
+            violetGlow: '#8B5CF6'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Base & Liquid Glass Styling */
+    body {
+      background: radial-gradient(circle at 15% 15%, #0e1a38 0%, #060b18 50%, #03060c 100%);
+      color: #E2E8F0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', 'Anek Malayalam', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Anek Malayalam Condensed helper */
+    .font-anek-condensed {
+      font-family: 'Anek Malayalam', sans-serif;
+      font-stretch: 75%;
+      font-variation-settings: "wdth" 75;
+    }
+
+    .font-noto-malayalam {
+      font-family: 'Noto Serif Malayalam', serif;
+    }
+
+    /* Ambient Glowing Orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 9999px;
+      pointer-events: none;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.26;
+    }
+
+    /* Liquid Glass Panels */
+    .liquid-panel {
+      background: rgba(13, 22, 45, 0.68);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6),
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+                  inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .liquid-card {
+      background: rgba(18, 30, 60, 0.48);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35),
+                  inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Input Glass Styling */
+    .glass-input {
+      background: rgba(8, 14, 30, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #F8FAFC;
+      transition: all 0.2s ease;
+    }
+    .glass-input:focus {
+      background: rgba(12, 22, 48, 0.9);
+      border-color: rgba(0, 242, 254, 0.65);
+      box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
+      outline: none;
+    }
+
+    /* Custom Range Slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: rgba(255, 255, 255, 0.1);
+      height: 6px;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.8), 0 2px 4px rgba(0,0,0,0.4);
+      cursor: pointer;
+      border: 2px solid #00F2FE;
+      transition: transform 0.1s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* Active Pills */
+    .pill-active-gold {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.2) 100%) !important;
+      border-color: rgba(245, 158, 11, 0.85) !important;
+      color: #FEF08A !important;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    }
+    .pill-active-cyan {
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.3) 0%, rgba(14, 165, 233, 0.15) 100%) !important;
+      border-color: rgba(0, 242, 254, 0.75) !important;
+      color: #A5F3FC !important;
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* Language Switcher Active Pill */
+    .lang-btn-active {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+      color: #040711 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4) !important;
+    }
+
+    /* Canvas interactive grab cursor & touch handling */
+    .canvas-pan-mode {
+      cursor: grab;
+      touch-action: none;
+    }
+    .canvas-pan-mode:active {
+      cursor: grabbing;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(8, 14, 30, 0.3);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="relative selection:bg-cyan-500/30 selection:text-cyan-200 pb-24 lg:pb-12">
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-orb w-[500px] sm:w-[650px] h-[500px] sm:h-[650px] bg-cyan-600/30 -top-40 -left-20"></div>
+  <div class="ambient-orb w-[550px] sm:w-[700px] h-[550px] sm:h-[700px] bg-purple-700/25 top-1/3 -right-40"></div>
+  <div class="ambient-orb w-[500px] sm:w-[600px] h-[500px] sm:h-[600px] bg-amber-600/20 bottom-0 left-1/4"></div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast" class="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-50 flex items-center gap-3 px-4 sm:px-5 py-3.5 rounded-2xl liquid-panel border border-cyan-400/30 text-white shadow-2xl opacity-0 translate-y-6 pointer-events-none transition-all duration-300 max-w-[90vw]">
+    <i id="toast-icon" class="ph ph-check-circle text-cyan-400 text-2xl flex-shrink-0"></i>
+    <div>
+      <h4 id="toast-title" class="text-xs font-semibold uppercase tracking-wider text-cyan-300">Success</h4>
+      <p id="toast-desc" class="text-xs sm:text-sm text-slate-200">Poster rendered successfully.</p>
+    </div>
+  </div>
+
+  <!-- App Header -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-obsidian-950/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-0 sm:h-20 flex flex-wrap items-center justify-between gap-2.5">
+      
+      <!-- Official Kalolsavam Logo & Studio Title -->
+      <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+        <!-- Header Logo Box featuring Kannur South Sub-District Kalolsavam Emblem -->
+        <div id="header-logo-container" class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-white p-1 flex items-center justify-center border-2 border-amber-400/60 shadow-lg shadow-amber-500/20 flex-shrink-0 overflow-hidden">
+          <img id="header-custom-logo-img" class="w-full h-full object-contain hidden" alt="Kalolsavam Logo">
+          <!-- Vector SVG Recreation of Kannur South Sub-District Kalolsavam 2026 Logo -->
+          <svg id="header-vector-logo" class="w-full h-full" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Green Islamic/Geometric Calligraphy Diamonds Top Left -->
+            <rect x="33" y="8" width="6" height="6" transform="rotate(45 33 8)" fill="#15803D"/>
+            <rect x="37" y="15" width="5" height="5" transform="rotate(45 37 15)" fill="#16A34A"/>
+            <rect x="31" y="20" width="6" height="6" transform="rotate(45 31 20)" fill="#15803D"/>
+            <path d="M32 25 C38 35, 40 48, 37 62" stroke="#15803D" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M36 22 C43 32, 44 46, 41 58" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Black Crescent Arch on Right of Emblem -->
+            <path d="M37 22 C58 26, 66 48, 60 72" stroke="#0F172A" stroke-width="5" stroke-linecap="round"/>
+            <!-- Red Kannur Fort Battlements & Swoop -->
+            <path d="M18 46 L22 41 L25 44 L29 38 L32 41 C22 58, 22 78, 42 88 C52 93, 60 88, 65 82 L64 94 C46 104, 20 96, 12 74 C7 60, 12 48, 32 32 C34 40, 26 52, 18 62 Z" fill="#DC2626"/>
+            <path d="M14 70 C20 90, 44 98, 64 90 L64 96 C42 104, 16 94, 11 72 Z" fill="#7F1D1D"/>
+            <!-- Classical Dancer Silhouette in Center Left -->
+            <circle cx="33" cy="54" r="4" fill="#FBBF24"/>
+            <path d="M25 62 L33 58 L41 52 L37 68 L28 68 Z" fill="#1E3A8A"/>
+            <path d="M27 68 L38 68 L42 82 L23 79 Z" fill="#D97706"/>
+            <!-- Veena / Thamburu Vertical Instrument -->
+            <path d="M46 20 C49 20, 51 24, 48 28 L48 82 C48 87, 36 87, 36 78 C36 72, 42 68, 44 64 L44 28 C42 24, 43 20, 46 20 Z" fill="#7F1D1D"/>
+            <line x1="45" y1="28" x2="45" y2="82" stroke="#FDE68A" stroke-width="1"/>
+            <line x1="47" y1="28" x2="47" y2="82" stroke="#FDE68A" stroke-width="1"/>
+            <!-- Retro Studio Microphone -->
+            <rect x="52" y="64" width="10" height="15" rx="5" transform="rotate(14 52 64)" fill="#475569" stroke="#CBD5E1" stroke-width="1.5"/>
+            <!-- Curved Piano Keys at Bottom -->
+            <path d="M14 86 C26 104, 52 108, 78 105 L82 114 C50 117, 22 110, 10 90 Z" fill="#FFFFFF" stroke="#0F172A" stroke-width="2"/>
+            <rect x="22" y="94" width="3" height="7" transform="rotate(-25 22 94)" fill="#0F172A"/>
+            <rect x="32" y="99" width="3.5" height="8" transform="rotate(-15 32 99)" fill="#0F172A"/>
+            <rect x="44" y="103" width="3.5" height="8" transform="rotate(-5 44 103)" fill="#0F172A"/>
+            <rect x="56" y="104" width="4" height="8" fill="#0F172A"/>
+            <rect x="68" y="104" width="4" height="8" transform="rotate(8 68 104)" fill="#0F172A"/>
+            <!-- Colorful Kalolsavam Text Blocks on Right -->
+            <rect x="70" y="42" width="10" height="22" rx="2" fill="#EF4444"/>
+            <rect x="82" y="42" width="9" height="22" rx="2" fill="#06B6D4"/>
+            <rect x="93" y="42" width="10" height="22" rx="2" fill="#7C3AED"/>
+            <rect x="105" y="42" width="8" height="22" rx="2" fill="#EC4899"/>
+            <rect x="70" y="67" width="19" height="20" rx="2" fill="#16A34A"/>
+            <rect x="91" y="67" width="11" height="20" rx="2" fill="#F97316"/>
+            <rect x="104" y="67" width="9" height="20" rx="2" fill="#DC2626"/>
+            <!-- 2026 Nov 11 12 13 14 Red Date Boxes -->
+            <rect x="70" y="90" width="43" height="6" rx="1" fill="#B91C1C"/>
+          </svg>
+        </div>
+
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-xl font-bold tracking-tight text-white font-ui truncate">
+              Kalolsavam <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-cyan-400">Poster Studio</span>
+            </h1>
+            <span class="hidden md:inline-block text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 border border-amber-400/30 tracking-wide">KANNUR SUB-DIST.</span>
+          </div>
+          <p class="text-[11px] sm:text-xs text-slate-400 font-medium tracking-wide truncate font-anek">
+            കണ്ണൂർ ഉപജില്ലാ സ്കൂൾ കലോത്സവം • Winner Poster Creator
+          </p>
+        </div>
+      </div>
+
+      <!-- Language Mode Switcher & Quick Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3 ml-auto sm:ml-0">
+        <!-- Prominent Language Switcher Pill in Header -->
+        <div class="flex items-center bg-obsidian-900/90 p-1 rounded-xl border border-white/15 shadow-inner" role="group" aria-label="Poster Language Switcher">
+          <button type="button" id="btn-lang-en" class="lang-switch-btn lang-btn-active px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 transition-all flex items-center gap-1" data-lang="en">
+            <span>EN</span>
+            <span class="hidden sm:inline">English</span>
+          </button>
+          <button type="button" id="btn-lang-ml" class="lang-switch-btn px-2.5 sm:px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 transition-all flex items-center gap-1 font-anek" data-lang="ml">
+            <span>മലയാളം</span>
+          </button>
+        </div>
+
+        <button id="btn-load-sample" class="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
+          <i class="ph ph-sparkle text-amber-300 text-sm"></i>
+          <span>Sample</span>
+        </button>
+
+        <button id="btn-reset-all" class="p-2 sm:px-3 sm:py-2 rounded-xl text-xs font-semibold text-slate-400 bg-white/5 hover:bg-white/10 border border-white/10 transition-all hover:text-white" title="Reset All">
+          <i class="ph ph-arrow-counter-clockwise text-sm"></i>
+          <span class="hidden md:inline ml-1">Reset</span>
+        </button>
+
+        <button id="btn-top-download" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold text-obsidian-950 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 hover:from-amber-200 hover:to-yellow-300 shadow-lg shadow-amber-500/20 transition-all active:scale-95">
+          <i class="ph ph-download-simple text-base"></i>
+          <span class="hidden sm:inline">Export</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile / Tablet Quick View Mode Bar (Visible on screens < lg) -->
+  <div class="lg:hidden sticky top-[61px] sm:top-[80px] z-30 bg-obsidian-950/90 backdrop-blur-xl border-b border-white/10 px-3 py-2">
+    <div class="max-w-xl mx-auto grid grid-cols-3 gap-1.5 bg-obsidian-900 p-1 rounded-xl border border-white/10">
+      <button type="button" data-mobile-view="both" class="mobile-view-btn py-1.5 px-2 rounded-lg text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 flex items-center justify-center gap-1.5">
+        <i class="ph ph-squares-four"></i>
+        <span>Full View</span>
+      </button>
+      <button type="button" data-mobile-view="edit" class="mobile-view-btn py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-1.5">
+        <i class="ph ph-sliders-horizontal"></i>
+        <span>Edit Form</span>
+      </button>
+      <button type="button" data-mobile-view="preview" class="mobile-view-btn py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-1.5">
+        <i class="ph ph-eye"></i>
+        <span>Poster Only</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Workstation Layout -->
+  <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+      
+      <!-- ==============================================
+           LEFT PANEL: POSTER CONTROLS & EDITOR
+           ============================================== -->
+      <div id="panel-editor-controls" class="lg:col-span-6 xl:col-span-5 space-y-5 sm:space-y-6 order-2 lg:order-1">
+
+        <!-- Banner: Poster Language Version Switcher Card -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-5 border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-obsidian-900/60 to-cyan-500/10">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <span class="text-[10px] font-bold uppercase tracking-widest text-amber-300 block">Poster Language Mode</span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-anek">പോസ്റ്റർ ഭാഷ തിരഞ്ഞെടുക്കുക</h2>
+              <p class="text-xs text-slate-400">Switches all poster headings, badges & sub-districts</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 bg-obsidian-950/90 p-1.5 rounded-2xl border border-white/15 flex-shrink-0">
+              <button type="button" id="panel-lang-en" class="lang-switch-btn lang-btn-active py-2 px-3.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5" data-lang="en">
+                <i class="ph ph-translate text-sm"></i>
+                <span>English</span>
+              </button>
+              <button type="button" id="panel-lang-ml" class="lang-switch-btn py-2 px-3.5 rounded-xl text-xs font-bold text-slate-300 transition-all flex items-center justify-center gap-1.5 font-anek" data-lang="ml">
+                <i class="ph ph-translate text-sm"></i>
+                <span>മലയാളം</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Winner Information & Sub-District Section -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400">
+                <i class="ph ph-user-check text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui" id="heading-winner-info">1. Winner & Sub-District Details</h2>
+            </div>
+            <span class="text-xs text-amber-300 font-anek">English / മലയാളം</span>
+          </div>
+
+          <!-- Full Name -->
+          <div>
+            <label for="input-winner-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5" id="label-winner-name">
+              Winner's Full Name (പേര്) <span class="text-amber-400">*</span>
+            </label>
+            <div class="relative">
+              <input type="text" id="input-winner-name" value="YOUR NAME" placeholder="YOUR NAME / നിങ്ങളുടെ പേര്" 
+                     class="w-full px-4 py-3 rounded-2xl glass-input text-base font-bold tracking-wide placeholder:normal-case placeholder:font-normal placeholder:text-slate-500 font-anek">
+              <span class="absolute right-3.5 top-3.5 text-[11px] text-slate-400 font-mono pointer-events-none">Auto-fit</span>
+            </div>
+          </div>
+
+          <!-- Congratulation Text Under Name (Noto Serif Malayalam Bold) -->
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label for="input-congrats-text" class="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+                Congratulation Text Under Name
+              </label>
+              <label class="flex items-center gap-1.5 text-xs text-amber-300 cursor-pointer">
+                <input type="checkbox" id="check-show-congrats" checked class="w-3.5 h-3.5 rounded text-amber-400 bg-obsidian-900 border-white/20">
+                <span>Show on Poster</span>
+              </label>
+            </div>
+            <input type="text" id="input-congrats-text" value="CONGRATULATIONS" placeholder="CONGRATULATIONS / അഭിനന്ദനങ്ങൾ" 
+                   class="w-full px-4 py-2.5 rounded-2xl glass-input text-sm font-bold text-amber-300 font-noto-malayalam">
+          </div>
+
+          <!-- School / Institution -->
+          <div>
+            <label for="input-school-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+              School / Institution Name (സ്കൂൾ)
+            </label>
+            <input type="text" id="input-school-name" value="SCHOOL NAME" placeholder="e.g. ANJARAKANDY HSS / അഞ്ചരക്കണ്ടി എച്ച്.എസ്.എസ്." 
+                   class="w-full px-4 py-2.5 rounded-2xl glass-input text-sm text-slate-200 placeholder:text-slate-500 font-anek">
+          </div>
+
+          <!-- Kannur Sub-District (15 Sub-Districts) and Category Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div>
+              <label for="select-subdistrict" class="block text-xs font-semibold uppercase tracking-wider text-amber-300 mb-1.5">
+                Kannur Sub-District (ഉപജില്ല) <span class="text-amber-400">*</span>
+              </label>
+              <select id="select-subdistrict" class="w-full px-3.5 py-2.5 rounded-2xl glass-input text-sm text-slate-100 bg-obsidian-900 cursor-pointer font-anek">
+                <option value="01" data-en="Chokli" data-ml="ചൊക്ലി">01. Chokli — ചൊക്ലി</option>
+                <option value="02" data-en="Irikkur" data-ml="ഇരിക്കൂർ">02. Irikkur — ഇരിക്കൂർ</option>
+                <option value="03" data-en="Iritty" data-ml="ഇരിട്ടി">03. Iritty — ഇരിട്ടി</option>
+                <option value="04" data-en="Kannur North" data-ml="കണ്ണൂർ നോർത്ത്">04. Kannur North — കണ്ണൂർ നോർത്ത്</option>
+                <option value="05" data-en="Kannur South" data-ml="കണ്ണൂർ സൗത്ത്" selected>05. Kannur South — കണ്ണൂർ സൗത്ത്</option>
+                <option value="06" data-en="Kuthuparamba" data-ml="കൂത്തുപറമ്പ്">06. Kuthuparamba — കൂത്തുപറമ്പ്</option>
+                <option value="07" data-en="Madayi" data-ml="മാടായി">07. Madayi — മാടായി</option>
+                <option value="08" data-en="Mattannur" data-ml="മട്ടന്നൂർ">08. Mattannur — മട്ടന്നൂർ</option>
+                <option value="09" data-en="Panoor" data-ml="പാനൂർ">09. Panoor — പാനൂർ</option>
+                <option value="10" data-en="Pappinissery" data-ml="പാപ്പിനിശ്ശേരി">10. Pappinissery — പാപ്പിനിശ്ശേരി</option>
+                <option value="11" data-en="Payyannur" data-ml="പയ്യന്നൂർ">11. Payyannur — പയ്യന്നൂർ</option>
+                <option value="12" data-en="Thalassery North" data-ml="തലശ്ശേരി നോർത്ത്">12. Thalassery North — തലശ്ശേരി നോർത്ത്</option>
+                <option value="13" data-en="Thalassery South" data-ml="തലശ്ശേരി സൗത്ത്">13. Thalassery South — തലശ്ശേരി സൗത്ത്</option>
+                <option value="14" data-en="Thaliparamba South" data-ml="തളിപ്പറമ്പ് സൗത്ത്">14. Thaliparamba South — തളിപ്പറമ്പ് സൗത്ത്</option>
+                <option value="15" data-en="Thaliparamba North" data-ml="തളിപ്പറമ്പ് നോർത്ത്">15. Thaliparamba North — തളിപ്പറമ്പ് നോർത്ത്</option>
+              </select>
+            </div>
+            <div>
+              <label for="select-category" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                Festival Category (വിഭാഗം)
+              </label>
+              <select id="select-category" class="w-full px-3.5 py-2.5 rounded-2xl glass-input text-sm text-slate-200 bg-obsidian-900 cursor-pointer font-anek">
+                <option value="HSS GENERAL" data-en="HSS GENERAL" data-ml="എച്ച്.എസ്.എസ്. ജനറൽ" selected>HSS General (ഹയർ സെക്കൻഡറി)</option>
+                <option value="HS GENERAL" data-en="HS GENERAL" data-ml="എച്ച്.എസ്. ജനറൽ">HS General (ഹൈസ്കൂൾ)</option>
+                <option value="UP GENERAL" data-en="UP GENERAL" data-ml="യു.പി. ജനറൽ">UP General (യു.പി.)</option>
+                <option value="LP GENERAL" data-en="LP GENERAL" data-ml="എൽ.പി. ജനറൽ">LP General (എൽ.പി.)</option>
+                <option value="HSS SANSKRIT" data-en="HSS SANSKRIT" data-ml="സംസ്കൃതോത്സവം (HSS)">HSS Sanskrit (സംസ്കൃതോത്സവം)</option>
+                <option value="HS ARABIC" data-en="HS ARABIC" data-ml="അറബിക് സാഹിത്യോത്സവം">HS Arabic (അറബിക് കലോത്സവം)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Competition Item Section -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-400">
+                <i class="ph ph-paint-brush-broad text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">2. Competition Item (മത്സര ഇനം)</h2>
+            </div>
+            <span class="text-xs text-purple-300 font-medium font-anek">കലാമത്സരം</span>
+          </div>
+
+          <!-- Item Name Input -->
+          <div>
+            <label for="input-item-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+              Item Name (English or മലയാളം)
+            </label>
+            <input type="text" id="input-item-name" value="ഭരതനാട്യം (BHARATANATYAM)" placeholder="e.g. മോഹിനിയാട്ടം / MOHINIYATTAM" 
+                   class="w-full px-4 py-3 rounded-2xl glass-input text-base font-semibold text-slate-100 font-anek">
+          </div>
+
+          <!-- Quick Suggestion Chips -->
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-medium text-slate-400">Popular Kalolsavam Items:</span>
+              <span class="text-[11px] text-cyan-400/80">Tap to fill</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2" id="quick-item-chips">
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="ഭരതനാട്യം (BHARATANATYAM)" data-ml="ഭരതനാട്യം">
+                ഭരതനാട്യം
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="മോഹിനിയാട്ടം (MOHINIYATTAM)" data-ml="മോഹിനിയാട്ടം">
+                മോഹിനിയാട്ടം
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="കുച്ചിപ്പുടി (KUCHIPUDI)" data-ml="കുച്ചിപ്പുടി">
+                കുച്ചിപ്പുടി
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="കഥകളി (KATHAKALI)" data-ml="കഥകളി">
+                കഥകളി
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="ലളിതഗാനം (LIGHT MUSIC)" data-ml="ലളിതഗാനം">
+                ലളിതഗാനം
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="മാപ്പിളപ്പാട്ട് (MAPPILAPPATTU)" data-ml="മാപ്പിളപ്പാട്ട്">
+                മാപ്പിളപ്പാട്ട്
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="ഒപ്പന (OPPANA)" data-ml="ഒപ്പന">
+                ഒപ്പന
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="തിരുവാതിരക്കളി (THIRUVATHIRAKKALI)" data-ml="തിരുവാതിരക്കളി">
+                തിരുവാതിരക്കളി
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="മോണോ ആക്ട് (MONO ACT)" data-ml="മോണോ ആക്ട്">
+                മോണോ ആക്ട്
+              </button>
+              <button type="button" class="item-chip px-3 py-1.5 rounded-xl text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all hover:text-white font-anek" data-en="നാടോടിനൃത്തം (FOLK DANCE)" data-ml="നാടോടിനൃത്തം">
+                നാടോടിനൃത്തം
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Achievement Selector Section -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+                <i class="ph ph-medal text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">3. Achievement / Placement</h2>
+            </div>
+            <span class="text-xs text-amber-300 font-semibold font-anek" id="current-badge-label">1st Place / ഒന്നാം സ്ഥാനം</span>
+          </div>
+
+          <!-- Glass Pill Selection Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="achievement-pill-container">
+            <button type="button" class="achievement-pill pill-active-gold py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 border border-white/10 transition-all" data-achievement="1st Place" data-type="place">
+              <i class="ph ph-trophy text-amber-300 text-sm"></i>
+              <span>1st Place</span>
+            </button>
+
+            <button type="button" class="achievement-pill py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all" data-achievement="2nd Place" data-type="place">
+              <i class="ph ph-medal text-slate-300 text-sm"></i>
+              <span>2nd Place</span>
+            </button>
+
+            <button type="button" class="achievement-pill py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all" data-achievement="3rd Place" data-type="place">
+              <i class="ph ph-medal text-amber-600 text-sm"></i>
+              <span>3rd Place</span>
+            </button>
+
+            <button type="button" class="achievement-pill py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all" data-achievement="Grade A" data-type="grade">
+              <i class="ph ph-star text-emerald-400 text-sm"></i>
+              <span>Grade A</span>
+            </button>
+
+            <button type="button" class="achievement-pill py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all" data-achievement="Grade B" data-type="grade">
+              <i class="ph ph-star-half text-sky-400 text-sm"></i>
+              <span>Grade B</span>
+            </button>
+
+            <button type="button" class="achievement-pill py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-center gap-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 transition-all" data-achievement="Grade C" data-type="grade">
+              <i class="ph ph-star-half text-indigo-400 text-sm"></i>
+              <span>Grade C</span>
+            </button>
+
+            <button type="button" class="col-span-2 sm:col-span-3 achievement-pill py-2.5 px-3 rounded-2xl text-xs font-semibold flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 transition-all" data-achievement="Participant" data-type="none">
+              <i class="ph ph-certificate text-slate-400 text-sm"></i>
+              <span>Participation Honour / പങ്കാളിത്ത ബഹുമതി</span>
+            </button>
+          </div>
+
+          <!-- Place + Grade Modifier Checkbox -->
+          <div class="pt-1 flex items-center justify-between">
+            <label class="flex items-center gap-2.5 cursor-pointer text-xs font-medium text-slate-300">
+              <input type="checkbox" id="check-with-a-grade" checked class="w-4 h-4 rounded text-amber-400 bg-obsidian-900 border-white/20 focus:ring-amber-400">
+              <span>Combine with <strong>"A Grade / എ ഗ്രേഡ്"</strong></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 4. Photograph Upload & Adjustment Section -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
+                <i class="ph ph-camera text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">4. Winner Photograph</h2>
+            </div>
+            <button id="btn-reset-photo-pos" type="button" class="text-xs text-slate-400 hover:text-emerald-300 flex items-center gap-1 transition-colors">
+              <i class="ph ph-arrow-counter-clockwise"></i> Center Photo
+            </button>
+          </div>
+
+          <!-- Drag and Drop Area -->
+          <div id="drop-zone" class="relative group cursor-pointer border-2 border-dashed border-white/20 hover:border-cyan-400/60 rounded-3xl p-4 sm:p-5 text-center transition-all bg-white/[0.02] hover:bg-cyan-500/[0.04]">
+            <input type="file" id="file-photo-input" accept="image/png, image/jpeg, image/jpg, image/webp" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+            <div class="flex flex-col items-center justify-center gap-2">
+              <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform">
+                <i class="ph ph-cloud-arrow-up text-2xl"></i>
+              </div>
+              <div class="space-y-0.5">
+                <p class="text-xs sm:text-sm font-semibold text-white">Tap to upload Winner Photo, or <span class="text-cyan-400 underline underline-offset-2">Browse</span></p>
+                <p class="text-[11px] text-slate-400">Supports JPG, PNG, WEBP</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Photo Adjustment Sliders -->
+          <div class="space-y-3 pt-1">
+            <div class="flex items-center justify-between text-xs text-slate-300">
+              <span class="font-semibold flex items-center gap-1.5"><i class="ph ph-magnifying-glass-plus"></i> Photo Zoom</span>
+              <span id="label-zoom" class="font-mono text-cyan-300">100%</span>
+            </div>
+            <input type="range" id="slider-zoom" min="0.5" max="2.5" step="0.05" value="1.0" class="w-full">
+
+            <div class="grid grid-cols-2 gap-3.5 pt-1">
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-400">
+                  <span>Pan X</span>
+                  <span id="label-pan-x" class="font-mono">0px</span>
+                </div>
+                <input type="range" id="slider-pan-x" min="-300" max="300" step="2" value="0" class="w-full">
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-400">
+                  <span>Pan Y</span>
+                  <span id="label-pan-y" class="font-mono">0px</span>
+                </div>
+                <input type="range" id="slider-pan-y" min="-300" max="300" step="2" value="0" class="w-full">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3.5 pt-1">
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-400">
+                  <span>Brightness</span>
+                  <span id="label-brightness" class="font-mono">100%</span>
+                </div>
+                <input type="range" id="slider-brightness" min="60" max="140" step="2" value="100" class="w-full">
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs text-slate-400">
+                  <span>Contrast</span>
+                  <span id="label-contrast" class="font-mono">105%</span>
+                </div>
+                <input type="range" id="slider-contrast" min="70" max="140" step="2" value="105" class="w-full">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Official Kalolsavam Logo & Header Settings -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+                <i class="ph ph-seal-check text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">5. Official Logo & Festival Edition</h2>
+            </div>
+            <span class="text-xs text-amber-300 font-anek">ലോഗോ</span>
+          </div>
+
+          <!-- Logo Style Selector + Custom Logo Upload -->
+          <div class="space-y-3">
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300">
+              Poster Header Emblem (English & Malayalam)
+            </label>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button type="button" id="btn-logo-kalolsavam" class="logo-mode-btn pill-active-gold py-2.5 px-3 rounded-2xl text-xs font-bold border border-white/10 flex items-center justify-center gap-2 transition-all">
+                <i class="ph ph-paint-brush-household text-sm"></i>
+                <span>Kalolsavam Logo</span>
+              </button>
+              <button type="button" id="btn-logo-lamp" class="logo-mode-btn py-2.5 px-3 rounded-2xl text-xs font-bold bg-white/5 border border-white/10 text-slate-300 flex items-center justify-center gap-2 transition-all">
+                <i class="ph ph-flame text-sm"></i>
+                <span>Nilavilakku Crest</span>
+              </button>
+            </div>
+
+            <!-- Upload Custom Logo Image (e.g. Logo final.jpg) -->
+            <div class="relative flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="flex items-center gap-2.5 min-w-0">
+                <i class="ph ph-image-square text-amber-300 text-xl flex-shrink-0"></i>
+                <div class="min-w-0">
+                  <p class="text-xs font-semibold text-white truncate">Upload Custom Logo Image (Optional)</p>
+                  <p class="text-[11px] text-slate-400 truncate">Use your exact <code class="text-amber-300">Logo final.jpg</code> file</p>
+                </div>
+              </div>
+              <label class="px-3 py-1.5 rounded-xl bg-amber-400/20 hover:bg-amber-400/30 border border-amber-400/40 text-amber-200 text-xs font-bold cursor-pointer flex-shrink-0 transition-all">
+                <span>Choose Logo</span>
+                <input type="file" id="file-logo-input" accept="image/*" class="hidden">
+              </label>
+            </div>
+          </div>
+
+          <!-- Edition & Host School Subtext -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label for="input-edition" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                Festival Edition / Date
+              </label>
+              <input type="text" id="input-edition" value="2026 NOVEMBER 11, 12, 13, 14" class="w-full px-3.5 py-2 rounded-2xl glass-input text-xs text-slate-200 font-anek">
+            </div>
+            <div>
+              <label for="input-venue" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                Host Venue (വേദി)
+              </label>
+              <input type="text" id="input-venue" value="ANJARAKANDY HSS" class="w-full px-3.5 py-2 rounded-2xl glass-input text-xs text-slate-200 font-anek">
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Liquid Glass Theme Selector -->
+        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-pink-400/10 border border-pink-400/20 flex items-center justify-center text-pink-400">
+                <i class="ph ph-palette text-lg"></i>
+              </span>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">6. Liquid Glass Theme</h2>
+            </div>
+            <span class="text-xs text-slate-400">4 Styles</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 sm:gap-3" id="theme-selector-grid">
+            <button type="button" class="theme-card active-theme p-3 rounded-2xl border text-left flex items-center gap-2.5 transition-all border-cyan-400/80 bg-cyan-950/30 shadow-lg shadow-cyan-900/20" data-theme="royal-navy">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#060B19] via-[#0E2452] to-[#00F2FE] border border-white/20 flex-shrink-0"></div>
+              <div class="min-w-0">
+                <p class="text-xs font-bold text-white truncate">Midnight Navy</p>
+                <p class="text-[10px] text-slate-400 truncate">Sapphire & Gold</p>
+              </div>
+            </button>
+
+            <button type="button" class="theme-card p-3 rounded-2xl border text-left flex items-center gap-2.5 transition-all border-white/10 bg-white/5 hover:border-amber-400/50" data-theme="kasavu-gold">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#12110D] via-[#2A2315] to-[#F59E0B] border border-white/20 flex-shrink-0"></div>
+              <div class="min-w-0">
+                <p class="text-xs font-bold text-slate-200 truncate">Kasavu Gold</p>
+                <p class="text-[10px] text-slate-400 truncate">Traditional Silk</p>
+              </div>
+            </button>
+
+            <button type="button" class="theme-card p-3 rounded-2xl border text-left flex items-center gap-2.5 transition-all border-white/10 bg-white/5 hover:border-cyan-400/50" data-theme="ethereal-cyan">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#040D14] via-[#0A2633] to-[#38BDF8] border border-white/20 flex-shrink-0"></div>
+              <div class="min-w-0">
+                <p class="text-xs font-bold text-slate-200 truncate">Cyan Frost</p>
+                <p class="text-[10px] text-slate-400 truncate">Liquid Glow</p>
+              </div>
+            </button>
+
+            <button type="button" class="theme-card p-3 rounded-2xl border text-left flex items-center gap-2.5 transition-all border-white/10 bg-white/5 hover:border-purple-400/50" data-theme="velvet-amethyst">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#0D0518] via-[#230B38] to-[#C084FC] border border-white/20 flex-shrink-0"></div>
+              <div class="min-w-0">
+                <p class="text-xs font-bold text-slate-200 truncate">Velvet Plum</p>
+                <p class="text-[10px] text-slate-400 truncate">Kerala Theatre</p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ==============================================
+           RIGHT PANEL: LIVE POSTER PREVIEW & EXPORT
+           ============================================== -->
+      <div id="panel-poster-preview" class="lg:col-span-6 xl:col-span-7 space-y-4 sm:space-y-5 lg:sticky lg:top-24 order-1 lg:order-2">
+
+        <!-- Top Preview Status & Export Format Bar -->
+        <div class="liquid-panel rounded-3xl p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-2.5">
+          <div class="flex items-center gap-2">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+            </span>
+            <span class="text-xs font-bold text-white uppercase tracking-wider">Live Poster</span>
+            <span id="preview-lang-badge" class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-amber-400/15 text-amber-300 border border-amber-400/30 font-anek">
+              ENGLISH VERSION
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2 ml-auto sm:ml-0">
+            <select id="select-export-format" aria-label="Export Format" class="px-2.5 py-1.5 rounded-xl glass-input text-xs font-semibold text-slate-200 cursor-pointer">
+              <option value="png">PNG (Lossless)</option>
+              <option value="jpeg">JPG (Smallest)</option>
+            </select>
+
+            <select id="select-export-scale" aria-label="Export Resolution" class="px-2.5 py-1.5 rounded-xl glass-input text-xs font-semibold text-slate-200 cursor-pointer">
+              <option value="1">1x (1080×1350)</option>
+              <option value="2">2x (2160×2700 UHD)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Canvas Container Box -->
+        <div class="liquid-panel rounded-3xl p-3 sm:p-5 flex flex-col items-center justify-center relative overflow-hidden group">
+          
+          <!-- Poster Canvas Viewport (Centered & Mobile/Tablet Aligned) -->
+          <div class="relative w-full max-w-[440px] sm:max-w-[480px] mx-auto rounded-2xl overflow-hidden shadow-2xl border border-white/20 canvas-pan-mode select-none" id="poster-canvas-wrapper" title="Touch or drag with mouse to reposition winner photo">
+            <!-- Native 1080x1350 4:5 Portrait Poster Canvas -->
+            <canvas id="poster-canvas" width="1080" height="1350" class="w-full h-auto block rounded-2xl"></canvas>
+            
+            <!-- Quick hover/touch hint overlay -->
+            <div class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/65 backdrop-blur-md border border-white/15 text-[10px] text-slate-200 pointer-events-none opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex items-center gap-1">
+              <i class="ph ph-hand-pointing text-amber-300"></i>
+              <span>Drag photo to adjust position</span>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons Under Preview -->
+          <div class="w-full max-w-[440px] sm:max-w-[480px] mx-auto mt-4 flex items-center gap-2.5 sm:gap-3">
+            <button id="btn-main-download" type="button" class="flex-1 py-3.5 px-4 sm:px-6 rounded-2xl font-bold text-xs sm:text-sm tracking-wide text-obsidian-950 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 hover:from-amber-200 hover:to-yellow-300 shadow-xl shadow-amber-500/25 flex items-center justify-center gap-2 transition-all active:scale-95">
+              <i class="ph ph-download-simple text-lg sm:text-xl"></i>
+              <span id="btn-download-text">Download Poster (High Res)</span>
+            </button>
+
+            <button id="btn-share-trigger" type="button" class="p-3.5 rounded-2xl bg-white/10 hover:bg-white/15 border border-white/15 text-white transition-all active:scale-95" title="Copy Poster to Clipboard">
+              <i class="ph ph-copy text-lg sm:text-xl"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Typography & Sub-District Info Card -->
+        <div class="liquid-card rounded-2xl p-4 flex items-start gap-3 text-xs text-slate-300">
+          <i class="ph ph-sparkle text-amber-300 text-xl flex-shrink-0 mt-0.5"></i>
+          <div>
+            <h4 class="font-bold text-white mb-0.5 font-ui">Kannur Sub-District & Bilingual Malayalam Typography</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Configured with all 15 Kannur Sub-Districts, official Kalolsavam logo emblem, <strong>Anek Malayalam Condensed</strong> headings, and <strong>Noto Serif Malayalam Bold</strong> congratulatory plaque styling.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Mobile Bottom Sticky Quick-Action Bar (Phones & Small Tablets) -->
+  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-t border-white/15 px-3 py-2.5 flex items-center justify-between gap-2">
+    <button type="button" id="mobile-bottom-lang-toggle" class="px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/15 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-anek">
+      <i class="ph ph-translate text-base"></i>
+      <span id="mobile-bottom-lang-text">മലയാളം ആക്കുക</span>
+    </button>
+
+    <button type="button" id="mobile-bottom-download" class="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs text-obsidian-950 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 flex items-center justify-center gap-1.5 shadow-lg">
+      <i class="ph ph-download-simple text-base"></i>
+      <span>Download Poster</span>
+    </button>
+  </div>
+
+  <!-- ==============================================================
+       JAVASCRIPT APPLICATION LOGIC & BILINGUAL CANVAS ENGINE
+       ============================================================== -->
+  <script>
+    /**
+     * Kalolsavam Poster Studio - Bilingual (English & Malayalam) Engine
+     * Supports 15 Kannur Sub-Districts, Anek Malayalam Condensed & Noto Serif Malayalam Bold,
+     * Kalolsavam 2026 Logo rendering, and touch-friendly mobile/tablet controls.
+     */
+
+    // 15 Kannur Sub-Districts Lookup
+    const KANNUR_SUBDISTRICTS = {
+      '01': { no: '01', en: 'Chokli', ml: 'ചൊക്ലി' },
+      '02': { no: '02', en: 'Irikkur', ml: 'ഇരിക്കൂർ' },
+      '03': { no: '03', en: 'Iritty', ml: 'ഇരിട്ടി' },
+      '04': { no: '04', en: 'Kannur North', ml: 'കണ്ണൂർ നോർത്ത്' },
+      '05': { no: '05', en: 'Kannur South', ml: 'കണ്ണൂർ സൗത്ത്' },
+      '06': { no: '06', en: 'Kuthuparamba', ml: 'കൂത്തുപറമ്പ്' },
+      '07': { no: '07', en: 'Madayi', ml: 'മാടായി' },
+      '08': { no: '08', en: 'Mattannur', ml: 'മട്ടന്നൂർ' },
+      '09': { no: '09', en: 'Panoor', ml: 'പാനൂർ' },
+      '10': { no: '10', en: 'Pappinissery', ml: 'പാപ്പിനിശ്ശേരി' },
+      '11': { no: '11', en: 'Payyannur', ml: 'പയ്യന്നൂർ' },
+      '12': { no: '12', en: 'Thalassery North', ml: 'തലശ്ശേരി നോർത്ത്' },
+      '13': { no: '13', en: 'Thalassery South', ml: 'തലശ്ശേരി സൗത്ത്' },
+      '14': { no: '14', en: 'Thaliparamba South', ml: 'തളിപ്പറമ്പ് സൗത്ത്' },
+      '15': { no: '15', en: 'Thaliparamba North', ml: 'തളിപ്പറമ്പ് നോർത്ത്' }
+    };
+
+    // Category Translations
+    const CATEGORY_TRANSLATIONS = {
+      'HSS GENERAL': { en: 'HSS GENERAL', ml: 'എച്ച്.എസ്.എസ്. ജനറൽ' },
+      'HS GENERAL': { en: 'HS GENERAL', ml: 'എച്ച്.എസ്. ജനറൽ' },
+      'UP GENERAL': { en: 'UP GENERAL', ml: 'യു.പി. ജനറൽ' },
+      'LP GENERAL': { en: 'LP GENERAL', ml: 'എൽ.പി. ജനറൽ' },
+      'HSS SANSKRIT': { en: 'HSS SANSKRIT', ml: 'സംസ്കൃതോത്സവം (HSS)' },
+      'HS ARABIC': { en: 'HS ARABIC', ml: 'അറബിക് സാഹിത്യോത്സവം' }
+    };
+
+    // Achievement Translations
+    const ACHIEVEMENT_TRANSLATIONS = {
+      '1st Place': { en: '1ST PLACE', ml: 'ഒന്നാം സ്ഥാനം' },
+      '2nd Place': { en: '2ND PLACE', ml: 'രണ്ടാം സ്ഥാനം' },
+      '3rd Place': { en: '3RD PLACE', ml: 'മൂന്നാം സ്ഥാനം' },
+      'Grade A': { en: 'GRADE A WINNER', ml: 'എ ഗ്രേഡ് ജേതാവ്' },
+      'Grade B': { en: 'GRADE B WINNER', ml: 'ബി ഗ്രേഡ് ജേതാവ്' },
+      'Grade C': { en: 'GRADE C WINNER', ml: 'സി ഗ്രേഡ് ജേതാവ്' },
+      'Participant': { en: 'PARTICIPATION HONOUR', ml: 'പങ്കാളിത്ത ബഹുമതി' }
+    };
+
+    // Application State
+    const state = {
+      lang: 'en', // 'en' or 'ml'
+      winnerName: 'YOUR NAME',
+      congratsText: 'CONGRATULATIONS',
+      showCongrats: true,
+      schoolName: 'SCHOOL NAME',
+      subDistrictCode: '05', // Default: 05 Kannur South (കണ്ണൂർ സൗത്ത്)
+      category: 'HSS GENERAL',
+      itemName: 'ഭരതനാട്യം (BHARATANATYAM)',
+      achievement: '1st Place',
+      achievementType: 'place',
+      withAGrade: true,
+      edition: '2026 NOVEMBER 11, 12, 13, 14',
+      venue: 'ANJARAKANDY HSS',
+      logoMode: 'custom', // 'kalolsavam', 'lamp', or 'custom'
+      customLogoImg: null,
+      theme: 'royal-navy',
+      exportFormat: 'png',
+      exportScale: 1,
+
+      photo: {
+        img: null,
+        loaded: false,
+        zoom: 1.0,
+        panX: 0,
+        panY: 0,
+        brightness: 100,
+        contrast: 105
+      }
+    };
+
+    // DOM References
+    const canvas = document.getElementById('poster-canvas');
+    const ctx = canvas.getContext('2d');
+    const canvasWrapper = document.getElementById('poster-canvas-wrapper');
+
+    const inputWinnerName = document.getElementById('input-winner-name');
+    const inputCongratsText = document.getElementById('input-congrats-text');
+    const checkShowCongrats = document.getElementById('check-show-congrats');
+    const inputSchoolName = document.getElementById('input-school-name');
+    const selectSubDistrict = document.getElementById('select-subdistrict');
+    const selectCategory = document.getElementById('select-category');
+    const inputItemName = document.getElementById('input-item-name');
+    const checkWithAGrade = document.getElementById('check-with-a-grade');
+    const inputEdition = document.getElementById('input-edition');
+    const inputVenue = document.getElementById('input-venue');
+    const currentBadgeLabel = document.getElementById('current-badge-label');
+    const previewLangBadge = document.getElementById('preview-lang-badge');
+
+    // Logo controls
+    const btnLogoKalolsavam = document.getElementById('btn-logo-kalolsavam');
+    const btnLogoLamp = document.getElementById('btn-logo-lamp');
+    const fileLogoInput = document.getElementById('file-logo-input');
+    const headerCustomLogoImg = document.getElementById('header-custom-logo-img');
+    const headerVectorLogo = document.getElementById('header-vector-logo');
+
+    // Photo controls
+    const filePhotoInput = document.getElementById('file-photo-input');
+    const dropZone = document.getElementById('drop-zone');
+    const sliderZoom = document.getElementById('slider-zoom');
+    const sliderPanX = document.getElementById('slider-pan-x');
+    const sliderPanY = document.getElementById('slider-pan-y');
+    const sliderBrightness = document.getElementById('slider-brightness');
+    const sliderContrast = document.getElementById('slider-contrast');
+    const btnResetPhotoPos = document.getElementById('btn-reset-photo-pos');
+
+    const labelZoom = document.getElementById('label-zoom');
+    const labelPanX = document.getElementById('label-pan-x');
+    const labelPanY = document.getElementById('label-pan-y');
+    const labelBrightness = document.getElementById('label-brightness');
+    const labelContrast = document.getElementById('label-contrast');
+
+    const selectExportFormat = document.getElementById('select-export-format');
+    const selectExportScale = document.getElementById('select-export-scale');
+    const btnMainDownload = document.getElementById('btn-main-download');
+    const btnTopDownload = document.getElementById('btn-top-download');
+    const mobileBottomDownload = document.getElementById('mobile-bottom-download');
+    const btnShareTrigger = document.getElementById('btn-share-trigger');
+    const btnLoadSample = document.getElementById('btn-load-sample');
+    const btnResetAll = document.getElementById('btn-reset-all');
+
+    // Configure the default logo image file here.
+    // Example: './logo.png', './assets/logo.png', '/images/logo.jpg'
+    const DEFAULT_LOGO_PATH = './Logo final.resized.png';
+
+    function createDefaultLogoSvg() {
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" role="img" aria-label="Kalolsavam logo">
+          <defs>
+            <linearGradient id="gold" x1="0" x2="1">
+              <stop offset="0%" stop-color="#f7d54a"/>
+              <stop offset="100%" stop-color="#d89d14"/>
+            </linearGradient>
+          </defs>
+          <g transform="translate(14 12)">
+            <g fill="#0f172a">
+              <path d="M310 40c80 0 75 34 72 80 0 0 52 16 80 48 39 44 64 102 31 146-39 51-117 56-161 76-74 33-34 144-121 144-61 0-88-64-77-116 11-53 113-91 137-103 24-12 46-31 43-74-1-19-11-68-4-101z" opacity="0.96"/>
+            </g>
+            <g>
+              <path d="M116 91l40 105c16-19 47-36 72-39 48-6 76 17 105 42l-24-77-90-76-103 45z" fill="#17b26a"/>
+              <path d="M118 121l36 88c24-20 52-39 87-42 0 0 56 22 80 71l-70-125-133 8z" fill="#0e8f52" opacity="0.82"/>
+              <path d="M285 140l30 52 62-36-27 68 52 30-72 15-57-42-2-87z" fill="#1b9b57"/>
+            </g>
+            <g fill="#a31d1d">
+              <path d="M280 86c-6 18-7 31-2 51 6 30 20 47 30 72 5 14 13 31 11 48-4 44-33 89-66 106-25 12-57 17-74 9-26-11-35-48-16-73 9-12 23-18 31-31 10-17 4-38 16-52 15-19 37-24 54-33 17-8 21-34 16-47z"/>
+            </g>
+            <g>
+              <path d="M206 144c28-18 57-26 88-20 25 5 42 22 58 40 16 17 36 54 36 78 0 45-41 82-95 81-40-1-77-28-97-63-14-24-17-54-14-82 4-20 14-25 24-34z" fill="#d91414"/>
+              <path d="M197 156c25-17 52-29 87-28 37 1 61 19 77 42 21 28 12 49 4 68-18 41-63 67-112 65-53-2-90-41-88-92 1-23 14-38 32-55z" fill="#f12929" opacity="0.9"/>
+            </g>
+            <g>
+              <path d="M272 146c26 5 49 30 60 70 10 38 8 64-17 90-27 28-69 44-109 39-48-7-78-53-80-112-2-58 43-102 98-105 16-1 31 6 48 18z" fill="#0c1a2d" opacity="0.18"/>
+            </g>
+            <g>
+              <circle cx="310" cy="252" r="13" fill="#f2c14e"/>
+              <path d="M293 288l29-25 35 22 18 73-32 12-34-34-16-48z" fill="#2c1f6d"/>
+              <path d="M291 316l36-11 42 44-26 40-42-21-10-52z" fill="#ef7c1d"/>
+              <path d="M292 316c20 30 47 28 63 41l25 48-15 27-71-41-44-50 42-25z" fill="#e3b131"/>
+            </g>
+            <g>
+              <path d="M318 140l-13 16-20 130c0 18 10 22 22 23l26 1 9-170-24 0z" fill="#ad1b1b"/>
+              <path d="M346 159l42 10v138c0 18-33 14-39 1l-3-149z" fill="#c41d1d"/>
+              <path d="M396 194l39-4 33 10-5 66-42 10-41-54 16-28z" fill="#f5d75e"/>
+              <circle cx="356" cy="170" r="9" fill="#f1d774"/>
+            </g>
+            <g>
+              <path d="M394 180l34 44a146 146 0 0 1 27 72l-17 58 15 34-38 6-57-62 36-152z" fill="#641b1b" opacity="0.9"/>
+              <path d="M436 198c78 14 121 80 144 135 22 52 11 113-31 168l-37-71c26-31 24-81-13-103-37-22-86-40-120-62l57-67z" fill="#2d0f10" opacity="0.97"/>
+            </g>
+            <g>
+              <path d="M130 424c50-45 107-62 180-61l96 4c56 2 111 18 146 49l-62 124c-52 0-86 24-123 65-62 70-90 34-160 21-74-15-120-62-117-127 1-29 16-55 40-75z" fill="#e31d1d"/>
+              <path d="M158 442c46-38 100-55 163-54 65 0 100 18 165 57l-8 66c-31 6-69 14-101 39-45 35-46 51-97 61-58 12-94-10-122-40-29-31-35-71-14-89 9-18 9-24 14-40z" fill="#f8ebeb" opacity="0.15"/>
+            </g>
+            <g transform="translate(110 500)">
+              <path d="M0 0h280c14 0 22 12 22 22v8H0z" fill="#0d1117"/>
+              <rect x="0" y="18" width="10" height="74" fill="#111827"/>
+              <rect x="24" y="18" width="10" height="74" fill="#111827"/>
+              <rect x="48" y="18" width="10" height="74" fill="#111827"/>
+              <rect x="72" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="96" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="120" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="144" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="168" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="192" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="216" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="240" y="18" width="12" height="74" fill="#111827"/>
+              <rect x="264" y="18" width="12" height="74" fill="#111827"/>
+            </g>
+            <g>
+              <rect x="35" y="255" width="40" height="25" rx="12" fill="#f59e0b"/>
+              <circle cx="58" cy="210" r="20" fill="#f59e0b"/>
+              <path d="M62 246c19 9 36 22 48 37 16 18 21 37 26 66l-18 8c-10-40-27-55-56-61l0-50z" fill="#f59e0b"/>
+            </g>
+            <g fill="#e5eefb" font-family="Noto Sans Malayalam, sans-serif" font-weight="700">
+              <text x="372" y="218" font-size="58" fill="#0f172a">ക</text>
+              <text x="431" y="218" font-size="58" fill="#1d9b3f">ളോ</text>
+              <text x="488" y="218" font-size="58" fill="#e11d48">ത്സവ</text>
+              <text x="416" y="284" font-size="58" fill="#2b9eeb">ം</text>
+            </g>
+            <g fill="#fff" font-family="Noto Sans Malayalam, sans-serif" font-weight="900">
+              <text x="370" y="365" font-size="88">കലോത്സവം</text>
+            </g>
+            <g fill="#c93a1d" font-family="Noto Sans Malayalam, sans-serif" font-weight="700">
+              <text x="375" y="448" font-size="28">2026</text>
+              <text x="478" y="448" font-size="28">നവംബർ</text>
+            </g>
+            <g font-family="Noto Sans Malayalam, sans-serif" font-weight="800">
+              <text x="456" y="484" font-size="22" fill="#0f172a">11</text>
+              <text x="487" y="484" font-size="22" fill="#0f172a">12</text>
+              <text x="518" y="484" font-size="22" fill="#0f172a">13</text>
+              <text x="549" y="484" font-size="22" fill="#0f172a">14</text>
+            </g>
+          </g>
+        </svg>
+      `;
+      return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+    }
+
+    function loadDefaultLogo() {
+      const img = new Image();
+      img.onload = () => {
+        state.customLogoImg = img;
+        state.logoMode = 'custom';
+        headerCustomLogoImg.src = img.src;
+        syncLogoButtons();
+        renderPoster();
+      };
+
+      img.onerror = () => {
+        const fallbackImg = new Image();
+        fallbackImg.onload = () => {
+          state.customLogoImg = fallbackImg;
+          state.logoMode = 'custom';
+          headerCustomLogoImg.src = fallbackImg.src;
+          syncLogoButtons();
+          renderPoster();
+        };
+        fallbackImg.src = createDefaultLogoSvg();
+      };
+
+      img.src = DEFAULT_LOGO_PATH;
+    }
+
+    // Toast notification helper
+    function showToast(title, desc, icon = 'ph-check-circle', color = 'text-cyan-400') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-title').innerText = title;
+      document.getElementById('toast-desc').innerText = desc;
+      document.getElementById('toast-icon').className = `ph ${icon} ${color} text-2xl flex-shrink-0`;
+
+      toast.classList.remove('opacity-0', 'translate-y-6', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-6', 'pointer-events-none');
+      }, 3200);
+    }
+
+    // ==============================================================
+    // LANGUAGE SWITCHER (ENGLISH <-> മലയാളം)
+    // ==============================================================
+    function setPosterLanguage(lang) {
+      state.lang = lang;
+
+      // Update all language switcher buttons
+      document.querySelectorAll('.lang-switch-btn').forEach(btn => {
+        if (btn.getAttribute('data-lang') === lang) {
+          btn.classList.add('lang-btn-active');
+        } else {
+          btn.classList.remove('lang-btn-active');
+        }
+      });
+
+      // Update mobile bottom toggle text
+      const mobileLangText = document.getElementById('mobile-bottom-lang-text');
+      if (mobileLangText) {
+        mobileLangText.innerText = lang === 'en' ? 'മലയാളം ആക്കുക' : 'Switch to English';
+      }
+
+      // Update preview badge
+      previewLangBadge.innerText = lang === 'ml' ? 'മലയാളം പതിപ്പ്' : 'ENGLISH VERSION';
+
+      // Smartly toggle default placeholders/values if user hasn't entered custom ones
+      const currentName = inputWinnerName.value.trim();
+      if (lang === 'ml' && (currentName === 'YOUR NAME' || currentName === '')) {
+        inputWinnerName.value = 'നിങ്ങളുടെ പേര്';
+        state.winnerName = 'നിങ്ങളുടെ പേര്';
+      } else if (lang === 'en' && (currentName === 'നിങ്ങളുടെ പേര്' || currentName === '')) {
+        inputWinnerName.value = 'YOUR NAME';
+        state.winnerName = 'YOUR NAME';
+      }
+
+      // Smartly toggle Congratulation text between CONGRATULATIONS and അഭിനന്ദനങ്ങൾ
+      const currentCongrats = inputCongratsText.value.trim();
+      if (lang === 'ml' && (currentCongrats.toUpperCase() === 'CONGRATULATIONS' || currentCongrats === '')) {
+        inputCongratsText.value = 'അഭിനന്ദനങ്ങൾ';
+        state.congratsText = 'അഭിനന്ദനങ്ങൾ';
+      } else if (lang === 'en' && (currentCongrats === 'അഭിനന്ദനങ്ങൾ' || currentCongrats === '')) {
+        inputCongratsText.value = 'CONGRATULATIONS';
+        state.congratsText = 'CONGRATULATIONS';
+      }
+
+      // Smartly toggle default school name
+      const currentSchool = inputSchoolName.value.trim();
+      if (lang === 'ml' && (currentSchool.toUpperCase() === 'SCHOOL NAME' || currentSchool === '')) {
+        inputSchoolName.value = 'സ്കൂളിന്റെ പേര്';
+        state.schoolName = 'സ്കൂളിന്റെ പേര്';
+      } else if (lang === 'en' && (currentSchool === 'സ്കൂളിന്റെ പേര്' || currentSchool === '')) {
+        inputSchoolName.value = 'SCHOOL NAME';
+        state.schoolName = 'SCHOOL NAME';
+      }
+
+      // Smartly toggle default Edition & Venue
+      const currentEdition = inputEdition.value.trim();
+      if (lang === 'ml' && currentEdition === '2026 NOVEMBER 11, 12, 13, 14') {
+        inputEdition.value = '2026 നവംബർ 11, 12, 13, 14';
+        state.edition = '2026 നവംബർ 11, 12, 13, 14';
+      } else if (lang === 'en' && currentEdition === '2026 നവംബർ 11, 12, 13, 14') {
+        inputEdition.value = '2026 NOVEMBER 11, 12, 13, 14';
+        state.edition = '2026 NOVEMBER 11, 12, 13, 14';
+      }
+
+      const currentVenue = inputVenue.value.trim();
+      if (lang === 'ml' && currentVenue === 'ANJARAKANDY HSS') {
+        inputVenue.value = 'അഞ്ചരക്കണ്ടി ഹയർ സെക്കന്ററി സ്കൂൾ';
+        state.venue = 'അഞ്ചരക്കണ്ടി ഹയർ സെക്കന്ററി സ്കൂൾ';
+      } else if (lang === 'en' && currentVenue === 'അഞ്ചരക്കണ്ടി ഹയർ സെക്കന്ററി സ്കൂൾ') {
+        inputVenue.value = 'ANJARAKANDY HSS';
+        state.venue = 'ANJARAKANDY HSS';
+      }
+
+      // Smartly toggle item name if matching one of the chips
+      document.querySelectorAll('.item-chip').forEach(chip => {
+        const enVal = chip.getAttribute('data-en');
+        const mlVal = chip.getAttribute('data-ml');
+        if (lang === 'ml' && state.itemName === enVal) {
+          state.itemName = mlVal;
+          inputItemName.value = mlVal;
+        } else if (lang === 'en' && state.itemName === mlVal) {
+          state.itemName = enVal;
+          inputItemName.value = enVal;
+        }
+      });
+
+      renderPoster();
+      showToast(
+        lang === 'ml' ? 'മലയാളം പതിപ്പ്' : 'English Version',
+        lang === 'ml' ? 'പോസ്റ്റർ പൂർണ്ണമായും മലയാളത്തിലേക്ക് മാറ്റി' : 'Switched poster to English version',
+        'ph-translate',
+        'text-amber-300'
+      );
+    }
+
+    document.querySelectorAll('.lang-switch-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setPosterLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    document.getElementById('mobile-bottom-lang-toggle').addEventListener('click', () => {
+      setPosterLanguage(state.lang === 'en' ? 'ml' : 'en');
+    });
+
+    // ==============================================================
+    // MOBILE VIEW MODE SWITCHER (Full / Edit Form / Poster Only)
+    // ==============================================================
+    const panelEditor = document.getElementById('panel-editor-controls');
+    const panelPreview = document.getElementById('panel-poster-preview');
+    document.querySelectorAll('.mobile-view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const view = btn.getAttribute('data-mobile-view');
+        document.querySelectorAll('.mobile-view-btn').forEach(b => {
+          b.className = 'mobile-view-btn py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white flex items-center justify-center gap-1.5';
+        });
+        btn.className = 'mobile-view-btn py-1.5 px-2 rounded-lg text-xs font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 flex items-center justify-center gap-1.5';
+
+        if (view === 'both') {
+          panelEditor.classList.remove('hidden');
+          panelPreview.classList.remove('hidden');
+        } else if (view === 'edit') {
+          panelEditor.classList.remove('hidden');
+          panelPreview.classList.add('hidden');
+        } else if (view === 'preview') {
+          panelEditor.classList.add('hidden');
+          panelPreview.classList.remove('hidden');
+        }
+      });
+    });
+
+    // ==============================================================
+    // DEFAULT CLASSICAL DANCER SAMPLE ILLUSTRATION
+    // ==============================================================
+    function generateDefaultSamplePhoto() {
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = 800;
+      offCanvas.height = 1000;
+      const oc = offCanvas.getContext('2d');
+
+      const grad = oc.createLinearGradient(0, 0, 800, 1000);
+      grad.addColorStop(0, '#1E293B');
+      grad.addColorStop(0.5, '#0F172A');
+      grad.addColorStop(1, '#080C16');
+      oc.fillStyle = grad;
+      oc.fillRect(0, 0, 800, 1000);
+
+      const spot = oc.createRadialGradient(400, 420, 50, 400, 420, 400);
+      spot.addColorStop(0, 'rgba(251, 191, 36, 0.45)');
+      spot.addColorStop(0.6, 'rgba(217, 119, 6, 0.15)');
+      spot.addColorStop(1, 'rgba(0,0,0,0)');
+      oc.fillStyle = spot;
+      oc.fillRect(0, 0, 800, 1000);
+
+      // Face
+      oc.fillStyle = '#D29C6B';
+      oc.beginPath();
+      oc.ellipse(400, 450, 140, 180, 0, 0, Math.PI * 2);
+      oc.fill();
+
+      // Shoulders
+      oc.fillStyle = '#C28956';
+      oc.beginPath();
+      oc.moveTo(330, 600);
+      oc.quadraticCurveTo(240, 750, 160, 950);
+      oc.lineTo(640, 950);
+      oc.quadraticCurveTo(560, 750, 470, 600);
+      oc.closePath();
+      oc.fill();
+
+      // Silk Attire
+      oc.fillStyle = '#991B1B';
+      oc.beginPath();
+      oc.moveTo(280, 720);
+      oc.lineTo(520, 720);
+      oc.lineTo(580, 1000);
+      oc.lineTo(220, 1000);
+      oc.closePath();
+      oc.fill();
+
+      oc.strokeStyle = '#FBBF24';
+      oc.lineWidth = 14;
+      oc.beginPath();
+      oc.moveTo(280, 720);
+      oc.lineTo(400, 850);
+      oc.lineTo(520, 720);
+      oc.stroke();
+
+      // Necklace
+      oc.lineWidth = 10;
+      oc.beginPath();
+      oc.arc(400, 620, 90, 0.2 * Math.PI, 0.8 * Math.PI);
+      oc.stroke();
+
+      // Netri Chutti
+      oc.fillStyle = '#F59E0B';
+      oc.beginPath();
+      oc.arc(400, 310, 18, 0, Math.PI * 2);
+      oc.fill();
+      oc.strokeStyle = '#FDE68A';
+      oc.lineWidth = 4;
+      oc.beginPath();
+      oc.moveTo(400, 240);
+      oc.lineTo(400, 310);
+      oc.stroke();
+
+      // Tilakam
+      oc.fillStyle = '#DC2626';
+      oc.beginPath();
+      oc.ellipse(400, 390, 8, 14, 0, 0, Math.PI * 2);
+      oc.fill();
+
+      // Jasmine Garland
+      oc.fillStyle = '#FEF3C7';
+      for (let angle = 0; angle < Math.PI; angle += 0.12) {
+        let hx = 400 + Math.cos(angle - Math.PI) * 165;
+        let hy = 380 + Math.sin(angle - Math.PI) * 165;
+        oc.beginPath();
+        oc.arc(hx, hy, 16, 0, Math.PI * 2);
+        oc.fill();
+      }
+
+      // Eyes
+      oc.strokeStyle = '#0F172A';
+      oc.lineWidth = 5;
+      oc.beginPath();
+      oc.moveTo(320, 440);
+      oc.quadraticCurveTo(350, 420, 375, 445);
+      oc.stroke();
+      oc.beginPath();
+      oc.moveTo(480, 440);
+      oc.quadraticCurveTo(450, 420, 425, 445);
+      oc.stroke();
+
+      oc.fillStyle = '#1E293B';
+      oc.beginPath();
+      oc.arc(350, 442, 10, 0, Math.PI * 2);
+      oc.arc(450, 442, 10, 0, Math.PI * 2);
+      oc.fill();
+
+      // Smile
+      oc.strokeStyle = '#BE123C';
+      oc.lineWidth = 6;
+      oc.beginPath();
+      oc.arc(400, 520, 35, 0.15 * Math.PI, 0.85 * Math.PI);
+      oc.stroke();
+
+      // Jhumkas
+      oc.fillStyle = '#F59E0B';
+      oc.beginPath();
+      oc.arc(245, 490, 22, 0, Math.PI * 2);
+      oc.arc(555, 490, 22, 0, Math.PI * 2);
+      oc.fill();
+
+      const img = new Image();
+      img.onload = () => {
+        state.photo.img = img;
+        state.photo.loaded = true;
+        renderPoster();
+      };
+      img.src = offCanvas.toDataURL('image/png');
+    }
+
+    // ==============================================================
+    // MAIN POSTER RENDERING ENGINE (1080 x 1350)
+    // ==============================================================
+    function renderPoster() {
+      drawFullPoster(ctx);
+    }
+
+    function drawFullPoster(c) {
+      const W = 1080;
+      const H = 1350;
+      const isML = state.lang === 'ml';
+      const subDistObj = KANNUR_SUBDISTRICTS[state.subDistrictCode] || KANNUR_SUBDISTRICTS['05'];
+
+      c.clearRect(0, 0, W, H);
+      c.save();
+
+      // -------------------------------------------------------------
+      // 1. THEME BACKGROUND & AMBIENT LIQUID GRADIENTS
+      // -------------------------------------------------------------
+      let bgGrad = c.createLinearGradient(0, 0, W, H);
+      let accentPrimary = '#00F2FE';
+      let goldTone = '#F59E0B';
+      let glowColor = 'rgba(0, 242, 254, 0.16)';
+
+      if (state.theme === 'royal-navy') {
+        bgGrad.addColorStop(0, '#040713');
+        bgGrad.addColorStop(0.35, '#0A1530');
+        bgGrad.addColorStop(0.7, '#070F24');
+        bgGrad.addColorStop(1, '#02050D');
+        accentPrimary = '#38BDF8';
+        goldTone = '#FBBF24';
+        glowColor = 'rgba(56, 189, 248, 0.18)';
+      } else if (state.theme === 'kasavu-gold') {
+        bgGrad.addColorStop(0, '#0C0A07');
+        bgGrad.addColorStop(0.35, '#1C160E');
+        bgGrad.addColorStop(0.7, '#140F08');
+        bgGrad.addColorStop(1, '#080604');
+        accentPrimary = '#F59E0B';
+        goldTone = '#F59E0B';
+        glowColor = 'rgba(245, 158, 11, 0.22)';
+      } else if (state.theme === 'ethereal-cyan') {
+        bgGrad.addColorStop(0, '#020B10');
+        bgGrad.addColorStop(0.35, '#051E2B');
+        bgGrad.addColorStop(0.7, '#04151F');
+        bgGrad.addColorStop(1, '#010609');
+        accentPrimary = '#00F2FE';
+        goldTone = '#FDE68A';
+        glowColor = 'rgba(0, 242, 254, 0.25)';
+      } else if (state.theme === 'velvet-amethyst') {
+        bgGrad.addColorStop(0, '#0B0414');
+        bgGrad.addColorStop(0.35, '#1E0A30');
+        bgGrad.addColorStop(0.7, '#130521');
+        bgGrad.addColorStop(1, '#06020A');
+        accentPrimary = '#C084FC';
+        goldTone = '#FBBF24';
+        glowColor = 'rgba(192, 132, 252, 0.2)';
+      }
+
+      c.fillStyle = bgGrad;
+      c.fillRect(0, 0, W, H);
+
+      // Ambient Glow Orbs
+      const radTop = c.createRadialGradient(W / 2, 260, 20, W / 2, 260, 520);
+      radTop.addColorStop(0, glowColor);
+      radTop.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = radTop;
+      c.fillRect(0, 0, W, 800);
+
+      const radBottom = c.createRadialGradient(W / 2, 1080, 40, W / 2, 1080, 600);
+      radBottom.addColorStop(0, glowColor);
+      radBottom.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = radBottom;
+      c.fillRect(0, 800, W, 550);
+
+      // -------------------------------------------------------------
+      // 2. LUXURY LIQUID GLASS OUTLINE & ORNAMENTAL CORNERS
+      // -------------------------------------------------------------
+      const margin = 42;
+      const cornerRadius = 36;
+
+      c.lineWidth = 1.5;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      drawRoundedRect(c, margin, margin, W - margin * 2, H - margin * 2, cornerRadius);
+      c.stroke();
+
+      c.lineWidth = 1;
+      c.strokeStyle = state.theme === 'kasavu-gold' ? 'rgba(245, 158, 11, 0.35)' : 'rgba(255, 255, 255, 0.08)';
+      drawRoundedRect(c, margin + 8, margin + 8, W - (margin + 8) * 2, H - (margin + 8) * 2, cornerRadius - 4);
+      c.stroke();
+
+      drawCornerOrnaments(c, margin, W, H, goldTone);
+
+      // -------------------------------------------------------------
+      // 3. HEADER: LOGO EMBLEM + SUB-DISTRICT KALOLSAVAM TITLE
+      // -------------------------------------------------------------
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+
+      // Top Govt Department Header
+      if (isML) {
+        c.font = '600 17px "Anek Malayalam", sans-serif';
+        c.fillStyle = 'rgba(255, 255, 255, 0.75)';
+        c.fillText('കേരള സർക്കാർ • പൊതുവിദ്യാഭ്യാസ വകുപ്പ് • കണ്ണൂർ ജില്ല', W / 2, 80);
+      } else {
+        c.font = '600 14px "Plus Jakarta Sans", sans-serif';
+        c.letterSpacing = '4px';
+        c.fillStyle = 'rgba(255, 255, 255, 0.65)';
+        c.fillText('GOVT. OF KERALA • GENERAL EDUCATION DEPT • KANNUR', W / 2, 80);
+        c.letterSpacing = '0px';
+      }
+
+      // Draw Official Kalolsavam Logo or Nilavilakku Emblem in Header
+      if (state.logoMode === 'custom' && state.customLogoImg) {
+        drawCustomLogoBadge(c, 165, 168, 128, 128, state.customLogoImg);
+        drawHeaderTypographyWithSideLogo(c, W, isML, subDistObj, goldTone, accentPrimary);
+      } else if (state.logoMode === 'kalolsavam') {
+        // Draw the Kannur Sub-District Kalolsavam Logo Badge on the Left-Center + Title
+        drawKalolsavamOfficialLogoBadge(c, 175, 170, 126, 126, subDistObj);
+        drawHeaderTypographyWithSideLogo(c, W, isML, subDistObj, goldTone, accentPrimary);
+      } else if (state.logoMode === 'lamp') {
+        // Classic centered Nilavilakku layout
+        drawLampEmblem(c, W / 2, 122, goldTone);
+        drawCenteredHeaderTypography(c, W, isML, subDistObj, goldTone, accentPrimary);
+      } else {
+        // Safe fallback keeps the poster layout in a balanced state
+        drawCenteredHeaderTypography(c, W, isML, subDistObj, goldTone, accentPrimary);
+      }
+
+      // -------------------------------------------------------------
+      // 4. WINNER PHOTOGRAPH FRAME (Liquid Glass Framed Portrait)
+      // -------------------------------------------------------------
+      const frameX = 225;
+      const frameY = 275;
+      const frameW = 630;
+      const frameH = 490;
+      const frameRadius = 38;
+
+      c.save();
+      c.shadowColor = glowColor;
+      c.shadowBlur = 40;
+      c.shadowOffsetY = 15;
+      c.fillStyle = 'rgba(0, 0, 0, 0.7)';
+      drawRoundedRect(c, frameX, frameY, frameW, frameH, frameRadius);
+      c.fill();
+      c.restore();
+
+      c.save();
+      drawRoundedRect(c, frameX, frameY, frameW, frameH, frameRadius);
+      c.clip();
+
+      if (state.photo.loaded && state.photo.img) {
+        c.save();
+        c.filter = `brightness(${state.photo.brightness}%) contrast(${state.photo.contrast}%)`;
+
+        const img = state.photo.img;
+        const imgAspect = img.width / img.height;
+        const frameAspect = frameW / frameH;
+
+        let drawW, drawH;
+        if (imgAspect > frameAspect) {
+          drawH = frameH;
+          drawW = frameH * imgAspect;
+        } else {
+          drawW = frameW;
+          drawH = frameW / imgAspect;
+        }
+
+        drawW *= state.photo.zoom;
+        drawH *= state.photo.zoom;
+
+        const posX = frameX + (frameW - drawW) / 2 + state.photo.panX;
+        const posY = frameY + (frameH - drawH) / 2 + state.photo.panY;
+
+        c.drawImage(img, posX, posY, drawW, drawH);
+        c.restore();
+      } else {
+        c.fillStyle = '#1E293B';
+        c.fillRect(frameX, frameY, frameW, frameH);
+      }
+
+      // Vignette at bottom of photo
+      const photoVignette = c.createLinearGradient(0, frameY + frameH - 170, 0, frameY + frameH);
+      photoVignette.addColorStop(0, 'rgba(0,0,0,0)');
+      photoVignette.addColorStop(0.65, 'rgba(4, 7, 19, 0.6)');
+      photoVignette.addColorStop(1, 'rgba(4, 7, 19, 0.95)');
+      c.fillStyle = photoVignette;
+      c.fillRect(frameX, frameY, frameW, frameH);
+
+      // Diagonal Specular Glass Glare
+      const glareGrad = c.createLinearGradient(frameX, frameY, frameX + frameW, frameY + frameH);
+      glareGrad.addColorStop(0, 'rgba(255, 255, 255, 0.14)');
+      glareGrad.addColorStop(0.25, 'rgba(255, 255, 255, 0.03)');
+      glareGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0)');
+      c.fillStyle = glareGrad;
+      c.fillRect(frameX, frameY, frameW, frameH);
+
+      c.restore();
+
+      // Portrait Frame Double Border
+      c.lineWidth = 2.5;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.32)';
+      drawRoundedRect(c, frameX, frameY, frameW, frameH, frameRadius);
+      c.stroke();
+
+      c.lineWidth = 1;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      drawRoundedRect(c, frameX + 6, frameY + 6, frameW - 12, frameH - 12, frameRadius - 4);
+      c.stroke();
+
+      // -------------------------------------------------------------
+      // 5. FLOATING ACHIEVEMENT BADGE (English or Malayalam)
+      // -------------------------------------------------------------
+      const badgeY = frameY + frameH - 34;
+      const achObj = ACHIEVEMENT_TRANSLATIONS[state.achievement] || ACHIEVEMENT_TRANSLATIONS['1st Place'];
+      let badgeText = isML ? achObj.ml : achObj.en;
+
+      if (state.achievementType === 'place' && state.withAGrade) {
+        badgeText = isML ? `${achObj.ml} • എ ഗ്രേഡ്` : `${achObj.en} • GRADE A`;
+      }
+
+      if (isML) {
+        c.font = '800 24px "Anek Malayalam", sans-serif';
+      } else {
+        c.font = '800 20px "Plus Jakarta Sans", sans-serif';
+        c.letterSpacing = '2px';
+      }
+
+      const badgeWidth = Math.max(c.measureText(badgeText).width + 95, 450);
+      const badgeHeight = 62;
+      const badgeX = (W - badgeWidth) / 2;
+
+      c.save();
+      c.shadowColor = state.achievement.includes('1st') ? 'rgba(245, 158, 11, 0.6)' : glowColor;
+      c.shadowBlur = 25;
+      c.shadowOffsetY = 4;
+
+      let badgeGrad = c.createLinearGradient(badgeX, badgeY, badgeX + badgeWidth, badgeY + badgeHeight);
+      if (state.achievement === '1st Place') {
+        badgeGrad.addColorStop(0, 'rgba(245, 158, 11, 0.96)');
+        badgeGrad.addColorStop(0.5, 'rgba(217, 119, 6, 0.88)');
+        badgeGrad.addColorStop(1, 'rgba(180, 83, 9, 0.96)');
+      } else if (state.achievement === '2nd Place') {
+        badgeGrad.addColorStop(0, 'rgba(148, 163, 184, 0.96)');
+        badgeGrad.addColorStop(0.5, 'rgba(100, 116, 139, 0.88)');
+        badgeGrad.addColorStop(1, 'rgba(71, 85, 105, 0.96)');
+      } else if (state.achievement === '3rd Place') {
+        badgeGrad.addColorStop(0, 'rgba(217, 119, 6, 0.96)');
+        badgeGrad.addColorStop(0.5, 'rgba(180, 83, 9, 0.88)');
+        badgeGrad.addColorStop(1, 'rgba(146, 64, 14, 0.96)');
+      } else {
+        badgeGrad.addColorStop(0, 'rgba(14, 165, 233, 0.92)');
+        badgeGrad.addColorStop(0.5, 'rgba(2, 132, 199, 0.88)');
+        badgeGrad.addColorStop(1, 'rgba(3, 105, 161, 0.92)');
+      }
+
+      c.fillStyle = badgeGrad;
+      drawRoundedRect(c, badgeX, badgeY, badgeWidth, badgeHeight, 31);
+      c.fill();
+      c.restore();
+
+      c.lineWidth = 1.5;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.55)';
+      drawRoundedRect(c, badgeX, badgeY, badgeWidth, badgeHeight, 31);
+      c.stroke();
+
+      c.fillStyle = '#FFFFFF';
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      c.fillText(`★   ${badgeText}   ★`, W / 2, badgeY + badgeHeight / 2 + 1);
+      c.letterSpacing = '0px';
+
+      // -------------------------------------------------------------
+      // 6. WINNER NAME, CONGRATULATIONS & SUB-DISTRICT PLAQUE
+      // -------------------------------------------------------------
+      const plaqueY = 815;
+      const plaqueW = 880;
+      const plaqueH = 205;
+      const plaqueX = (W - plaqueW) / 2;
+
+      // Frosted Glass Plaque Background
+      c.save();
+      c.fillStyle = 'rgba(13, 22, 45, 0.76)';
+      c.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      c.shadowBlur = 22;
+      c.shadowOffsetY = 10;
+      drawRoundedRect(c, plaqueX, plaqueY, plaqueW, plaqueH, 28);
+      c.fill();
+      c.restore();
+
+      c.lineWidth = 1.2;
+      c.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+      drawRoundedRect(c, plaqueX, plaqueY, plaqueW, plaqueH, 28);
+      c.stroke();
+
+      // Top Specular Highlight on Plaque
+      c.beginPath();
+      c.moveTo(plaqueX + 40, plaqueY + 1);
+      c.lineTo(plaqueX + plaqueW - 40, plaqueY + 1);
+      c.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      c.stroke();
+
+      // 6A. Winner Name (Anek Malayalam Condensed / Cinzel)
+      const defaultName = isML ? 'നിങ്ങളുടെ പേര്' : 'YOUR NAME';
+      const winnerNameText = state.winnerName.trim() || defaultName;
+      const nameMaxW = plaqueW - 70;
+      const nameY = state.showCongrats ? plaqueY + 54 : plaqueY + 74;
+
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      let nameFontSize = isML ? 52 : 50;
+      const nameFontFamily = isML
+        ? '"Anek Malayalam", "Noto Serif Malayalam", sans-serif'
+        : '"Cinzel", "Anek Malayalam", sans-serif';
+
+      if (isML) {
+        c.font = `800 ${nameFontSize}px ${nameFontFamily}`;
+      } else {
+        c.font = `800 ${nameFontSize}px ${nameFontFamily}`;
+        c.letterSpacing = '2px';
+      }
+
+      while (c.measureText(winnerNameText).width > nameMaxW && nameFontSize > 26) {
+        nameFontSize -= 2;
+        c.font = `800 ${nameFontSize}px ${nameFontFamily}`;
+      }
+
+      c.fillStyle = '#FFFFFF';
+      c.shadowColor = 'rgba(0,0,0,0.85)';
+      c.shadowBlur = 12;
+      c.shadowOffsetY = 4;
+      c.fillText(winnerNameText, W / 2, nameY);
+      c.restore();
+
+      // 6B. CONGRATULATIONS / അഭിനന്ദനങ്ങൾ Under the Name in NOTO SERIF MALAYALAM BOLD
+      if (state.showCongrats) {
+        const rawCongrats = state.congratsText.trim() || (isML ? 'അഭിനന്ദനങ്ങൾ' : 'CONGRATULATIONS');
+        const congratsY = plaqueY + 114;
+
+        c.save();
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        // Explicitly rendered in Noto Serif Malayalam Bold as requested
+        c.font = isML
+          ? '800 30px "Noto Serif Malayalam", serif'
+          : '800 24px "Noto Serif Malayalam", "Cinzel", serif';
+        if (!isML) c.letterSpacing = '4px';
+
+        // Warm gold gradient for Congratulations
+        const congGrad = c.createLinearGradient(W / 2 - 180, congratsY, W / 2 + 180, congratsY);
+        congGrad.addColorStop(0, '#FDE68A');
+        congGrad.addColorStop(0.5, '#F59E0B');
+        congGrad.addColorStop(1, '#FDE68A');
+        c.fillStyle = congGrad;
+        c.fillText(`✦  ${rawCongrats}  ✦`, W / 2, congratsY);
+        c.restore();
+      }
+
+      // 6C. School Name & Kannur Sub-District Line
+      const schoolRaw = state.schoolName.trim();
+      const subDistDisplay = isML
+        ? `${subDistObj.ml} ഉപജില്ല`
+        : `${subDistObj.en.toUpperCase()} SUB-DISTRICT`;
+
+      const institutionFull = schoolRaw
+        ? `${isML ? schoolRaw : schoolRaw.toUpperCase()} • ${subDistDisplay}`
+        : subDistDisplay;
+
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      let schoolFontSize = isML ? 21 : 18;
+      const schoolFontStack = isML ? '"Anek Malayalam", sans-serif' : '"Plus Jakarta Sans", "Anek Malayalam", sans-serif';
+      c.font = `600 ${schoolFontSize}px ${schoolFontStack}`;
+      if (!isML) c.letterSpacing = '1.5px';
+      c.fillStyle = state.theme === 'kasavu-gold' ? 'rgba(253, 230, 138, 0.9)' : 'rgba(165, 243, 252, 0.92)';
+
+      while (c.measureText(institutionFull).width > nameMaxW && schoolFontSize > 13) {
+        schoolFontSize -= 1;
+        c.font = `600 ${schoolFontSize}px ${schoolFontStack}`;
+      }
+      c.fillText(institutionFull, W / 2, plaqueY + 166);
+      c.restore();
+
+      // -------------------------------------------------------------
+      // 7. COMPETITION ITEM SECTION (Anek Malayalam Condensed & Noto Serif Malayalam)
+      // -------------------------------------------------------------
+      const itemSectionY = 1060;
+
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+      if (isML) {
+        c.font = '700 18px "Anek Malayalam", sans-serif';
+        c.fillStyle = 'rgba(255, 255, 255, 0.65)';
+        c.fillText('മത്സര ഇനം', W / 2, itemSectionY);
+      } else {
+        c.font = '700 13px "Plus Jakarta Sans", "Anek Malayalam", sans-serif';
+        c.letterSpacing = '4px';
+        c.fillStyle = 'rgba(255, 255, 255, 0.55)';
+        c.fillText('COMPETITION ITEM • മത്സര ഇനം', W / 2, itemSectionY);
+        c.letterSpacing = '0px';
+      }
+
+      drawFlourishDivider(c, W / 2, itemSectionY + 18, 420, goldTone);
+
+      const rawItemText = state.itemName.trim() || (isML ? 'ഭരതനാട്യം' : 'ഭരതനാട്യം (BHARATANATYAM)');
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+
+      let itemFontSize = isML ? 42 : 36;
+      c.font = `700 ${itemFontSize}px "Noto Serif Malayalam", "Anek Malayalam", sans-serif`;
+      while (c.measureText(rawItemText).width > 860 && itemFontSize > 22) {
+        itemFontSize -= 2;
+        c.font = `700 ${itemFontSize}px "Noto Serif Malayalam", "Anek Malayalam", sans-serif`;
+      }
+
+      const itemGrad = c.createLinearGradient(W / 2 - 250, itemSectionY + 56, W / 2 + 250, itemSectionY + 56);
+      itemGrad.addColorStop(0, '#FFFFFF');
+      itemGrad.addColorStop(0.5, goldTone);
+      itemGrad.addColorStop(1, '#FFFFFF');
+      c.fillStyle = itemGrad;
+      c.fillText(rawItemText, W / 2, itemSectionY + 58);
+      c.restore();
+
+      // Host Venue / Date Sub-line below Competition Item
+      const venueStr = state.venue.trim();
+      const editionStr = state.edition.trim();
+      const eventMetaLine = [editionStr, venueStr].filter(Boolean).join('  •  ');
+      if (eventMetaLine) {
+        c.save();
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = isML ? '600 17px "Anek Malayalam", sans-serif' : '600 14px "Plus Jakarta Sans", "Anek Malayalam", sans-serif';
+        c.fillStyle = 'rgba(255, 255, 255, 0.6)';
+        c.fillText(eventMetaLine, W / 2, itemSectionY + 106);
+        c.restore();
+      }
+
+      // -------------------------------------------------------------
+      // 8. FOOTER BAR
+      // -------------------------------------------------------------
+      const footerY = 1225;
+      const footerW = W - margin * 2 - 24;
+      const footerX = margin + 12;
+
+      c.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      c.lineWidth = 1;
+      c.beginPath();
+      c.moveTo(footerX + 40, footerY);
+      c.lineTo(footerX + footerW - 40, footerY);
+      c.stroke();
+
+      c.textBaseline = 'middle';
+      if (isML) {
+        c.font = '600 16px "Anek Malayalam", sans-serif';
+        c.fillStyle = 'rgba(255, 255, 255, 0.65)';
+        c.textAlign = 'left';
+        c.fillText(`${subDistObj.ml} സബ് ജില്ലാ സ്കൂൾ കലോത്സവം`, footerX + 40, footerY + 36);
+        drawChilankaIcon(c, W / 2, footerY + 36, goldTone);
+        c.textAlign = 'right';
+        c.fillText('കലയും പ്രതിഭയും ആദരിക്കപ്പെടുന്നു', footerX + footerW - 40, footerY + 36);
+      } else {
+        c.font = '600 13px "Plus Jakarta Sans", sans-serif';
+        c.letterSpacing = '2px';
+        c.fillStyle = 'rgba(255, 255, 255, 0.55)';
+        c.textAlign = 'left';
+        c.fillText(`${subDistObj.en.toUpperCase()} SUB-DISTRICT KALOLSAVAM`, footerX + 40, footerY + 36);
+        drawChilankaIcon(c, W / 2, footerY + 36, goldTone);
+        c.textAlign = 'right';
+        c.fillText('HONOURING TALENT & ARTISTRY', footerX + footerW - 40, footerY + 36);
+        c.letterSpacing = '0px';
+      }
+
+      c.restore();
+    }
+
+    // ==============================================================
+    // HEADER LAYOUT & KANNUR KALOLSAVAM LOGO VECTOR RENDERER
+    // ==============================================================
+
+    function drawHeaderTypographyWithSideLogo(c, W, isML, subDistObj, goldTone, accentPrimary) {
+      const centerX = 595; // Shifted right to balance left logo badge at x=175
+      c.save();
+      c.textAlign = 'center';
+      c.textBaseline = 'middle';
+
+      const catObj = CATEGORY_TRANSLATIONS[state.category] || CATEGORY_TRANSLATIONS['HSS GENERAL'];
+
+      if (isML) {
+        // Sub-district name on the first line, using the same condensed festival-style font family
+        c.save();
+        c.translate(centerX, 132);
+        c.scale(0.88, 1);
+        c.font = '800 34px "Anek Malayalam", sans-serif';
+        c.fillStyle = '#FDE68A';
+        c.fillText(subDistObj.ml, 0, 0);
+        c.restore();
+
+        c.save();
+        c.translate(centerX, 182);
+        c.scale(0.86, 1);
+        c.font = '900 52px "Noto Serif Malayalam", "Anek Malayalam", serif';
+        const titleGrad = c.createLinearGradient(-260, 0, 260, 0);
+        titleGrad.addColorStop(0, '#FFFFFF');
+        titleGrad.addColorStop(0.5, '#FEF08A');
+        titleGrad.addColorStop(1, '#FFFFFF');
+        c.fillStyle = titleGrad;
+        c.shadowColor = 'rgba(0,0,0,0.6)';
+        c.shadowBlur = 10;
+        c.shadowOffsetY = 4;
+        c.fillText('ഉപജില്ലാ കലോത്സവം', 0, 0);
+        c.restore();
+
+        // Category & Edition Pill
+        const pillText = `${catObj.ml} • ${state.edition}`;
+        c.font = '700 17px "Anek Malayalam", sans-serif';
+        const pillW = Math.min(c.measureText(pillText).width + 48, 650);
+        const pillH = 34;
+        const pillX = centerX - pillW / 2;
+        const pillY = 216;
+
+        c.fillStyle = 'rgba(255, 255, 255, 0.07)';
+        c.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        c.lineWidth = 1;
+        drawRoundedRect(c, pillX, pillY, pillW, pillH, 17);
+        c.fill();
+        c.stroke();
+
+        c.fillStyle = accentPrimary;
+        c.fillText(pillText, centerX, pillY + pillH / 2 + 1);
+      } else {
+        // Sub-district name on the first line, using a condensed Kalolsavam-style display font
+        c.font = '800 28px "Cinzel", serif';
+        c.letterSpacing = '2px';
+        c.fillStyle = '#FDE68A';
+        c.fillText(subDistObj.en.toUpperCase(), centerX, 130);
+        c.letterSpacing = '0px';
+
+        c.font = '900 42px "Cinzel", serif';
+        const titleGrad = c.createLinearGradient(centerX - 280, 175, centerX + 280, 175);
+        titleGrad.addColorStop(0, '#FFFFFF');
+        titleGrad.addColorStop(0.5, '#FEF08A');
+        titleGrad.addColorStop(1, '#FFFFFF');
+        c.fillStyle = titleGrad;
+        c.shadowColor = 'rgba(0,0,0,0.6)';
+        c.shadowBlur = 10;
+        c.shadowOffsetY = 4;
+        c.fillText('Sub District Kalolsavam', centerX, 176);
+        c.shadowColor = 'transparent';
+        c.shadowBlur = 0;
+
+        const pillText = `${catObj.en} • ${state.edition}`;
+        c.font = '700 14px "Plus Jakarta Sans", sans-serif';
+        c.letterSpacing = '1.5px';
+        const pillW = Math.min(c.measureText(pillText).width + 48, 660);
+        const pillH = 34;
+        const pillX = centerX - pillW / 2;
+        const pillY = 212;
+
+        c.fillStyle = 'rgba(255, 255, 255, 0.07)';
+        c.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        c.lineWidth = 1;
+        drawRoundedRect(c, pillX, pillY, pillW, pillH, 17);
+        c.fill();
+        c.stroke();
+
+        c.fillStyle = accentPrimary;
+        c.fillText(pillText, centerX, pillY + pillH / 2);
+        c.letterSpacing = '0px';
+      }
+
+      c.restore();
+    }
+
+    function drawCenteredHeaderTypography(c, W, isML, subDistObj, goldTone, accentPrimary) {
+      const catObj = CATEGORY_TRANSLATIONS[state.category] || CATEGORY_TRANSLATIONS['HSS GENERAL'];
+
+      if (isML) {
+        c.save();
+        c.translate(W / 2, 148);
+        c.scale(0.88, 1);
+        c.font = '800 34px "Anek Malayalam", sans-serif';
+        c.fillStyle = '#FDE68A';
+        c.fillText(subDistObj.ml, 0, 0);
+        c.restore();
+
+        c.save();
+        c.translate(W / 2, 188);
+        c.scale(0.86, 1);
+        c.font = '900 46px "Noto Serif Malayalam", "Anek Malayalam", serif';
+        const titleGrad = c.createLinearGradient(-300, 0, 300, 0);
+        titleGrad.addColorStop(0, '#FFFFFF');
+        titleGrad.addColorStop(0.5, '#FEF08A');
+        titleGrad.addColorStop(1, '#FFFFFF');
+        c.fillStyle = titleGrad;
+        c.fillText('ഉപജില്ലാ കലോത്സവം', 0, 0);
+        c.restore();
+
+        const pillText = `${catObj.ml} • ${state.edition}`;
+        c.font = '700 16px "Anek Malayalam", sans-serif';
+        const pillW = Math.min(c.measureText(pillText).width + 50, 750);
+        const pillH = 34;
+        const pillX = (W - pillW) / 2;
+        const pillY = 216;
+
+        c.fillStyle = 'rgba(255, 255, 255, 0.06)';
+        c.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        drawRoundedRect(c, pillX, pillY, pillW, pillH, 17);
+        c.fill();
+        c.stroke();
+        c.fillStyle = accentPrimary;
+        c.fillText(pillText, W / 2, pillY + pillH / 2 + 1);
+      } else {
+        c.font = '800 28px "Cinzel", serif';
+        c.letterSpacing = '2px';
+        c.fillStyle = '#FDE68A';
+        c.fillText(subDistObj.en.toUpperCase(), W / 2, 148);
+        c.letterSpacing = '0px';
+
+        c.font = '800 40px "Cinzel", serif';
+        const titleGrad = c.createLinearGradient(W / 2 - 300, 175, W / 2 + 300, 175);
+        titleGrad.addColorStop(0, '#FFFFFF');
+        titleGrad.addColorStop(0.5, '#FEF08A');
+        titleGrad.addColorStop(1, '#FFFFFF');
+        c.fillStyle = titleGrad;
+        c.fillText('Sub District Kalolsavam', W / 2, 188);
+
+        const pillText = `${catObj.en} • ${state.edition}`;
+        c.font = '700 14px "Plus Jakarta Sans", sans-serif';
+        const pillW = Math.min(c.measureText(pillText).width + 50, 750);
+        const pillH = 34;
+        const pillX = (W - pillW) / 2;
+        const pillY = 216;
+
+        c.fillStyle = 'rgba(255, 255, 255, 0.06)';
+        c.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+        drawRoundedRect(c, pillX, pillY, pillW, pillH, 17);
+        c.fill();
+        c.stroke();
+        c.fillStyle = accentPrimary;
+        c.fillText(pillText, W / 2, pillY + pillH / 2);
+      }
+    }
+
+    /**
+     * Faithful Canvas Vector Recreation of the Uploaded
+     * "Kannur South Sub-District Kalolsavam 2026" Logo
+     */
+    function drawKalolsavamOfficialLogoBadge(c, cx, cy, w, h, subDistObj) {
+      c.save();
+      const x = cx - w / 2;
+      const y = cy - h / 2;
+
+      // White Soft-Rounded Emblem Card with Gold Border
+      c.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      c.shadowBlur = 18;
+      c.shadowOffsetY = 6;
+      c.fillStyle = '#FFFFFF';
+      drawRoundedRect(c, x, y, w, h, 26);
+      c.fill();
+
+      c.lineWidth = 2.5;
+      c.strokeStyle = '#F59E0B';
+      drawRoundedRect(c, x, y, w, h, 26);
+      c.stroke();
+
+      // Scale internal vector coordinates (120x120 box) to (w x h)
+      c.translate(x + 4, y + 4);
+      const scale = (w - 8) / 120;
+      c.scale(scale, scale);
+
+      c.shadowColor = 'transparent';
+      c.shadowBlur = 0;
+
+      // 1. Green Geometric Calligraphy Diamonds at Top Left
+      c.save();
+      c.fillStyle = '#15803D';
+      c.translate(31, 6);
+      c.rotate(Math.PI / 4);
+      c.fillRect(0, 0, 5.5, 5.5);
+      c.restore();
+
+      c.save();
+      c.fillStyle = '#16A34A';
+      c.translate(35, 13);
+      c.rotate(Math.PI / 4);
+      c.fillRect(0, 0, 5, 5);
+      c.restore();
+
+      c.save();
+      c.fillStyle = '#15803D';
+      c.translate(29, 18);
+      c.rotate(Math.PI / 4);
+      c.fillRect(0, 0, 5.5, 5.5);
+      c.restore();
+
+      c.strokeStyle = '#15803D';
+      c.lineWidth = 3.2;
+      c.lineCap = 'round';
+      c.beginPath();
+      c.moveTo(30, 24);
+      c.bezierCurveTo(36, 34, 38, 46, 35, 60);
+      c.stroke();
+
+      c.strokeStyle = '#16A34A';
+      c.lineWidth = 2.4;
+      c.beginPath();
+      c.moveTo(34, 21);
+      c.bezierCurveTo(41, 31, 42, 44, 39, 56);
+      c.stroke();
+
+      // 2. Black Crescent Arch on Right of Instrument
+      c.strokeStyle = '#0F172A';
+      c.lineWidth = 4.8;
+      c.beginPath();
+      c.moveTo(36, 22);
+      c.bezierCurveTo(56, 26, 64, 48, 57, 70);
+      c.stroke();
+
+      // 3. Red Kannur Fort Battlements & Swoop
+      c.fillStyle = '#DC2626';
+      c.beginPath();
+      c.moveTo(15, 46);
+      c.lineTo(19, 40);
+      c.lineTo(22, 43);
+      c.lineTo(26, 37);
+      c.lineTo(29, 40);
+      c.bezierCurveTo(20, 58, 20, 78, 40, 88);
+      c.bezierCurveTo(50, 93, 58, 88, 62, 82);
+      c.lineTo(61, 93);
+      c.bezierCurveTo(44, 103, 18, 95, 10, 73);
+      c.bezierCurveTo(6, 59, 10, 47, 30, 31);
+      c.bezierCurveTo(32, 39, 24, 51, 15, 61);
+      c.closePath();
+      c.fill();
+
+      // Deep Maroon Fort Bottom Rim
+      c.fillStyle = '#7F1D1D';
+      c.beginPath();
+      c.moveTo(11, 70);
+      c.bezierCurveTo(18, 90, 42, 98, 61, 90);
+      c.lineTo(61, 96);
+      c.bezierCurveTo(40, 104, 14, 94, 9, 72);
+      c.closePath();
+      c.fill();
+
+      // 4. Classical Dancer Figure
+      c.fillStyle = '#D97706';
+      c.beginPath();
+      c.arc(31, 52, 4.2, 0, Math.PI * 2);
+      c.fill();
+      // Dancer Choli & Fan Pleats
+      c.fillStyle = '#1E3A8A';
+      c.beginPath();
+      c.moveTo(23, 60);
+      c.lineTo(31, 56);
+      c.lineTo(39, 51);
+      c.lineTo(35, 67);
+      c.lineTo(26, 67);
+      c.closePath();
+      c.fill();
+
+      c.fillStyle = '#E11D48';
+      c.beginPath();
+      c.moveTo(25, 67);
+      c.lineTo(36, 67);
+      c.lineTo(39, 81);
+      c.lineTo(21, 78);
+      c.closePath();
+      c.fill();
+
+      // 5. Vertical Veena / Thamburu
+      c.fillStyle = '#7F1D1D';
+      c.beginPath();
+      c.moveTo(44, 18);
+      c.bezierCurveTo(47, 18, 49, 22, 46, 26);
+      c.lineTo(46, 82);
+      c.bezierCurveTo(46, 87, 34, 87, 34, 78);
+      c.bezierCurveTo(34, 72, 40, 68, 42, 64);
+      c.lineTo(42, 26);
+      c.bezierCurveTo(40, 22, 41, 18, 44, 18);
+      c.closePath();
+      c.fill();
+
+      // Veena Strings
+      c.strokeStyle = '#FDE68A';
+      c.lineWidth = 0.9;
+      c.beginPath();
+      c.moveTo(43.5, 26);
+      c.lineTo(43.5, 82);
+      c.moveTo(45, 26);
+      c.lineTo(45, 82);
+      c.stroke();
+
+      // 6. Vintage Studio Microphone
+      c.save();
+      c.translate(53, 64);
+      c.rotate(0.22);
+      c.fillStyle = '#475569';
+      drawRoundedRect(c, 0, 0, 9, 14, 4.5);
+      c.fill();
+      c.restore();
+
+      // 7. Curved Piano Keyboard at Bottom
+      c.fillStyle = '#FFFFFF';
+      c.strokeStyle = '#0F172A';
+      c.lineWidth = 1.8;
+      c.beginPath();
+      c.moveTo(12, 85);
+      c.bezierCurveTo(24, 103, 50, 107, 75, 104);
+      c.lineTo(79, 113);
+      c.bezierCurveTo(48, 116, 20, 109, 8, 89);
+      c.closePath();
+      c.fill();
+      c.stroke();
+
+      // Piano Black Keys
+      c.fillStyle = '#0F172A';
+      const pianoKeys = [
+        { x: 20, y: 93, r: -0.4 },
+        { x: 30, y: 98, r: -0.25 },
+        { x: 42, y: 102, r: -0.1 },
+        { x: 54, y: 103, r: 0 },
+        { x: 65, y: 103, r: 0.1 }
+      ];
+      pianoKeys.forEach(k => {
+        c.save();
+        c.translate(k.x, k.y);
+        c.rotate(k.r);
+        c.fillRect(0, 0, 3.2, 7.5);
+        c.restore();
+      });
+
+      // 8. Right-side Colorful Malayalam "കലോത്സവം" Typography Blocks
+      c.textAlign = 'left';
+      c.textBaseline = 'middle';
+      c.fillStyle = '#7F1D1D';
+      c.font = '700 6.5px "Anek Malayalam", sans-serif';
+      c.fillText(`${subDistObj.ml} സബ് ജില്ലാ`, 67, 36);
+
+      // Colorful stacked letters of കലോത്സവം
+      c.font = '900 18px "Anek Malayalam", sans-serif';
+      c.fillStyle = '#EF4444';
+      c.fillText('ക', 66, 53);
+      c.fillStyle = '#06B6D4';
+      c.fillText('ലോ', 79, 53);
+      c.fillStyle = '#EC4899';
+      c.fillText('ത്', 102, 53);
+
+      c.fillStyle = '#16A34A';
+      c.fillText('സ', 67, 74);
+      c.fillStyle = '#F97316';
+      c.fillText('വ', 86, 74);
+      c.fillStyle = '#DC2626';
+      c.fillText('ം', 102, 74);
+
+      // 2026 Nov 11 12 13 14 bar
+      c.fillStyle = '#991B1B';
+      c.font = '800 6px "Anek Malayalam", sans-serif';
+      c.fillText('2026 നവംബർ', 67, 89);
+
+      const dates = ['11', '12', '13', '14'];
+      dates.forEach((d, idx) => {
+        const bx = 94 + idx * 6.2;
+        c.fillStyle = '#DC2626';
+        c.fillRect(bx, 85.5, 5.4, 6.5);
+        c.fillStyle = '#FFFFFF';
+        c.font = '800 4.2px "Plus Jakarta Sans", sans-serif';
+        c.fillText(d, bx + 0.6, 89);
+      });
+
+      c.restore();
+    }
+
+    function drawCustomLogoBadge(c, cx, cy, w, h, img) {
+      c.save();
+      const x = cx - w / 2;
+      const y = cy - h / 2;
+
+      c.shadowColor = 'rgba(0, 0, 0, 0.45)';
+      c.shadowBlur = 18;
+      c.shadowOffsetY = 6;
+      c.fillStyle = '#FFFFFF';
+      drawRoundedRect(c, x, y, w, h, 26);
+      c.fill();
+
+      c.save();
+      drawRoundedRect(c, x + 4, y + 4, w - 8, h - 8, 22);
+      c.clip();
+
+      const imgAspect = img.width / img.height;
+      let drawW = w - 12;
+      let drawH = h - 12;
+      if (imgAspect > 1) {
+        drawH = drawW / imgAspect;
+      } else {
+        drawW = drawH * imgAspect;
+      }
+      c.drawImage(img, cx - drawW / 2, cy - drawH / 2, drawW, drawH);
+      c.restore();
+
+      c.lineWidth = 2.5;
+      c.strokeStyle = '#F59E0B';
+      drawRoundedRect(c, x, y, w, h, 26);
+      c.stroke();
+      c.restore();
+    }
+
+    // ==============================================================
+    // CANVAS VECTOR DRAWING HELPERS
+    // ==============================================================
+    function drawRoundedRect(ctx, x, y, width, height, radius) {
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + width - radius, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+      ctx.lineTo(x + width, y + height - radius);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+      ctx.lineTo(x + radius, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function drawCornerOrnaments(ctx, margin, W, H, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.8;
+
+      const corners = [
+        { x: margin + 18, y: margin + 18, dx: 1, dy: 1 },
+        { x: W - margin - 18, y: margin + 18, dx: -1, dy: 1 },
+        { x: margin + 18, y: H - margin - 18, dx: 1, dy: -1 },
+        { x: W - margin - 18, y: H - margin - 18, dx: -1, dy: -1 },
+      ];
+
+      corners.forEach(c => {
+        ctx.beginPath();
+        ctx.moveTo(c.x, c.y + c.dy * 28);
+        ctx.lineTo(c.x, c.y);
+        ctx.lineTo(c.x + c.dx * 28, c.y);
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(c.x + c.dx * 10, c.y + c.dy * 10, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    }
+
+    function drawLampEmblem(ctx, cx, cy, goldColor) {
+      ctx.save();
+      ctx.translate(cx, cy);
+
+      const flameGlow = ctx.createRadialGradient(0, -18, 2, 0, -18, 22);
+      flameGlow.addColorStop(0, '#FEF08A');
+      flameGlow.addColorStop(0.5, '#F59E0B');
+      flameGlow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = flameGlow;
+      ctx.beginPath();
+      ctx.arc(0, -18, 22, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#FDE047';
+      ctx.beginPath();
+      ctx.moveTo(0, -30);
+      ctx.quadraticCurveTo(7, -18, 4, -10);
+      ctx.quadraticCurveTo(0, -6, -4, -10);
+      ctx.quadraticCurveTo(-7, -18, 0, -30);
+      ctx.fill();
+
+      ctx.fillStyle = goldColor;
+      ctx.beginPath();
+      ctx.ellipse(0, -6, 20, 5, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.lineWidth = 4;
+      ctx.strokeStyle = goldColor;
+      ctx.beginPath();
+      ctx.moveTo(0, -6);
+      ctx.lineTo(0, 16);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, 4, 5, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.ellipse(0, 18, 26, 7, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function drawFlourishDivider(ctx, cx, cy, width, color) {
+      const half = width / 2;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.moveTo(cx - half, cy);
+      ctx.lineTo(cx - 30, cy);
+      ctx.moveTo(cx + 30, cy);
+      ctx.lineTo(cx + half, cy);
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - 6);
+      ctx.lineTo(cx + 8, cy);
+      ctx.lineTo(cx, cy + 6);
+      ctx.lineTo(cx - 8, cy);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.arc(cx - 16, cy, 2, 0, Math.PI * 2);
+      ctx.arc(cx + 16, cy, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function drawChilankaIcon(ctx, cx, cy, color) {
+      ctx.save();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(cx, cy - 2, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(cx - 14, cy - 1, 4.5, 0, Math.PI * 2);
+      ctx.arc(cx + 14, cy - 1, 4.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // ==============================================================
+    // EVENT LISTENERS & LIVE CONTROLS BINDING
+    // ==============================================================
+    inputWinnerName.addEventListener('input', (e) => {
+      state.winnerName = e.target.value;
+      renderPoster();
+    });
+
+    inputCongratsText.addEventListener('input', (e) => {
+      state.congratsText = e.target.value;
+      renderPoster();
+    });
+
+    checkShowCongrats.addEventListener('change', (e) => {
+      state.showCongrats = e.target.checked;
+      renderPoster();
+    });
+
+    inputSchoolName.addEventListener('input', (e) => {
+      state.schoolName = e.target.value;
+      renderPoster();
+    });
+
+    selectSubDistrict.addEventListener('change', (e) => {
+      state.subDistrictCode = e.target.value;
+      const sd = KANNUR_SUBDISTRICTS[state.subDistrictCode];
+      renderPoster();
+      showToast('Sub-District Updated', `${sd.no}. ${sd.en} (${sd.ml})`, 'ph-map-pin', 'text-amber-300');
+    });
+
+    selectCategory.addEventListener('change', (e) => {
+      state.category = e.target.value;
+      renderPoster();
+    });
+
+    inputItemName.addEventListener('input', (e) => {
+      state.itemName = e.target.value;
+      renderPoster();
+    });
+
+    // Quick Item Suggestion Chips
+    document.querySelectorAll('.item-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const itemVal = state.lang === 'ml' ? chip.getAttribute('data-ml') : chip.getAttribute('data-en');
+        inputItemName.value = itemVal;
+        state.itemName = itemVal;
+        renderPoster();
+        showToast('Item Selected', itemVal, 'ph-paint-brush', 'text-purple-400');
+      });
+    });
+
+    // Achievement Selection Pills
+    const achievementPills = document.querySelectorAll('.achievement-pill');
+    achievementPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        achievementPills.forEach(p => {
+          p.classList.remove('pill-active-gold', 'pill-active-cyan');
+          p.classList.add('bg-white/5', 'text-slate-300');
+        });
+
+        const achievement = pill.getAttribute('data-achievement');
+        const type = pill.getAttribute('data-type');
+        state.achievement = achievement;
+        state.achievementType = type;
+
+        if (achievement.includes('Place') || achievement === 'Grade A') {
+          pill.classList.add('pill-active-gold');
+        } else {
+          pill.classList.add('pill-active-cyan');
+        }
+        pill.classList.remove('bg-white/5');
+
+        const achObj = ACHIEVEMENT_TRANSLATIONS[achievement];
+        currentBadgeLabel.innerText = achObj ? `${achievement} / ${achObj.ml}` : achievement;
+        renderPoster();
+      });
+    });
+
+    checkWithAGrade.addEventListener('change', (e) => {
+      state.withAGrade = e.target.checked;
+      renderPoster();
+    });
+
+    inputEdition.addEventListener('input', (e) => {
+      state.edition = e.target.value;
+      renderPoster();
+    });
+
+    inputVenue.addEventListener('input', (e) => {
+      state.venue = e.target.value;
+      renderPoster();
+    });
+
+    function syncLogoButtons() {
+      const kalActive = state.logoMode === 'kalolsavam' || state.logoMode === 'custom';
+      const lampActive = state.logoMode === 'lamp';
+
+      btnLogoKalolsavam.classList.toggle('pill-active-gold', kalActive);
+      btnLogoKalolsavam.classList.toggle('bg-white/5', !kalActive);
+      btnLogoKalolsavam.classList.toggle('text-slate-300', !kalActive);
+
+      btnLogoLamp.classList.toggle('pill-active-gold', lampActive);
+      btnLogoLamp.classList.toggle('bg-white/5', !lampActive);
+      btnLogoLamp.classList.toggle('text-slate-300', !lampActive);
+
+      if (state.logoMode === 'custom' && state.customLogoImg) {
+        headerCustomLogoImg.classList.remove('hidden');
+        headerVectorLogo.classList.add('hidden');
+      } else {
+        headerCustomLogoImg.classList.add('hidden');
+        headerVectorLogo.classList.remove('hidden');
+      }
+    }
+
+    // Logo Mode Buttons
+    btnLogoKalolsavam.addEventListener('click', () => {
+      state.logoMode = 'kalolsavam';
+      syncLogoButtons();
+      renderPoster();
+    });
+
+    btnLogoLamp.addEventListener('click', () => {
+      state.logoMode = 'lamp';
+      syncLogoButtons();
+      renderPoster();
+    });
+
+    // Custom Logo Image Upload (e.g., Logo final.jpg)
+    fileLogoInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const img = new Image();
+        img.onload = () => {
+          state.customLogoImg = img;
+          state.logoMode = 'custom';
+          headerCustomLogoImg.src = ev.target.result;
+          headerCustomLogoImg.classList.remove('hidden');
+          headerVectorLogo.classList.add('hidden');
+
+          syncLogoButtons();
+          renderPoster();
+          showToast('Official Logo Applied', 'Updated header & poster logo emblem.');
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Photo Adjustment Sliders
+    sliderZoom.addEventListener('input', (e) => {
+      state.photo.zoom = parseFloat(e.target.value);
+      labelZoom.innerText = `${Math.round(state.photo.zoom * 100)}%`;
+      renderPoster();
+    });
+
+    sliderPanX.addEventListener('input', (e) => {
+      state.photo.panX = parseInt(e.target.value, 10);
+      labelPanX.innerText = `${state.photo.panX}px`;
+      renderPoster();
+    });
+
+    sliderPanY.addEventListener('input', (e) => {
+      state.photo.panY = parseInt(e.target.value, 10);
+      labelPanY.innerText = `${state.photo.panY}px`;
+      renderPoster();
+    });
+
+    sliderBrightness.addEventListener('input', (e) => {
+      state.photo.brightness = parseInt(e.target.value, 10);
+      labelBrightness.innerText = `${state.photo.brightness}%`;
+      renderPoster();
+    });
+
+    sliderContrast.addEventListener('input', (e) => {
+      state.photo.contrast = parseInt(e.target.value, 10);
+      labelContrast.innerText = `${state.photo.contrast}%`;
+      renderPoster();
+    });
+
+    btnResetPhotoPos.addEventListener('click', () => {
+      state.photo.zoom = 1.0;
+      state.photo.panX = 0;
+      state.photo.panY = 0;
+      state.photo.brightness = 100;
+      state.photo.contrast = 105;
+
+      sliderZoom.value = 1.0;
+      sliderPanX.value = 0;
+      sliderPanY.value = 0;
+      sliderBrightness.value = 100;
+      sliderContrast.value = 105;
+
+      labelZoom.innerText = '100%';
+      labelPanX.innerText = '0px';
+      labelPanY.innerText = '0px';
+      labelBrightness.innerText = '100%';
+      labelContrast.innerText = '105%';
+
+      renderPoster();
+      showToast('Photo Centered', 'Position and zoom reset.');
+    });
+
+    // Theme Selection
+    const themeCards = document.querySelectorAll('.theme-card');
+    themeCards.forEach(card => {
+      card.addEventListener('click', () => {
+        themeCards.forEach(c => {
+          c.classList.remove('active-theme', 'border-cyan-400/80', 'bg-cyan-950/30');
+          c.classList.add('border-white/10', 'bg-white/5');
+        });
+
+        state.theme = card.getAttribute('data-theme');
+        card.classList.add('active-theme', 'border-cyan-400/80', 'bg-cyan-950/30');
+        card.classList.remove('border-white/10', 'bg-white/5');
+
+        renderPoster();
+      });
+    });
+
+    selectExportFormat.addEventListener('change', (e) => {
+      state.exportFormat = e.target.value;
+    });
+    selectExportScale.addEventListener('change', (e) => {
+      state.exportScale = parseInt(e.target.value, 10);
+    });
+
+    // ==============================================================
+    // WINNER PHOTOGRAPH UPLOAD HANDLERS
+    // ==============================================================
+    function handleImageFile(file) {
+      if (!file || !file.type.startsWith('image/')) {
+        showToast('Invalid File', 'Please select a valid image (JPG, PNG, WEBP).', 'ph-warning', 'text-amber-400');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          state.photo.img = img;
+          state.photo.loaded = true;
+          state.photo.panX = 0;
+          state.photo.panY = 0;
+          sliderPanX.value = 0;
+          sliderPanY.value = 0;
+          labelPanX.innerText = '0px';
+          labelPanY.innerText = '0px';
+
+          renderPoster();
+          showToast('Photo Uploaded', 'Winner photograph updated!');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    filePhotoInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleImageFile(e.target.files[0]);
+      }
+    });
+
+    ['dragenter', 'dragover'].forEach(evt => {
+      dropZone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.add('border-cyan-400', 'bg-cyan-500/10');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(evt => {
+      dropZone.addEventListener(evt, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.classList.remove('border-cyan-400', 'bg-cyan-500/10');
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      const files = e.dataTransfer.files;
+      if (files && files.length > 0) handleImageFile(files[0]);
+    });
+
+    // ==============================================================
+    // TOUCH & MOUSE DRAG-TO-PAN PHOTO ON CANVAS
+    // ==============================================================
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let initialPanX = 0;
+    let initialPanY = 0;
+
+    canvasWrapper.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      dragStartX = e.clientX;
+      dragStartY = e.clientY;
+      initialPanX = state.photo.panX;
+      initialPanY = state.photo.panY;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleFactor = 1080 / rect.width;
+
+      const deltaX = (e.clientX - dragStartX) * scaleFactor;
+      const deltaY = (e.clientY - dragStartY) * scaleFactor;
+
+      state.photo.panX = Math.round(initialPanX + deltaX);
+      state.photo.panY = Math.round(initialPanY + deltaY);
+
+      sliderPanX.value = Math.max(-300, Math.min(300, state.photo.panX));
+      sliderPanY.value = Math.max(-300, Math.min(300, state.photo.panY));
+      labelPanX.innerText = `${state.photo.panX}px`;
+      labelPanY.innerText = `${state.photo.panY}px`;
+
+      renderPoster();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // Smooth Touch Dragging on Mobile & Tablet
+    canvasWrapper.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+        initialPanX = state.photo.panX;
+        initialPanY = state.photo.panY;
+      }
+    }, { passive: true });
+
+    canvasWrapper.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      if (e.cancelable) e.preventDefault();
+      const rect = canvas.getBoundingClientRect();
+      const scaleFactor = 1080 / rect.width;
+
+      const deltaX = (e.touches[0].clientX - dragStartX) * scaleFactor;
+      const deltaY = (e.touches[0].clientY - dragStartY) * scaleFactor;
+
+      state.photo.panX = Math.round(initialPanX + deltaX);
+      state.photo.panY = Math.round(initialPanY + deltaY);
+
+      sliderPanX.value = Math.max(-300, Math.min(300, state.photo.panX));
+      sliderPanY.value = Math.max(-300, Math.min(300, state.photo.panY));
+      labelPanX.innerText = `${state.photo.panX}px`;
+      labelPanY.innerText = `${state.photo.panY}px`;
+
+      renderPoster();
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // ==============================================================
+    // EXPORT & DOWNLOAD POSTER (High Resolution)
+    // ==============================================================
+    function exportPoster() {
+      const downloadBtnText = document.getElementById('btn-download-text');
+      const originalText = downloadBtnText.innerText;
+      downloadBtnText.innerText = 'Rendering...';
+
+      setTimeout(() => {
+        try {
+          const exportScale = state.exportScale || 1;
+          const targetW = 1080 * exportScale;
+          const targetH = 1350 * exportScale;
+
+          const exportCanvas = document.createElement('canvas');
+          exportCanvas.width = targetW;
+          exportCanvas.height = targetH;
+          const expCtx = exportCanvas.getContext('2d');
+
+          expCtx.scale(exportScale, exportScale);
+          drawFullPoster(expCtx);
+
+          const mimeType = state.exportFormat === 'jpeg' ? 'image/jpeg' : 'image/png';
+          const extension = state.exportFormat === 'jpeg' ? 'jpg' : 'png';
+          const subDist = KANNUR_SUBDISTRICTS[state.subDistrictCode]?.en.toLowerCase().replace(/\s+/g, '_') || 'kannur';
+          const fileName = `kalolsavam_${subDist}_${state.lang}_poster.${extension}`;
+
+          const dataUrl = exportCanvas.toDataURL(mimeType, 0.95);
+          const link = document.createElement('a');
+          link.download = fileName;
+          link.href = dataUrl;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          showToast('Poster Exported', `Saved ${fileName}`, 'ph-download-simple', 'text-amber-400');
+        } catch (err) {
+          console.error(err);
+          showToast('Export Error', 'Could not complete image export.', 'ph-warning', 'text-rose-400');
+        } finally {
+          downloadBtnText.innerText = originalText;
+        }
+      }, 50);
+    }
+
+    btnMainDownload.addEventListener('click', exportPoster);
+    btnTopDownload.addEventListener('click', exportPoster);
+    mobileBottomDownload.addEventListener('click', exportPoster);
+
+    btnShareTrigger.addEventListener('click', async () => {
+      try {
+        canvas.toBlob(async (blob) => {
+          if (!blob) return;
+          try {
+            const item = new ClipboardItem({ 'image/png': blob });
+            await navigator.clipboard.write([item]);
+            showToast('Copied!', 'Poster copied to clipboard for WhatsApp/Instagram.', 'ph-copy', 'text-cyan-400');
+          } catch (err) {
+            showToast('Ready', 'Tap Download Poster to save high-res image.', 'ph-info', 'text-sky-300');
+          }
+        });
+      } catch (err) {
+        showToast('Info', 'Tap Download Poster to save the file.', 'ph-info', 'text-sky-300');
+      }
+    });
+
+    // ==============================================================
+    // SAMPLE WINNER & RESET HANDLERS
+    // ==============================================================
+    if (btnLoadSample) {
+      btnLoadSample.addEventListener('click', () => {
+        if (state.lang === 'ml') {
+          inputWinnerName.value = 'ദേവിക എസ്. നായർ';
+          inputCongratsText.value = 'അഭിനന്ദനങ്ങൾ';
+          inputSchoolName.value = 'അഞ്ചരക്കണ്ടി ഹയർ സെക്കന്ററി സ്കൂൾ';
+          inputItemName.value = 'മോഹിനിയാട്ടം';
+          state.winnerName = 'ദേവിക എസ്. നായർ';
+          state.congratsText = 'അഭിനന്ദനങ്ങൾ';
+          state.schoolName = 'അഞ്ചരക്കണ്ടി ഹയർ സെക്കന്ററി സ്കൂൾ';
+          state.itemName = 'മോഹിനിയാട്ടം';
+        } else {
+          inputWinnerName.value = 'DEVIKA S. NAIR';
+          inputCongratsText.value = 'CONGRATULATIONS';
+          inputSchoolName.value = 'ANJARAKANDY HIGHER SECONDARY SCHOOL';
+          inputItemName.value = 'മോഹിനിയാട്ടം (MOHINIYATTAM)';
+          state.winnerName = 'DEVIKA S. NAIR';
+          state.congratsText = 'CONGRATULATIONS';
+          state.schoolName = 'ANJARAKANDY HIGHER SECONDARY SCHOOL';
+          state.itemName = 'മോഹിനിയാട്ടം (MOHINIYATTAM)';
+        }
+
+        selectSubDistrict.value = '05';
+        state.subDistrictCode = '05';
+        renderPoster();
+        showToast('Sample Winner Loaded', 'Kannur South Sub-District Winner');
+      });
+    }
+
+    btnResetAll.addEventListener('click', () => {
+      const isML = state.lang === 'ml';
+      state.winnerName = isML ? 'നിങ്ങളുടെ പേര്' : 'YOUR NAME';
+      state.congratsText = isML ? 'അഭിനന്ദനങ്ങൾ' : 'CONGRATULATIONS';
+      state.showCongrats = true;
+      state.schoolName = isML ? 'സ്കൂളിന്റെ പേര്' : 'SCHOOL NAME';
+      state.subDistrictCode = '05';
+      state.category = 'HSS GENERAL';
+      state.itemName = isML ? 'ഭരതനാട്യം' : 'ഭരതനാട്യം (BHARATANATYAM)';
+      state.achievement = '1st Place';
+      state.achievementType = 'place';
+      state.withAGrade = true;
+
+      inputWinnerName.value = state.winnerName;
+      inputCongratsText.value = state.congratsText;
+      checkShowCongrats.checked = true;
+      inputSchoolName.value = state.schoolName;
+      selectSubDistrict.value = '05';
+      selectCategory.value = 'HSS GENERAL';
+      inputItemName.value = state.itemName;
+      checkWithAGrade.checked = true;
+
+      state.photo.zoom = 1.0;
+      state.photo.panX = 0;
+      state.photo.panY = 0;
+      state.photo.brightness = 100;
+      state.photo.contrast = 105;
+
+      sliderZoom.value = 1.0;
+      sliderPanX.value = 0;
+      sliderPanY.value = 0;
+      sliderBrightness.value = 100;
+      sliderContrast.value = 105;
+
+      labelZoom.innerText = '100%';
+      labelPanX.innerText = '0px';
+      labelPanY.innerText = '0px';
+      labelBrightness.innerText = '100%';
+      labelContrast.innerText = '105%';
+
+      generateDefaultSamplePhoto();
+      showToast('Reset Complete', isML ? 'നിങ്ങളുടെ പേര് പുനഃസ്ഥാപിച്ചു' : 'Default settings restored.');
+    });
+
+    // ==============================================================
+    // INITIALIZATION
+    // ==============================================================
+    window.addEventListener('DOMContentLoaded', () => {
+      generateDefaultSamplePhoto();
+      loadDefaultLogo();
+      syncLogoButtons();
+
+      if (document.fonts) {
+        document.fonts.ready.then(() => {
+          renderPoster();
+        });
+      } else {
+        setTimeout(renderPoster, 250);
+      }
+    });
+  </script>
+</body>
+</html>
