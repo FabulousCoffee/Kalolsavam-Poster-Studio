@@ -294,6 +294,132 @@
       background: rgba(255, 255, 255, 0.15);
       border-radius: 4px;
     }
+
+    /* Mobile usability refinements: keep the editor comfortable on touch screens. */
+    @media (max-width: 1023px) {
+      html {
+        scroll-padding-top: 104px;
+      }
+
+      body {
+        padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      #panel-editor-controls > .liquid-panel,
+      #panel-photo-settings {
+        scroll-margin-top: 104px;
+        min-width: 0;
+      }
+
+      #panel-editor-controls .glass-input,
+      #panel-editor-controls select,
+      #panel-editor-controls input:not([type="checkbox"]):not([type="range"]) {
+        box-sizing: border-box;
+        min-height: 44px;
+        font-size: 16px;
+      }
+
+      #panel-editor-controls button,
+      #mobile-bottom-action-bar button {
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+
+      #panel-editor-controls input[type="range"] {
+        min-height: 28px;
+        height: 28px;
+        touch-action: pan-y;
+      }
+
+      #panel-editor-controls input[type="range"]::-webkit-slider-thumb {
+        width: 24px;
+        height: 24px;
+      }
+
+      #panel-editor-controls input[type="range"]::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: 2px solid #00F2FE;
+        background: #FFFFFF;
+      }
+
+      #panel-poster-preview {
+        max-height: calc(100dvh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+      }
+
+      #mobile-bottom-action-bar {
+        padding-bottom: calc(0.625rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      #toast {
+        bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      #poster-canvas-wrapper {
+        touch-action: manipulation;
+      }
+
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible {
+        outline: 2px solid rgba(0, 242, 254, 0.9);
+        outline-offset: 2px;
+      }
+    }
+
+    /* Give tablets a more useful floating preview without changing desktop. */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      #panel-poster-preview {
+        width: 112px;
+        right: max(12px, env(safe-area-inset-right, 0px));
+      }
+    }
+
+    /* Keep the floating preview compact on phones so it obscures less of the form. */
+    @media (max-width: 767px) {
+      #panel-poster-preview {
+        width: 74px;
+        right: max(6px, env(safe-area-inset-right, 0px));
+        padding: 3px;
+        border-radius: 12px;
+      }
+
+      #poster-canvas-wrapper {
+        border-radius: 7px;
+      }
+
+      #mobile-bottom-action-bar {
+        gap: 8px;
+        padding-left: max(12px, env(safe-area-inset-left, 0px));
+        padding-right: max(12px, env(safe-area-inset-right, 0px));
+      }
+
+      #mobile-bottom-lang-toggle {
+        max-width: 44%;
+        min-width: 0;
+      }
+
+      #mobile-bottom-lang-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 360px) {
+      #panel-poster-preview {
+        width: 66px;
+        right: 5px;
+      }
+
+      #mobile-bottom-lang-toggle {
+        max-width: 40%;
+        padding-left: 9px;
+        padding-right: 9px;
+      }
+    }
+
   </style>
 </head>
 
@@ -868,7 +994,7 @@
   </main>
 
   <!-- Mobile Bottom Sticky Quick-Action Bar (Phones & Small Tablets) -->
-  <div class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-t border-white/15 px-3 py-2.5 flex items-center justify-between gap-2">
+  <div id="mobile-bottom-action-bar" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-t border-white/15 px-3 py-2.5 flex items-center justify-between gap-2">
     <button type="button" id="mobile-bottom-lang-toggle" class="px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/15 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-anek">
       <i class="ph ph-translate text-base"></i>
       <span id="mobile-bottom-lang-text">Switch to English</span>
