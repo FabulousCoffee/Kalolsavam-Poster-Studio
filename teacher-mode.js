@@ -105,6 +105,17 @@
       step = Math.max(1, Math.min(5, nextStep));
       const visible = new Set();
       if (step === 1) visible.add(photoPanel);
+      if (step === 1) {
+        const photoInput = document.getElementById('file-photo-input');
+        if (!photoInput?.files?.length) {
+          document.getElementById('drop-zone')?.scrollIntoView({behavior:'smooth',block:'center'});
+          photoInput?.focus();
+          photoInput?.setCustomValidity('Please choose a winner photo / വിജയിയുടെ ചിത്രം തിരഞ്ഞെടുക്കുക.');
+          photoInput?.reportValidity();
+          return;
+        }
+        photoInput.setCustomValidity('');
+      }
       if (step === 2) { visible.add(winnerPanel); visible.add(itemPanel); }
       if (step === 3) { visible.add(achievementPanel); visible.add(gradePanel); }
       if (step === 4) { visible.add(photoPanel); visible.add(themePanel); }
@@ -201,8 +212,12 @@
       if (appState) { appState.winnerName = ''; appState.itemName = ''; appState.photo.img = null; appState.photo.loaded = false; window.posterStudio.resetPhotoToSample(); }
       const file = document.getElementById('file-photo-input');
       if (file) file.value = '';
-      document.querySelector('[data-achievement="1st Place"]')?.click();
-      document.querySelector('[data-grade=""]')?.click();
+      const firstPlace = document.querySelector('[data-achievement="1st Place"]');
+      if (firstPlace && !firstPlace.classList.contains('pill-active-gold')) firstPlace.click();
+      const noGrade = document.querySelector('[data-grade=""]');
+      if (noGrade && !noGrade.classList.contains('pill-active-cyan')) noGrade.click();
+      name.dispatchEvent(new Event('input',{bubbles:true}));
+      item.dispatchEvent(new Event('input',{bubbles:true}));
       window.posterStudio?.render();
       showStep(1);
     });
