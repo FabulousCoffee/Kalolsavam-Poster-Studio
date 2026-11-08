@@ -161,11 +161,6 @@
     stepper.querySelector('#teacher-back-button').addEventListener('click', () => showStep(step - 1));
     stepper.querySelector('#teacher-next-button').addEventListener('click', () => {
       if (step === 5) { showStep(1); return; }
-      if (step === 1 && !window.state?.photo?.loaded) {
-        document.getElementById('drop-zone')?.scrollIntoView({behavior:'smooth',block:'center'});
-        document.getElementById('file-photo-input')?.focus();
-        return;
-      }
       if (step === 2) {
         const name = document.getElementById('input-winner-name').value.trim();
         const item = document.getElementById('input-item-name').value.trim();
@@ -202,12 +197,13 @@
       const name = document.getElementById('input-winner-name');
       const item = document.getElementById('input-item-name');
       name.value = ''; item.value = '';
-      if (window.state) { state.winnerName = ''; state.itemName = ''; state.photo.img = null; state.photo.loaded = false; }
+      const appState = window.posterStudio?.getState();
+      if (appState) { appState.winnerName = ''; appState.itemName = ''; appState.photo.img = null; appState.photo.loaded = false; window.posterStudio.resetPhotoToSample(); }
       const file = document.getElementById('file-photo-input');
       if (file) file.value = '';
       document.querySelector('[data-achievement="1st Place"]')?.click();
       document.querySelector('[data-grade=""]')?.click();
-      window.renderPoster?.();
+      window.posterStudio?.render();
       showStep(1);
     });
 
@@ -229,7 +225,7 @@
             el.dispatchEvent(new Event('change',{bubbles:true}));
           }
         });
-        window.renderPoster?.();
+        window.posterStudio?.render();
       }
     } catch (_) {}
     draftFields.forEach(id => {
