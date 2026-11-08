@@ -79,3 +79,82 @@
   .teacher-progress-fill { transition:none; }
   *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+
+
+/* Mobile reading order: upload first, live poster after all editor sections. */
+@media (max-width:1023px) {
+  #panel-photo-settings { order:-1 !important; }
+  #panel-poster-preview {
+    position:relative !important;
+    inset:auto !important;
+    top:auto !important;
+    right:auto !important;
+    transform:none !important;
+    order:99 !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:18px 0 0 !important;
+    padding:14px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    border-radius:24px !important;
+    background:rgba(13,22,45,.88) !important;
+    z-index:1 !important;
+  }
+  #poster-preview-container {
+    display:flex !important;
+    padding:10px !important;
+    overflow:hidden !important;
+    background:rgba(13,22,45,.68) !important;
+    border:1px solid rgba(255,255,255,.12) !important;
+    border-radius:18px !important;
+  }
+  #poster-canvas-wrapper {
+    width:100% !important;
+    max-width:min(100%,440px) !important;
+    margin:auto !important;
+    cursor:zoom-in !important;
+  }
+  #poster-canvas-wrapper > div { display:flex !important; }
+  #poster-preview-container > div:last-child { display:flex !important; }
+  #preview-status-bar { display:flex !important; }
+  #preview-status-bar > div:last-child { display:flex !important; }
+  #preview-status-bar select { display:block !important; }
+  #panel-poster-preview.mobile-preview-expanded {
+    position:fixed !important;
+    inset:max(8px,env(safe-area-inset-top)) 8px max(8px,env(safe-area-inset-bottom)) !important;
+    z-index:1000 !important;
+    width:auto !important;
+    max-width:none !important;
+    margin:0 !important;
+    transform:none !important;
+    overflow:hidden !important;
+    background:rgba(4,7,17,.98) !important;
+  }
+  #panel-poster-preview.mobile-preview-expanded #preview-status-bar { display:flex !important; }
+  #panel-poster-preview.mobile-preview-expanded #poster-preview-container {
+    display:flex !important;
+    flex:1 1 auto !important;
+    min-height:0 !important;
+    overflow:auto !important;
+  }
+  #panel-poster-preview.mobile-preview-expanded #poster-canvas-wrapper {
+    width:auto !important;
+    max-width:min(100%,480px) !important;
+    max-height:calc(100dvh - 230px) !important;
+  }
+  #panel-poster-preview.mobile-preview-expanded #poster-canvas {
+    width:auto !important;
+    height:auto !important;
+    max-width:100% !important;
+    max-height:calc(100dvh - 250px) !important;
+  }
+  #panel-poster-preview.mobile-preview-expanded #poster-preview-container > div:last-child {
+    display:flex !important;
+  }
+  #btn-mobile-preview-close { display:inline-flex !important; }
+}
+.teacher-advanced-toggle {
+  border-color:rgba(251,191,36,.42);
+  background:rgba(251,191,36,.09);
+}

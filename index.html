@@ -572,7 +572,7 @@
               <span class="w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400">
                 <i class="ph ph-user-check text-lg"></i>
               </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui" id="heading-winner-info">1. Winner & Sub-District Details</h2>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui" id="heading-winner-info">2. Winner & Sub-District Details</h2>
             </div>
             <span class="text-xs text-amber-300 font-anek">English / മലയാളം</span>
           </div>
@@ -662,7 +662,7 @@
               <span class="w-8 h-8 rounded-xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-400">
                 <i class="ph ph-paint-brush-broad text-lg"></i>
               </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui">2. Competition Item (മത്സര ഇനം)</h2>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">3. Competition Item (മത്സര ഇനം)</h2>
             </div>
             <span class="text-xs text-purple-300 font-medium font-anek">കലാമത്സരം</span>
           </div>
@@ -724,7 +724,7 @@
               <span class="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
                 <i class="ph ph-medal text-lg"></i>
               </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui">3.Achievement</h2>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">4. Achievement</h2>
             </div>
             <span class="text-xs text-amber-300 font-semibold font-anek text-right" id="current-badge-label">1st Place / ഒന്നാം സ്ഥാനം</span>
           </div>
@@ -762,7 +762,7 @@
               <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
                 <i class="ph ph-star text-lg"></i>
               </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui">4. Select Grades</h2>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui">5. Select Grades</h2>
             </div>
             <span class="text-xs text-emerald-300 font-semibold font-anek">ഗ്രേഡ് തിരഞ്ഞെടുക്കുക</span>
           </div>
@@ -792,7 +792,7 @@
               <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
                 <i class="ph ph-camera text-lg"></i>
               </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui"><span class="section-number-desktop">5.</span><span class="section-number-mobile">6.</span> Winner Photograph</h2>
+              <h2 class="text-sm sm:text-base font-bold text-white font-ui"><span class="section-number-desktop">1.</span><span class="section-number-mobile">1.</span> Winner Photograph</h2>
             </div>
             <button id="btn-reset-photo-adjustments" type="button" class="text-xs text-slate-400 hover:text-emerald-300 flex items-center gap-1 transition-colors">
               <i class="ph ph-arrow-counter-clockwise"></i> Reset Adjustments
@@ -1423,14 +1423,32 @@
       panelPreview.classList.remove('hidden');
     }
 
-    function setMobilePreviewExpanded(expanded) {
+    let previewHistoryEntry = false;
+
+    function setMobilePreviewExpanded(expanded, fromPopState = false) {
       if (!mobilePreviewQuery.matches) return;
+
+      if (expanded && !previewHistoryEntry) {
+        try {
+          history.pushState({ ...(history.state || {}), kalolsavamPosterPreview: true }, '', location.href);
+          previewHistoryEntry = true;
+        } catch (_) {}
+      }
+
       panelPreview.classList.toggle('mobile-preview-expanded', expanded);
       document.body.classList.toggle('mobile-preview-expanded', expanded);
       canvasWrapper.setAttribute('aria-expanded', String(expanded));
+
+      if (!expanded && previewHistoryEntry) {
+        previewHistoryEntry = false;
+        if (!fromPopState) {
+          try { history.back(); } catch (_) {}
+        }
+      }
+
       if (expanded) {
         mobilePreviewClose.focus();
-      } else {
+      } else if (!fromPopState) {
         canvasWrapper.focus();
       }
     }
@@ -1451,6 +1469,12 @@
     });
 
     mobilePreviewClose.addEventListener('click', () => setMobilePreviewExpanded(false));
+
+    window.addEventListener('popstate', () => {
+      if (panelPreview.classList.contains('mobile-preview-expanded')) {
+        setMobilePreviewExpanded(false, true);
+      }
+    });
 
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && panelPreview.classList.contains('mobile-preview-expanded')) {

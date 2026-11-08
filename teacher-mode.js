@@ -23,9 +23,8 @@
     toolbar.className = 'teacher-toolbar';
     toolbar.setAttribute('aria-label', 'Accessibility and editor mode');
     toolbar.innerHTML = `
-      <div class="teacher-toolbar-group" role="group" aria-label="Editor mode">
-        <button type="button" class="teacher-control is-active" id="teacher-mode-button" aria-pressed="true">Teacher Mode / അധ്യാപക മോഡ്</button>
-        <button type="button" class="teacher-control" id="advanced-mode-button" aria-pressed="false">Advanced</button>
+      <div class="teacher-toolbar-group" role="group" aria-label="Optional advanced settings">
+        <button type="button" class="teacher-control teacher-advanced-toggle" id="advanced-mode-button" aria-pressed="false">Advanced settings / കൂടുതൽ ക്രമീകരണങ്ങൾ</button>
       </div>
       <div class="teacher-toolbar-group" role="group" aria-label="Text size">
         <label for="teacher-text-size" style="color:#e2e8f0;font-size:13px;font-weight:700">Text size / അക്ഷരവലുപ്പം</label>
@@ -90,6 +89,13 @@
 
     const stepDots = [...stepper.querySelectorAll('[data-step]')];
     const isMobile = () => window.matchMedia('(max-width: 1023px)').matches;
+    const mobileOrderQuery = window.matchMedia('(max-width: 1023px)');
+    const applyMobilePanelOrder = () => {
+      photoPanel.style.order = mobileOrderQuery.matches ? '-1' : '';
+      previewPanel.style.order = mobileOrderQuery.matches ? '99' : '';
+    };
+    applyMobilePanelOrder();
+    mobileOrderQuery.addEventListener('change', applyMobilePanelOrder);
     const setPanelVisibility = (panel, visible) => {
       if (!panel) return;
       panel.dataset.teacherHidden = visible ? 'false' : 'true';
@@ -105,17 +111,6 @@
       step = Math.max(1, Math.min(5, nextStep));
       const visible = new Set();
       if (step === 1) visible.add(photoPanel);
-      if (step === 1) {
-        const photoInput = document.getElementById('file-photo-input');
-        if (!photoInput?.files?.length) {
-          document.getElementById('drop-zone')?.scrollIntoView({behavior:'smooth',block:'center'});
-          photoInput?.focus();
-          photoInput?.setCustomValidity('Please choose a winner photo / വിജയിയുടെ ചിത്രം തിരഞ്ഞെടുക്കുക.');
-          photoInput?.reportValidity();
-          return;
-        }
-        photoInput.setCustomValidity('');
-      }
       if (step === 2) { visible.add(winnerPanel); visible.add(itemPanel); }
       if (step === 3) { visible.add(achievementPanel); visible.add(gradePanel); }
       if (step === 4) { visible.add(photoPanel); visible.add(themePanel); }
@@ -136,7 +131,7 @@
       stepDots.forEach(dot => {
         const active = Number(dot.dataset.step) === step;
         dot.setAttribute('aria-current', active ? 'step' : 'false');
-        dot.disabled = Number(dot.dataset.step) > step;
+        dot.disabled = false;
       });
       if (step === 5) updateSummary();
       if (shouldScroll) {
@@ -151,11 +146,9 @@
       const teacher = mode === 'teacher';
       document.body.classList.toggle('teacher-mode', teacher);
       stepper.hidden = !teacher;
-      [toolbar.querySelector('#teacher-mode-button'),toolbar.querySelector('#advanced-mode-button')].forEach((button,index) => {
-        const active = index === (teacher ? 0 : 1);
-        button.setAttribute('aria-pressed', String(active));
-        button.classList.toggle('is-active', active);
-      });
+      const advancedButton = toolbar.querySelector('#advanced-mode-button');
+      advancedButton.setAttribute('aria-pressed', String(!teacher));
+      advancedButton.classList.toggle('is-active', !teacher);
       if (teacher) showStep(step, false);
       else {
         panels.forEach(panel => setPanelVisibility(panel, true));
@@ -167,8 +160,7 @@
       try { localStorage.setItem('kalolsavam-editor-mode', mode); } catch (_) {}
     };
 
-    toolbar.querySelector('#teacher-mode-button').addEventListener('click', () => setMode('teacher'));
-    toolbar.querySelector('#advanced-mode-button').addEventListener('click', () => setMode('advanced'));
+    toolbar.querySelector('#advanced-mode-button').addEventListener('click', () => setMode(mode === 'teacher' ? 'advanced' : 'teacher'));
     stepper.querySelector('#teacher-back-button').addEventListener('click', () => showStep(step - 1));
     stepper.querySelector('#teacher-next-button').addEventListener('click', () => {
       if (step === 5) { showStep(1); return; }
@@ -195,7 +187,7 @@
     });
     stepDots.forEach(dot => dot.addEventListener('click', () => {
       const targetStep = Number(dot.dataset.step);
-      if (targetStep <= step) showStep(targetStep);
+      showStep(targetStep);
     }));
     summary.querySelector('#teacher-review-button').addEventListener('click', () => {
       if (isMobile()) canvasWrapper?.click();
