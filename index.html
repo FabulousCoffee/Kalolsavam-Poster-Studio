@@ -1605,6 +1605,13 @@
       drawFullPoster(ctx);
     }
 
+    // Small public bridge for the separately loaded teacher-friendly UI layer.
+    window.posterStudio = {
+      getState: () => state,
+      render: renderPoster,
+      resetPhotoToSample: generateDefaultSamplePhoto
+    };
+
     function drawFullPoster(c) {
       const W = 1080;
       const H = 1350;

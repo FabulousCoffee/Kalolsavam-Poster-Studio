@@ -1,0 +1,81 @@
+/* Teacher-friendly accessibility layer */
+.teacher-toolbar {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  gap:12px; padding:16px; border:1px solid rgba(255,255,255,.16);
+  border-radius:22px; background:rgba(13,22,45,.88);
+}
+.teacher-toolbar-group { display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.teacher-control {
+  min-height:44px; padding:10px 14px; border:1px solid rgba(255,255,255,.2);
+  border-radius:13px; color:#f8fafc; background:rgba(255,255,255,.07);
+  font-family:inherit; font-size:14px; font-weight:600; line-height:1.3; cursor:pointer;
+}
+.teacher-control[aria-pressed="true"], .teacher-control.is-active {
+  color:#08111f; background:#fbbf24; border-color:#fbbf24;
+}
+.teacher-stepper {
+  padding:16px; border:1px solid rgba(255,255,255,.14); border-radius:22px;
+  background:rgba(8,14,30,.88); display:grid; gap:14px;
+}
+.teacher-step-top { display:flex; justify-content:space-between; gap:12px; align-items:center; }
+.teacher-progress { height:8px; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.12); }
+.teacher-progress-fill { height:100%; width:20%; border-radius:999px; background:linear-gradient(90deg,#f59e0b,#fde68a); transition:width .2s ease; }
+.teacher-step-list { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:7px; }
+.teacher-step-dot {
+  min-width:0; min-height:48px; padding:7px 4px; border:1px solid rgba(255,255,255,.14);
+  border-radius:12px; background:rgba(255,255,255,.04); color:#cbd5e1;
+  font-size:12px; font-weight:700; cursor:pointer;
+}
+.teacher-step-dot[aria-current="step"] { color:#fff; border-color:#fbbf24; background:rgba(245,158,11,.18); }
+.teacher-step-dot:disabled { opacity:.5; cursor:not-allowed; }
+.teacher-step-description { color:#cbd5e1; font-size:14px; line-height:1.55; }
+.teacher-step-actions { display:flex; gap:10px; justify-content:space-between; }
+.teacher-step-actions button { min-height:48px; flex:1; }
+.teacher-summary {
+  padding:18px; border:1px solid rgba(245,158,11,.35); border-radius:22px;
+  background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(13,22,45,.9));
+}
+.teacher-summary dl { display:grid; grid-template-columns:minmax(110px,.7fr) 1.3fr; gap:9px 14px; margin:14px 0; }
+.teacher-summary dt { color:#cbd5e1; font-size:13px; }
+.teacher-summary dd { color:#fff; font-size:14px; font-weight:700; overflow-wrap:anywhere; margin:0; }
+.teacher-summary button { min-height:48px; }
+.teacher-mode #panel-editor-controls > .liquid-panel[data-teacher-hidden="true"] { display:none !important; }
+.teacher-mode #panel-editor-controls > .teacher-summary[hidden] { display:none !important; }
+.teacher-mode #panel-photo-settings [data-teacher-adjustments="true"][hidden],
+.teacher-mode #panel-photo-settings #drop-zone[hidden] { display:none !important; }
+.teacher-mode #panel-editor-controls > .teacher-stepper[hidden] { display:none !important; }
+.teacher-mode #panel-editor-controls > .teacher-toolbar { margin-bottom:4px; }
+.teacher-mode #panel-poster-preview { scroll-margin-top:100px; }
+.accessibility-large { font-size:1.08rem !important; }
+.accessibility-large label, .accessibility-large button, .accessibility-large input,
+.accessibility-large select, .accessibility-large p { font-size:1.04rem !important; }
+.accessibility-xlarge { font-size:1.16rem !important; }
+.accessibility-xlarge label, .accessibility-xlarge button, .accessibility-xlarge input,
+.accessibility-xlarge select, .accessibility-xlarge p { font-size:1.12rem !important; }
+.high-contrast-mode { color:#fff !important; }
+.high-contrast-mode .liquid-panel, .high-contrast-mode .liquid-card,
+.high-contrast-mode .teacher-stepper, .high-contrast-mode .teacher-toolbar {
+  background:#050505 !important; border:2px solid #fff !important; box-shadow:none !important;
+}
+.high-contrast-mode .text-slate-400, .high-contrast-mode .text-slate-500,
+.high-contrast-mode .text-slate-300 { color:#fff !important; }
+.high-contrast-mode .glass-input { background:#000 !important; color:#fff !important; border:2px solid #fff !important; }
+.teacher-control:focus-visible, .teacher-step-dot:focus-visible,
+.teacher-step-actions button:focus-visible, #panel-editor-controls button:focus-visible,
+#panel-editor-controls input:focus-visible, #panel-editor-controls select:focus-visible {
+  outline:3px solid #fde047 !important; outline-offset:3px !important;
+}
+#panel-editor-controls button, #panel-editor-controls input, #panel-editor-controls select { touch-action:manipulation; }
+@media (max-width:640px) {
+  .teacher-toolbar { align-items:stretch; }
+  .teacher-toolbar-group { width:100%; }
+  .teacher-control { flex:1; }
+  .teacher-step-dot { font-size:10px; padding:6px 2px; }
+  .teacher-step-description { font-size:15px; }
+  .teacher-summary dl { grid-template-columns:1fr; gap:3px; }
+  .teacher-summary dd { margin-bottom:8px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .teacher-progress-fill { transition:none; }
+  *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+}
