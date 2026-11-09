@@ -53,8 +53,8 @@
       </nav>
       <p class="teacher-step-description" id="teacher-step-description" aria-live="polite">Choose a clear photo of the winner. നിങ്ങളുടെ ഫോണിൽ നിന്ന് ചിത്രം തിരഞ്ഞെടുക്കുക.</p>
       <div class="teacher-step-actions">
-        <button type="button" class="teacher-control" id="teacher-back-button" disabled>← Back / തിരികെ</button>
-        <button type="button" class="teacher-control is-active" id="teacher-next-button">Continue / തുടരുക →</button>
+        <button type="button" class="teacher-control" id="teacher-lang-button">Lan change / ഭാഷ</button>
+        <button type="button" class="teacher-control is-active" id="teacher-next-button">Next / അടുത്തത് →</button>
       </div>`;
     editor.insertBefore(stepper, languagePanel || toolbar.nextSibling);
 
@@ -126,8 +126,7 @@
       document.getElementById('teacher-step-count').textContent = `${step * 20}%`;
       document.getElementById('teacher-progress-fill').style.width = `${step * 20}%`;
       document.getElementById('teacher-progress').setAttribute('aria-valuenow', String(step));
-      document.getElementById('teacher-back-button').disabled = step === 1;
-      document.getElementById('teacher-next-button').textContent = step === 5 ? 'Start again / വീണ്ടും തുടങ്ങുക' : 'Continue / തുടരുക →';
+      document.getElementById('teacher-next-button').textContent = step === 5 ? 'Start again / വീണ്ടും തുടങ്ങുക' : 'Next / അടുത്തത് →';
       stepDots.forEach(dot => {
         const active = Number(dot.dataset.step) === step;
         dot.setAttribute('aria-current', active ? 'step' : 'false');
@@ -161,7 +160,14 @@
     };
 
     toolbar.querySelector('#advanced-mode-button').addEventListener('click', () => setMode(mode === 'teacher' ? 'advanced' : 'teacher'));
-    stepper.querySelector('#teacher-back-button').addEventListener('click', () => showStep(step - 1));
+    stepper.querySelector('#teacher-lang-button').addEventListener('click', () => {
+      const current = document.body.dataset.posterLang || 'ml';
+      const nextLang = current === 'ml' ? 'en' : 'ml';
+      // Trigger existing language switch
+      const btn = document.getElementById(nextLang === 'en' ? 'panel-lang-en' : 'panel-lang-ml');
+      if (btn) btn.click();
+      else if (typeof window.setPosterLanguage === 'function') window.setPosterLanguage(nextLang, true);
+    });
     stepper.querySelector('#teacher-next-button').addEventListener('click', () => {
       if (step === 5) { showStep(1); return; }
       if (step === 2) {
