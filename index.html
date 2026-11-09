@@ -421,6 +421,17 @@
     }
 
   
+    /* The right-hand editor is the Function Pill: a single, calm control surface. */
+    @media (min-width: 768px) {
+      #panel-editor-controls {
+        padding: clamp(.75rem, 1.5vw, 1.25rem);
+        border: 1px solid rgba(125, 162, 206, .22);
+        border-radius: 2rem;
+        background: linear-gradient(145deg, rgba(125, 162, 206, .09), rgba(8, 14, 30, .82) 48%, rgba(17, 28, 59, .56));
+        box-shadow: 0 24px 56px -32px rgba(0, 0, 0, .85), inset 0 1px rgba(255,255,255,.06);
+      }
+    }
+
     /* Reworked split workstation: poster preview on the left, controls on the right. */
     @media (min-width: 768px) {
       .studio-layout #panel-poster-preview { order: 1 !important; }
