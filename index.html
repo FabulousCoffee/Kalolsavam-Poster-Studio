@@ -723,6 +723,65 @@
     @media (prefers-reduced-motion:reduce) {
       #panel-poster-preview,#poster-canvas-wrapper { scroll-behavior:auto !important; }
     }
+
+    /* Photo Adjustment split-pane workspace */
+    .adjustment-workspace { display:flex; flex-direction:column; gap:1rem; min-width:0; }
+    .adjustment-header { display:flex; align-items:center; gap:.9rem; padding:1.1rem 1.2rem; border:1px solid rgba(125,162,206,.3); border-radius:1.5rem; background:linear-gradient(110deg,rgba(125,162,206,.16),rgba(17,168,53,.08)); }
+    .adjustment-header-icon { display:grid; place-items:center; flex:0 0 2.8rem; width:2.8rem; height:2.8rem; border-radius:1rem; color:#86efac; background:rgba(17,168,53,.14); font-size:1.35rem; }
+    .adjustment-header-copy { min-width:0; flex:1; }
+    .adjustment-header-copy > span { display:block; color:#86efac; font-size:.62rem; font-weight:800; letter-spacing:.16em; }
+    .adjustment-header-copy h2 { margin:.12rem 0; color:#f8fafc; font-size:1rem; font-weight:800; }
+    .adjustment-header-copy p { margin:0; color:#94a3b8; font-size:.72rem; line-height:1.45; }
+    .adjustment-reset { display:flex; align-items:center; gap:.4rem; flex:0 0 auto; padding:.65rem .8rem; border:1px solid rgba(255,255,255,.12); border-radius:.9rem; background:rgba(4,10,24,.35); color:#cbd5e1; font-size:.72rem; font-weight:700; }
+    .adjustment-split-card { display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:1rem; padding:1rem; border:1px solid rgba(125,162,206,.25); border-radius:1.6rem; background:rgba(10,19,39,.68); }
+    .adjustment-photo-pane,.adjustment-controls-pane { min-width:0; padding:.9rem; border:1px solid rgba(255,255,255,.08); border-radius:1.2rem; background:rgba(255,255,255,.025); }
+    .adjustment-pane-heading { display:flex; align-items:center; gap:.55rem; margin-bottom:.8rem; color:#e2e8f0; font-size:.78rem; }
+    .adjustment-pane-heading span { color:#86efac; font:700 .68rem ui-monospace,monospace; }
+    .adjustment-drop-zone { display:flex; min-height:290px; height:100%; align-items:center; justify-content:center; overflow:hidden; border:1.5px dashed rgba(125,162,206,.5); border-radius:1rem; background:linear-gradient(145deg,rgba(125,162,206,.08),rgba(17,168,53,.035)); transition:border-color .2s,background .2s; }
+    .adjustment-drop-zone:hover { border-color:#4ade80; background:rgba(17,168,53,.07); }
+    .adjustment-upload-content { display:flex; flex-direction:column; align-items:center; gap:.6rem; padding:1.5rem .8rem; text-align:center; pointer-events:none; }
+    .adjustment-upload-icon { display:grid; place-items:center; width:3.5rem; height:3.5rem; border:1px solid rgba(125,162,206,.25); border-radius:1.2rem; background:rgba(125,162,206,.1); color:#93c5fd; font-size:1.8rem; }
+    .adjustment-upload-content strong { color:#f1f5f9; font-size:.88rem; }
+    .adjustment-upload-content span { color:#94a3b8; font-size:.72rem; }
+    .adjustment-upload-content small { color:#86efac; font-size:.62rem; font-weight:800; letter-spacing:.12em; }
+    .adjustment-slider-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.1rem .9rem; }
+    .adjustment-slider-control { display:flex; flex-direction:column; gap:.8rem; min-width:0; padding:.8rem; border:1px solid rgba(255,255,255,.075); border-radius:.9rem; background:rgba(255,255,255,.025); }
+    .adjustment-slider-control > span { display:flex; align-items:center; justify-content:space-between; gap:.4rem; color:#cbd5e1; font-size:.72rem; }
+    .adjustment-slider-control b { font-weight:700; }
+    .adjustment-slider-control b small { display:block; margin-top:.1rem; color:#64748b; font-size:.62rem; font-weight:500; }
+    .adjustment-slider-control output { flex:0 0 auto; color:#86efac; font:700 .7rem ui-monospace,monospace; }
+    .adjustment-slider-control input[type=range] { width:100%; accent-color:#22c55e; cursor:pointer; }
+    .adjustment-slider-wide { grid-column:1/-1; }
+    .adjustment-footer-card { padding:1rem; border:1px solid rgba(125,162,206,.25); border-radius:1.4rem; background:rgba(10,19,39,.68); }
+    .adjustment-info-bar { display:flex; align-items:center; gap:.7rem; min-height:2.8rem; padding:.7rem .85rem; border:1px solid rgba(125,162,206,.18); border-radius:.9rem; background:rgba(125,162,206,.08); color:#cbd5e1; font-size:.72rem; line-height:1.5; }
+    .adjustment-info-bar i { flex:0 0 auto; color:#93c5fd; font-size:1.1rem; }
+    .adjustment-footer-divider { height:1px; margin:1rem 0; background:linear-gradient(90deg,transparent,rgba(148,163,184,.35),transparent); }
+    .adjustment-footer-card .adjustment-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem; margin:0; padding:0; border:0; background:transparent; }
+    .adjustment-footer-card .adjustment-actions button { display:flex; align-items:center; justify-content:center; gap:.55rem; min-height:48px; border:1px solid rgba(34,197,94,.45); border-radius:1rem; background:rgba(17,168,53,.16); color:#bbf7d0; font-size:.82rem; font-weight:800; }
+    .adjustment-footer-card .adjustment-actions button:last-child { background:#16a34a; color:#fff; }
+    @media(max-width:767px) {
+      .adjustment-workspace { gap:.75rem; }
+      .adjustment-header { padding:.85rem; border-radius:1.1rem; gap:.65rem; }
+      .adjustment-header-icon { width:2.35rem; height:2.35rem; flex-basis:2.35rem; }
+      .adjustment-header-copy p { font-size:.66rem; }
+      .adjustment-reset { padding:.55rem .6rem; font-size:.66rem; }
+      .adjustment-split-card { grid-template-columns:minmax(0,1fr); gap:.7rem; padding:.7rem; border-radius:1.2rem; }
+      .adjustment-photo-pane,.adjustment-controls-pane { padding:.7rem; }
+      .adjustment-drop-zone { min-height:155px; }
+      .adjustment-upload-content { gap:.4rem; padding:.8rem; }
+      .adjustment-upload-icon { width:2.7rem; height:2.7rem; font-size:1.45rem; }
+      .adjustment-slider-grid { gap:.6rem; }
+      .adjustment-slider-control { padding:.65rem; gap:.65rem; }
+      .adjustment-slider-control > span { font-size:.68rem; }
+      .adjustment-footer-card { padding:.75rem; }
+      .adjustment-footer-card .adjustment-actions { gap:.6rem; }
+      .adjustment-footer-card .adjustment-actions button { min-height:46px; }
+    }
+    @media(max-width:360px) {
+      .adjustment-slider-grid { grid-template-columns:minmax(0,1fr); }
+      .adjustment-slider-wide { grid-column:auto; }
+      .adjustment-reset span { display:none; }
+    }
 </style>
 </head>
 
@@ -1131,75 +1190,87 @@
         </section>
         <!-- 5. Photograph Upload & Adjustment Section -->
         <section class="guided-step-panel" data-step-panel="3">
-<div id="panel-photo-settings" class="liquid-panel adjustment-pill rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
-          <div class="flex items-center justify-between pb-3 border-b border-white/10">
-            <div class="flex items-center gap-2.5">
-              <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
-                <i class="ph ph-camera text-lg"></i>
-              </span>
-              <h2 class="text-sm sm:text-base font-bold text-white font-ui"><span class="section-number-desktop">1.</span><span class="section-number-mobile">1.</span> Winner Photograph</h2>
-            </div>
-            <button id="btn-reset-photo-adjustments" type="button" class="text-xs text-slate-400 hover:text-emerald-300 flex items-center gap-1 transition-colors">
-              <i class="ph ph-arrow-counter-clockwise"></i> Reset Adjustments
-            </button>
-          </div>
-
-          <!-- Drag and Drop Area -->
-          <div id="drop-zone" class="relative group cursor-pointer border-2 border-dashed border-white/20 hover:border-cyan-400/60 rounded-3xl p-4 sm:p-5 text-center transition-all bg-white/[0.02] hover:bg-cyan-500/[0.04]">
-            <input type="file" id="file-photo-input" accept="image/png, image/jpeg, image/jpg, image/webp" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
-            <div class="flex flex-col items-center justify-center gap-2">
-              <div class="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-cyan-300 group-hover:scale-110 transition-transform">
-                <i class="ph ph-cloud-arrow-up text-2xl"></i>
+          <div id="panel-photo-settings" class="adjustment-workspace">
+            <!-- Top banner -->
+            <div class="adjustment-header">
+              <div class="adjustment-header-icon"><i class="ph ph-sliders-horizontal"></i></div>
+              <div class="adjustment-header-copy">
+                <span>PHOTO STUDIO</span>
+                <h2>Photo Adjustment</h2>
+                <p>Upload your photo, then fine-tune how it appears on the poster.</p>
               </div>
-              <div class="space-y-0.5">
-                <p class="text-xs sm:text-sm font-semibold text-white">Tap to upload Winner Photo, or <span class="text-cyan-400 underline underline-offset-2">Browse</span></p>
-                <p class="text-[11px] text-slate-400">Supports JPG, PNG, WEBP</p>
-              </div>
+              <button id="btn-reset-photo-adjustments" type="button" class="adjustment-reset">
+                <i class="ph ph-arrow-counter-clockwise"></i><span>Reset</span>
+              </button>
             </div>
-          </div>
 
-          <!-- Photo Appearance Sliders -->
-          <div class="space-y-3 pt-1">
-            <div class="grid grid-cols-2 gap-3.5 pt-1">
-              <div class="space-y-1.5">
-                <div class="flex justify-between text-xs text-slate-400">
-                  <span>Brightness</span>
-                  <span id="label-brightness" class="font-mono">100%</span>
+            <!-- Main split-pane: upload/photo area and adjustment controls -->
+            <div class="adjustment-split-card">
+              <div class="adjustment-photo-pane">
+                <div class="adjustment-pane-heading">
+                  <span>01</span><strong>Winner Photo</strong>
                 </div>
-                <input type="range" id="slider-brightness" min="60" max="140" step="2" value="100" class="w-full">
+                <div id="drop-zone" class="adjustment-drop-zone relative group cursor-pointer">
+                  <input type="file" id="file-photo-input" accept="image/png, image/jpeg, image/jpg, image/webp" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10">
+                  <div class="adjustment-upload-content">
+                    <div class="adjustment-upload-icon"><i class="ph ph-cloud-arrow-up"></i></div>
+                    <strong>Upload winner photo</strong>
+                    <span>Tap to browse or drop an image here</span>
+                    <small>JPG · PNG · WEBP</small>
+                  </div>
+                </div>
               </div>
 
-              <div class="space-y-1.5">
-                <div class="flex justify-between text-xs text-slate-400">
-                  <span>Contrast</span>
-                  <span id="label-contrast" class="font-mono">105%</span>
+              <div class="adjustment-controls-pane">
+                <div class="adjustment-pane-heading">
+                  <span>02</span><strong>Fine-tune image</strong>
                 </div>
-                <input type="range" id="slider-contrast" min="70" max="140" step="2" value="105" class="w-full">
+                <div class="adjustment-slider-grid">
+                  <label class="adjustment-slider-control">
+                    <span><b>Brightness</b><output id="label-brightness">100%</output></span>
+                    <input type="range" id="slider-brightness" min="60" max="140" step="2" value="100">
+                  </label>
+                  <label class="adjustment-slider-control">
+                    <span><b>Contrast</b><output id="label-contrast">105%</output></span>
+                    <input type="range" id="slider-contrast" min="70" max="140" step="2" value="105">
+                  </label>
+                  <label class="adjustment-slider-control">
+                    <span><b>Zoom</b><output id="label-photo-zoom">100%</output></span>
+                    <input type="range" id="slider-photo-zoom" min="100" max="250" step="1" value="100">
+                  </label>
+                  <label class="adjustment-slider-control">
+                    <span><b>Align X <small>(Left / Right)</small></b><output id="label-photo-x">0%</output></span>
+                    <input type="range" id="slider-photo-x" min="-100" max="100" step="1" value="0">
+                  </label>
+                  <label class="adjustment-slider-control adjustment-slider-wide">
+                    <span><b>Align Y <small>(Up / Down)</small></b><output id="label-photo-y">0</output></span>
+                    <input type="range" id="slider-photo-y" min="-100" max="100" step="1" value="0">
+                  </label>
+                </div>
               </div>
-              <div class="space-y-1.5">
-                <div class="flex justify-between text-xs text-slate-400">
-                  <span>Zoom</span>
-                  <span id="label-photo-zoom" class="font-mono">100%</span>
-                </div>
-                <input type="range" id="slider-photo-zoom" min="100" max="250" step="1" value="100" class="w-full">
+            </div>
+
+            <!-- Information bar and paired actions -->
+            <div class="adjustment-footer-card">
+              <div class="adjustment-info-bar">
+                <i class="ph ph-info"></i>
+                <span>Changes update your poster preview automatically. Use Full View to inspect the result before exporting.</span>
               </div>
-              <div class="space-y-1.5">
-                <div class="flex justify-between text-xs text-slate-400">
-                  <span>Align X (Left / Right)</span>
-                  <span id="label-photo-x" class="font-mono">0%</span>
-                </div>
-                <input type="range" id="slider-photo-x" min="-100" max="100" step="1" value="0" class="w-full">
+              <div class="adjustment-footer-divider"></div>
+              <div class="adjustment-actions">
+                <button type="button" id="btn-guided-full-view"><i class="ph ph-arrows-out-simple"></i><span>Full View</span></button>
+                <button type="button" id="btn-guided-export"><i class="ph ph-download-simple"></i><span>Export</span></button>
               </div>
-              <div class="space-y-1.5 col-span-2">
-                <div class="flex justify-between text-xs text-slate-400">
-                  <span>Align Y (Up / Down)</span>
-                  <span id="label-photo-y" class="font-mono">0</span>
-                </div>
-                <input type="range" id="slider-photo-y" min="-100" max="100" step="1" value="0" class="w-full">
+            </div>
+            <div class="step-navigation">
+              <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
+              <div class="step-action-row">
+                <button type="button" class="step-language-button" data-step-language>Lan change / ഭാഷ</button>
+                <button type="button" class="step-finish-button" id="btn-guided-finish">Done / പൂർത്തിയാക്കി</button>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <div class="hidden">
           <button type="button" id="btn-logo-kalolsavam" class="logo-mode-btn pill-active-gold"></button>
@@ -1255,10 +1326,6 @@
             </button>
           </div>
         </div>
-          <div class="adjustment-actions">
-            <button type="button" id="btn-guided-full-view"><i class="ph ph-arrows-out-simple"></i> Full View</button>
-            <button type="button" id="btn-guided-export"><i class="ph ph-download-simple"></i> Export</button>
-          </div>
           <div class="step-navigation">
             <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
             <div class="step-action-row">
