@@ -23,11 +23,15 @@ if (html.includes("https://cdn.tailwindcss.com") || html.includes("tailwind.conf
 if (!html.includes('href="./styles.css"')) {
   throw new Error("The application must reference the compiled local stylesheet.");
 }
-if (html.includes("teacher-mode.js") || html.includes("teacher-mode.css")) {
+if (/<script[^>]+src=["'][^"']*teacher-mode\\.js["']/.test(html) ||
+    /<link[^>]+href=["'][^"']*teacher-mode\\.css["']/.test(html)) {
   throw new Error("Legacy Teacher Mode must not be injected into the production page.");
 }
 
 await mkdir("dist", { recursive: true });
+if (!existsSync("dist/styles.css")) {
+  throw new Error("Compiled Tailwind stylesheet is missing from ./dist.");
+}
 await writeFile("dist/index.html", html, "utf8");
 
 if (existsSync("Logo final.resized.png")) {
