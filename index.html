@@ -795,6 +795,77 @@
       .adjustment-reset span { display:none; }
       .adjustment-slider-control { padding:.4rem; }
     }
+
+    /* Cross-platform layout and readable, fluid typography */
+    *,*::before,*::after { box-sizing:border-box; }
+    html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+    body { min-width:320px; overflow-x:hidden; }
+    img,canvas,svg,video { max-width:100%; }
+    button,input,select,textarea { font:inherit; }
+    button { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+    #panel-editor-controls,#panel-poster-preview,.guided-step-panel,.liquid-panel,
+    .adjustment-workspace,.adjustment-split-card,.adjustment-footer-card { min-width:0; }
+    .guided-step-panel { overflow-wrap:anywhere; }
+    .editing-progress-heading { font-size:clamp(.72rem,1.1vw,.85rem); }
+    .editing-progress-steps button small { font-size:clamp(.62rem,1.5vw,.75rem); }
+    .step-action-row button,.adjustment-actions button { font-size:clamp(.76rem,1.1vw,.9rem); line-height:1.25; }
+    .adjustment-header-copy h2 { font-size:clamp(.95rem,1.5vw,1.15rem); }
+    .adjustment-header-copy p,.adjustment-info-bar { font-size:clamp(.68rem,.95vw,.8rem); }
+    .adjustment-pane-heading { font-size:clamp(.7rem,1vw,.82rem); }
+    .adjustment-slider-control > span { font-size:clamp(.66rem,.9vw,.78rem); }
+    .adjustment-slider-control output { font-size:clamp(.65rem,.85vw,.75rem); }
+    .adjustment-slider-control input[type=range] { min-height:28px; }
+    .adjustment-actions button,.step-action-row button { min-height:48px; }
+    /* Replace green action-button styling with the site's warm gold palette. */
+    .step-action-row button,.adjustment-actions button,
+    .adjustment-footer-card .adjustment-actions button {
+      border-color:#b7791f;
+      background:linear-gradient(135deg,#f7d774 0%,#eab84b 52%,#d69a2d 100%);
+      color:#211708;
+      box-shadow:0 5px 16px rgba(214,154,45,.14);
+    }
+    .step-action-row button:last-child,.adjustment-actions button:last-child,
+    .adjustment-footer-card .adjustment-actions button:last-child {
+      border-color:#d69a2d;
+      background:linear-gradient(135deg,#ffe8a3 0%,#f3c85e 52%,#dca43a 100%);
+      color:#211708;
+    }
+    .step-action-row button:hover,.adjustment-actions button:hover { filter:brightness(1.07); }
+    .step-action-row button:focus-visible,.adjustment-actions button:focus-visible {
+      outline:3px solid rgba(255,215,120,.55); outline-offset:2px;
+    }
+    .adjustment-footer-card .adjustment-actions button { border-color:#b7791f; }
+    @media(min-width:768px) and (max-width:1100px) {
+      .studio-layout { gap:1.1rem; }
+      #panel-editor-controls,#panel-poster-preview { min-width:0; }
+      .adjustment-split-card { grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:.65rem; padding:.7rem; }
+      .adjustment-photo-pane,.adjustment-controls-pane { padding:.65rem; }
+      .adjustment-slider-grid { gap:.7rem; }
+    }
+    @media(max-width:767px) {
+      body { font-size:15px; }
+      .editing-progress,.step-navigation { padding:.75rem; border-radius:1.2rem; }
+      .editing-progress-steps { gap:.2rem; }
+      .editing-progress-steps button span { width:1.65rem; height:1.65rem; font-size:.72rem; }
+      .editing-progress-steps button small { font-size:clamp(.58rem,2.3vw,.68rem); }
+      .adjustment-header-copy h2 { font-size:1rem; }
+      .adjustment-header-copy p { font-size:.68rem; }
+      .adjustment-slider-control > span { font-size:clamp(.62rem,2.2vw,.7rem); }
+      .adjustment-info-bar { font-size:.68rem; }
+      .step-action-row button,.adjustment-footer-card .adjustment-actions button { min-height:46px; font-size:.75rem; padding:.65rem .5rem; }
+      input,select,textarea { font-size:16px !important; }
+    }
+    @media(max-width:380px) {
+      .editing-progress-heading { font-size:.7rem; }
+      .editing-progress-steps button small { font-size:.56rem; }
+      .adjustment-header { gap:.45rem; }
+      .adjustment-reset { padding:.48rem; }
+      .adjustment-footer-card .adjustment-actions { gap:.45rem; }
+      .adjustment-footer-card .adjustment-actions button { font-size:.7rem; }
+    }
+    @media(hover:none) {
+      .step-action-row button,.adjustment-actions button { min-height:48px; }
+    }
 </style>
 </head>
 
