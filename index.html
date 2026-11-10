@@ -535,6 +535,194 @@
       .guided-step-panel.is-active > .liquid-panel { animation:none !important; }
       #editing-progress-fill,.step-progress-track span { transition:none !important; }
     }
+
+    /* Mobile-first workstation: readable single-column editor with a compact live preview. */
+    @media (max-width: 767px) {
+      body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important; }
+      main { padding-top: .75rem !important; padding-bottom: 1rem !important; }
+      .studio-layout {
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:stretch !important;
+        gap:.8rem !important;
+      }
+      #panel-editor-controls { display:contents !important; }
+      #panel-poster-preview {
+        display:block !important;
+        position:relative !important;
+        order:-1 !important;
+        inset:auto !important;
+        top:auto !important;
+        right:auto !important;
+        transform:none !important;
+        width:100% !important;
+        max-height:none !important;
+        padding:.55rem !important;
+        margin:0 !important;
+        border:1px solid rgba(125,162,206,.28) !important;
+        border-radius:1.35rem !important;
+        background:rgba(13,22,45,.92) !important;
+        box-shadow:0 10px 28px rgba(0,0,0,.24) !important;
+        backdrop-filter:blur(18px) !important;
+        z-index:20 !important;
+      }
+      #preview-status-bar {
+        display:flex !important;
+        align-items:center !important;
+        justify-content:space-between !important;
+        min-width:0 !important;
+        padding:.2rem .25rem .5rem !important;
+        border:0 !important;
+        background:transparent !important;
+        box-shadow:none !important;
+      }
+      #preview-status-bar > div:first-child { gap:.35rem !important; }
+      #preview-status-bar .text-xs { font-size:.62rem !important; }
+      #preview-status-bar select { display:none !important; }
+      #poster-preview-container {
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        gap:.8rem !important;
+        padding:.15rem !important;
+        border:0 !important;
+        background:transparent !important;
+        box-shadow:none !important;
+        overflow:visible !important;
+      }
+      #poster-canvas-wrapper {
+        flex:0 0 68px !important;
+        width:68px !important;
+        max-width:68px !important;
+        margin:0 !important;
+        border-radius:.55rem !important;
+        cursor:zoom-in !important;
+        box-shadow:0 4px 12px rgba(0,0,0,.32) !important;
+      }
+      #poster-canvas-wrapper > div { display:none !important; }
+      #poster-canvas {
+        display:block !important;
+        width:68px !important;
+        height:auto !important;
+        max-height:100px !important;
+        object-fit:contain !important;
+      }
+      #poster-preview-container > div:last-child { display:none !important; }
+      #poster-preview-container::after {
+        content:"Tap poster to preview full size";
+        color:#cbd5e1;
+        font-size:.72rem;
+        line-height:1.4;
+        align-self:center;
+      }
+      #poster-info-card { display:none !important; }
+      #editing-progress {
+        order:0;
+        padding:.8rem !important;
+        border-radius:1.25rem !important;
+      }
+      .editing-progress-heading { font-size:.72rem !important; margin-bottom:.55rem !important; }
+      .editing-progress-steps { gap:.15rem !important; margin-top:.6rem !important; }
+      .editing-progress-steps button { min-height:48px; gap:.25rem !important; }
+      .editing-progress-steps button span { width:1.65rem !important; height:1.65rem !important; }
+      .editing-progress-steps button small { font-size:clamp(.52rem,2.3vw,.65rem) !important; overflow-wrap:anywhere; }
+      .guided-step-panel { width:100% !important; }
+      .guided-step-panel .liquid-panel {
+        padding:1rem !important;
+        border-radius:1.4rem !important;
+        animation:none !important;
+      }
+      .guided-step-panel input:not([type="checkbox"]):not([type="radio"]),
+      .guided-step-panel select,
+      .guided-step-panel textarea {
+        min-height:44px;
+        font-size:16px !important;
+      }
+      .guided-step-panel input[type="range"] { min-height:28px; }
+      .guided-step-panel button,
+      .guided-step-panel [role="button"] { min-height:42px; }
+      .step-navigation { padding:.75rem !important; border-radius:1.25rem !important; }
+      .step-action-row { gap:.5rem !important; }
+      .step-action-row button { min-height:46px !important; font-size:.78rem !important; }
+      #mobile-bottom-action-bar {
+        display:flex !important;
+        justify-content:space-between !important;
+        gap:.45rem !important;
+        padding:.55rem max(10px,env(safe-area-inset-left,0px)) calc(.55rem + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-right,0px)) !important;
+      }
+      #mobile-bottom-lang-toggle {
+        flex:0 1 28% !important;
+        max-width:28% !important;
+        min-width:0 !important;
+        justify-content:center !important;
+        padding:.65rem .4rem !important;
+        font-size:.68rem !important;
+      }
+      #mobile-bottom-lang-text { display:none !important; }
+      #mobile-bottom-next { flex:0 1 28%; min-width:0; padding:.65rem .35rem !important; }
+      #mobile-bottom-download { flex:1 1 44%; min-width:0; padding:.65rem .45rem !important; font-size:.7rem !important; }
+      #mobile-bottom-download span { white-space:nowrap; }
+      .adjustment-actions { padding:.75rem !important; gap:.5rem !important; }
+      .adjustment-actions button { min-height:46px !important; }
+      #panel-poster-preview.mobile-preview-expanded {
+        position:fixed !important;
+        inset:0 !important;
+        z-index:70 !important;
+        width:100vw !important;
+        height:100dvh !important;
+        max-height:100dvh !important;
+        margin:0 !important;
+        padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px)) !important;
+        border:0 !important;
+        border-radius:0 !important;
+        background:rgba(3,7,18,.98) !important;
+        display:flex !important;
+        flex-direction:column !important;
+        justify-content:center !important;
+      }
+      #panel-poster-preview.mobile-preview-expanded #preview-status-bar { display:flex !important; }
+      #panel-poster-preview.mobile-preview-expanded #preview-status-bar select { display:block !important; }
+      #panel-poster-preview.mobile-preview-expanded #poster-preview-container {
+        flex:1 1 auto !important;
+        min-height:0 !important;
+        flex-direction:column !important;
+        justify-content:center !important;
+        overflow:hidden !important;
+      }
+      #panel-poster-preview.mobile-preview-expanded #poster-canvas-wrapper {
+        flex:0 1 auto !important;
+        width:auto !important;
+        max-width:100% !important;
+        max-height:calc(100dvh - 190px) !important;
+        margin:auto !important;
+      }
+      #panel-poster-preview.mobile-preview-expanded #poster-canvas {
+        width:auto !important;
+        height:auto !important;
+        max-width:100% !important;
+        max-height:calc(100dvh - 205px) !important;
+      }
+      #panel-poster-preview.mobile-preview-expanded #poster-preview-container > div:last-child {
+        display:flex !important;
+        width:min(100%,440px) !important;
+        margin:.5rem auto 0 !important;
+      }
+      #panel-poster-preview.mobile-preview-expanded #poster-preview-container::after { display:none; }
+      #btn-mobile-preview-close { display:inline-flex !important; }
+      body.mobile-preview-expanded #mobile-bottom-action-bar { display:none !important; }
+    }
+    @media (max-width:380px) {
+      #editing-progress { padding:.6rem !important; }
+      .editing-progress-steps button small { font-size:.5rem !important; }
+      #poster-canvas-wrapper,#poster-canvas { width:60px !important; max-width:60px !important; }
+      #mobile-bottom-lang-toggle { flex-basis:24% !important; max-width:24% !important; }
+      #mobile-bottom-next { flex-basis:28%; }
+      #mobile-bottom-download { flex-basis:48%; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      #panel-poster-preview,#poster-canvas-wrapper { scroll-behavior:auto !important; }
+    }
 </style>
 </head>
 
@@ -1168,6 +1356,10 @@
     <button type="button" id="mobile-bottom-lang-toggle" class="px-3.5 py-2.5 rounded-xl bg-white/10 border border-white/15 text-xs font-bold text-amber-300 flex items-center gap-1.5 font-anek">
       <i class="ph ph-translate text-base"></i>
       <span id="mobile-bottom-lang-text">Switch to English</span>
+    </button>
+
+    <button type="button" id="mobile-bottom-next" class="mobile-bottom-next px-3 py-2.5 rounded-xl border border-emerald-400/30 bg-emerald-500/15 text-xs font-bold text-emerald-200 flex items-center justify-center gap-1.5" aria-label="Go to next editing step">
+      <span id="mobile-bottom-next-text">Next</span><i class="ph ph-arrow-right text-base"></i>
     </button>
 
     <button type="button" id="mobile-bottom-download" class="flex-1 py-2.5 px-4 rounded-xl font-bold text-xs text-obsidian-950 bg-gradient-to-r from-amber-300 via-yellow-300 to-amber-400 flex items-center justify-center gap-1.5 shadow-lg">
@@ -3400,6 +3592,33 @@
       document.getElementById('btn-guided-export')?.addEventListener('click', () => document.getElementById('btn-main-download')?.click());
       document.getElementById('btn-guided-finish')?.addEventListener('click', () => document.getElementById('poster-canvas-wrapper')?.click());
       update(0, false);
+    })();
+
+
+    // One-handed mobile shortcut for the current guided editing stage.
+    (() => {
+      const mobileNext = document.getElementById('mobile-bottom-next');
+      const mobileNextText = document.getElementById('mobile-bottom-next-text');
+      const stageNames = ['Next: Item','Next: Achievement','Next: Photo','Preview'];
+      const syncMobileNext = () => {
+        const active = document.querySelector('.guided-step-panel.is-active');
+        const step = active ? Number(active.dataset.stepPanel) : 0;
+        if (mobileNextText) mobileNextText.textContent = stageNames[step] || 'Next';
+        if (mobileNext) mobileNext.setAttribute('aria-label', step === 3 ? 'Open full-size poster preview' : stageNames[step]);
+      };
+      mobileNext?.addEventListener('click', () => {
+        const active = document.querySelector('.guided-step-panel.is-active');
+        const step = active ? Number(active.dataset.stepPanel) : 0;
+        if (step === 3) {
+          document.getElementById('poster-canvas-wrapper')?.click();
+          return;
+        }
+        active?.querySelector('[data-step-next]')?.click();
+        window.setTimeout(syncMobileNext, 0);
+      });
+      const stepObserver = new MutationObserver(syncMobileNext);
+      document.querySelectorAll('.guided-step-panel').forEach(panel => stepObserver.observe(panel,{attributes:true,attributeFilter:['class']}));
+      syncMobileNext();
     })();
 
   </script>
