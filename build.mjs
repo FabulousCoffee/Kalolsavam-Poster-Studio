@@ -17,21 +17,21 @@ if (html.includes("https://cdn.tailwindcss.com") || html.includes("tailwind.conf
   throw new Error("Could not safely remove the runtime Tailwind CDN configuration.");
 }
 
-// Progressive enhancement: keep the existing poster editor intact and add the
-// optional teacher-friendly wizard/accessibility layer as separate static assets.
-html = html.replace(
-  "</head>",
-  '  <link rel="stylesheet" href="./teacher-mode.css">\n</head>'
-);
-html = html.replace(
-  "</body>",
-  '  <script src="./teacher-mode.js" defer></script>\n</body>'
-);
+// Keep the production build focused on the poster studio itself. The optional
+// legacy Teacher Mode script created a second wizard and hid editor panels,
+// conflicting with the four-stage workflow in index.html.
+if (!html.includes('href="./styles.css"')) {
+  throw new Error("The application must reference the compiled local stylesheet.");
+}
+if (html.includes("teacher-mode.js") || html.includes("teacher-mode.css")) {
+  throw new Error("Legacy Teacher Mode must not be injected into the production page.");
+}
 
 await mkdir("dist", { recursive: true });
+if (!existsSync("dist/styles.css")) {
+  throw new Error("Compiled Tailwind stylesheet is missing from ./dist.");
+}
 await writeFile("dist/index.html", html, "utf8");
-await copyFile("teacher-mode.css", "dist/teacher-mode.css");
-await copyFile("teacher-mode.js", "dist/teacher-mode.js");
 
 if (existsSync("Logo final.resized.png")) {
   await copyFile("Logo final.resized.png", "dist/Logo final.resized.png");
