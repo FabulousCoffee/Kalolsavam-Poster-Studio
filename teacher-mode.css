@@ -174,3 +174,46 @@
   border-color:rgba(251,191,36,.42);
   background:rgba(251,191,36,.09);
 }
+
+/* Match the requested layout: progress bar sits cleanly above the Lan change / Next row,
+   and the action area reads as a soft blue pill containing the green controls. */
+.teacher-step-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(13, 22, 45, 0.72);
+  border: 1px solid rgba(125, 162, 206, 0.22);
+}
+.teacher-step-actions .teacher-progress-inline {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  order: -1;
+}
+.teacher-step-actions .teacher-progress-inline .teacher-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #16a34a, #22c55e);
+}
+.teacher-step-actions .teacher-action-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.teacher-step-actions .teacher-action-row .teacher-control {
+  flex: 1;
+  min-height: 48px;
+  border-radius: 16px;
+  background: #16a34a;
+  border-color: #15803d;
+  color: #fff;
+  font-weight: 700;
+}
+.teacher-step-actions .teacher-action-row .teacher-control.is-active {
+  background: #22c55e;
+  border-color: #16a34a;
+  color: #08111f;
+}

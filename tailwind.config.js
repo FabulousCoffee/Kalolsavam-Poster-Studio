@@ -14,11 +14,11 @@ module.exports = {
       keyframes: {
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-8px)" }
+          "50%": { transform: "translateY(-6px)" }
         }
       },
       animation: {
-        float: "float 4s ease-in-out infinite"
+        float: "float 6.5s ease-in-out infinite"
       },
       colors: {
         obsidian: {
