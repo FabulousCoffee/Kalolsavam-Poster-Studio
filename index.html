@@ -765,22 +765,35 @@
       .adjustment-header-icon { width:2.35rem; height:2.35rem; flex-basis:2.35rem; }
       .adjustment-header-copy p { font-size:.66rem; }
       .adjustment-reset { padding:.55rem .6rem; font-size:.66rem; }
-      .adjustment-split-card { grid-template-columns:minmax(0,1fr); gap:.7rem; padding:.7rem; border-radius:1.2rem; }
-      .adjustment-photo-pane,.adjustment-controls-pane { padding:.7rem; }
-      .adjustment-drop-zone { min-height:155px; }
-      .adjustment-upload-content { gap:.4rem; padding:.8rem; }
-      .adjustment-upload-icon { width:2.7rem; height:2.7rem; font-size:1.45rem; }
-      .adjustment-slider-grid { gap:.6rem; }
-      .adjustment-slider-control { padding:.65rem; gap:.65rem; }
-      .adjustment-slider-control > span { font-size:.68rem; }
-      .adjustment-footer-card { padding:.75rem; }
+      /* Keep the reference's horizontal 40/60 split on phones. */
+      .adjustment-split-card { grid-template-columns:minmax(0,2fr) minmax(0,3fr); gap:.45rem; padding:.5rem; border-radius:1.1rem; align-items:stretch; }
+      .adjustment-photo-pane,.adjustment-controls-pane { padding:.5rem; border-radius:.85rem; }
+      .adjustment-pane-heading { gap:.3rem; margin-bottom:.55rem; font-size:.66rem; }
+      .adjustment-pane-heading span { font-size:.6rem; }
+      .adjustment-drop-zone { min-height:245px; height:100%; border-radius:.75rem; }
+      .adjustment-upload-content { gap:.35rem; padding:.55rem .25rem; overflow-wrap:anywhere; }
+      .adjustment-upload-icon { width:2.25rem; height:2.25rem; border-radius:.8rem; font-size:1.2rem; }
+      .adjustment-upload-content strong { font-size:.68rem; line-height:1.25; }
+      .adjustment-upload-content span { font-size:.6rem; line-height:1.35; }
+      .adjustment-upload-content small { font-size:.52rem; letter-spacing:.08em; }
+      .adjustment-slider-grid { grid-template-columns:minmax(0,1fr); gap:.45rem; }
+      .adjustment-slider-control,.adjustment-slider-wide { grid-column:auto; padding:.48rem; gap:.42rem; border-radius:.7rem; }
+      .adjustment-slider-control > span { align-items:flex-start; flex-wrap:wrap; font-size:.62rem; line-height:1.25; }
+      .adjustment-slider-control b small { font-size:.55rem; }
+      .adjustment-slider-control output { font-size:.6rem; }
+      .adjustment-slider-control input[type=range] { min-height:24px; margin:0; }
+      .adjustment-footer-card { padding:.75rem; border-radius:1.1rem; }
+      .adjustment-info-bar { align-items:flex-start; padding:.65rem; font-size:.66rem; }
       .adjustment-footer-card .adjustment-actions { gap:.6rem; }
-      .adjustment-footer-card .adjustment-actions button { min-height:46px; }
+      .adjustment-footer-card .adjustment-actions button { min-height:46px; font-size:.75rem; }
     }
     @media(max-width:360px) {
-      .adjustment-slider-grid { grid-template-columns:minmax(0,1fr); }
-      .adjustment-slider-wide { grid-column:auto; }
+      .adjustment-split-card { gap:.3rem; padding:.35rem; }
+      .adjustment-photo-pane,.adjustment-controls-pane { padding:.38rem; }
+      .adjustment-pane-heading { font-size:.6rem; }
+      .adjustment-drop-zone { min-height:260px; }
       .adjustment-reset span { display:none; }
+      .adjustment-slider-control { padding:.4rem; }
     }
 </style>
 </head>
