@@ -480,6 +480,61 @@
     @media (prefers-reduced-motion: reduce) {
       .animate-float { animation: none !important; }
     }
+
+    /* Recovered guided editor: four directly selectable stages. */
+    .editing-progress { padding:1rem; border:1px solid rgba(125,162,206,.24); border-radius:1.8rem; background:rgba(13,22,45,.78); }
+    .editing-progress-heading { display:flex; justify-content:space-between; gap:.75rem; color:#e2e8f0; font-size:.8rem; margin-bottom:.75rem; }
+    .editing-progress-heading span { color:#86efac; font-weight:700; }
+    .editing-progress-track { height:6px; width:100%; border-radius:999px; background:rgba(255,255,255,.13); overflow:hidden; }
+    #editing-progress-fill,.step-progress-track span { display:block; width:25%; height:100%; border-radius:inherit; background:linear-gradient(90deg,#16a34a,#4ade80); transition:width .25s ease; }
+    .editing-progress-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.35rem; margin-top:.75rem; }
+    .editing-progress-steps button { min-width:0; display:flex; flex-direction:column; align-items:center; gap:.35rem; border:0; color:#94a3b8; background:transparent; cursor:pointer; }
+    .editing-progress-steps button span { display:grid; place-items:center; width:1.8rem; height:1.8rem; border:1px solid rgba(125,162,206,.35); border-radius:50%; background:#17243d; font-size:.75rem; font-weight:800; }
+    .editing-progress-steps button small { font-size:clamp(.55rem,1vw,.7rem); line-height:1.2; text-align:center; }
+    .editing-progress-steps button.is-active span,.editing-progress-steps button.is-complete span { color:#06130a; border-color:#16a34a; background:#22c55e; }
+    .editing-progress-steps button.is-active small { color:#fff; font-weight:700; }
+    .guided-step-panel { display:none; min-width:0; }
+    .guided-step-panel.is-active { display:block; }
+    .guided-step-panel.is-active > .liquid-panel { animation:function-pill-float 6.5s ease-in-out infinite; }
+    @keyframes function-pill-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+    .step-navigation { margin-top:1rem; padding:1rem; border:1px solid rgba(125,162,206,.28); border-radius:2rem; background:rgba(125,162,206,.11); }
+    .step-progress-track { height:6px; margin-bottom:.85rem; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.12); }
+    .step-action-row { display:flex; gap:.65rem; }
+    .step-action-row button,.adjustment-actions button { flex:1; min-height:46px; padding:.7rem .9rem; border:1px solid #15803d; border-radius:1.1rem; background:#16a34a; color:#fff; font-size:.8rem; font-weight:700; }
+    .step-action-row button:last-child,.adjustment-actions button:last-child { background:#22c55e; color:#06130a; }
+    .adjustment-actions { display:grid; grid-template-columns:1fr 1fr; gap:.7rem; margin-top:1rem; padding:1rem; border:1px solid rgba(125,162,206,.28); border-radius:2rem; background:rgba(125,162,206,.11); }
+    .adjustment-actions button { display:flex; align-items:center; justify-content:center; gap:.45rem; }
+    .function-pill { border-radius:2.2rem; }
+    .adjustment-pill { border-radius:2.2rem; border-color:rgba(17,168,53,.3); }
+    @media (min-width:768px) {
+      .studio-layout #panel-poster-preview { order:1 !important; }
+      .studio-layout #panel-editor-controls { order:2 !important; }
+    }
+    @media (max-width:1023px) {
+      .studio-layout { display:grid !important; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); gap:.65rem; align-items:start; }
+      #panel-editor-controls { display:contents !important; }
+      #panel-poster-preview { position:sticky !important; top:10px !important; right:auto !important; inset:auto !important; transform:none !important; width:auto !important; max-height:none !important; padding:.35rem !important; border:1px solid rgba(125,162,206,.25) !important; border-radius:1.2rem !important; background:rgba(13,22,45,.85) !important; box-shadow:none !important; backdrop-filter:blur(18px) !important; grid-column:1 !important; grid-row:3 !important; display:block !important; }
+      #preview-status-bar,#poster-info-card,#poster-preview-container > div:last-child { display:none !important; }
+      #poster-preview-container { display:flex !important; padding:.25rem !important; overflow:hidden !important; background:transparent !important; border:0 !important; box-shadow:none !important; }
+      #poster-canvas-wrapper { width:100% !important; max-width:none !important; border:0 !important; border-radius:.6rem !important; }
+      #poster-canvas-wrapper > div { display:none !important; }
+      #panel-editor-controls > .liquid-panel:first-child,#editing-progress { grid-column:1/-1 !important; }
+      .guided-step-panel { grid-column:2 !important; grid-row:3 !important; min-width:0; }
+      .guided-step-panel .liquid-panel { padding:.85rem !important; }
+      #mobile-bottom-action-bar { display:none !important; }
+    }
+    @media (max-width:520px) {
+      .studio-layout { grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr); gap:.45rem; }
+      .editing-progress { padding:.7rem; }
+      .editing-progress-steps button span { width:1.55rem; height:1.55rem; }
+      .editing-progress-steps button small { font-size:.54rem; }
+      .step-navigation,.adjustment-actions { padding:.65rem; }
+      .step-action-row button,.adjustment-actions button { min-height:42px; padding:.55rem .45rem; font-size:.7rem; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .guided-step-panel.is-active > .liquid-panel { animation:none !important; }
+      #editing-progress-fill,.step-progress-track span { transition:none !important; }
+    }
 </style>
 </head>
 
@@ -625,8 +680,20 @@
           </div>
         </div>
 
+        <nav id="editing-progress" class="editing-progress" aria-label="Editing progress">
+          <div class="editing-progress-heading"><strong>Poster creation</strong><span id="editing-progress-label">Step 1 of 4</span></div>
+          <div class="editing-progress-track" role="progressbar" aria-label="Editing progress" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1"><span id="editing-progress-fill"></span></div>
+          <div class="editing-progress-steps">
+            <button type="button" data-step-target="0" class="is-active" aria-current="step"><span>1</span><small>Winner Details</small></button>
+            <button type="button" data-step-target="1"><span>2</span><small>Item</small></button>
+            <button type="button" data-step-target="2"><span>3</span><small>Achievement</small></button>
+            <button type="button" data-step-target="3"><span>4</span><small>Photo Adjustment</small></button>
+          </div>
+        </nav>
+
         <!-- 1. Winner Information & Sub-District Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <section class="guided-step-panel is-active" data-step-panel="0">
+<div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400">
@@ -715,8 +782,18 @@
           </div>
         </div>
 
+
+          <div class="step-navigation">
+            <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
+            <div class="step-action-row">
+              <button type="button" class="step-language-button" data-step-language>Lan change / ഭാഷ</button>
+              <button type="button" class="step-next-button" data-step-next>Next →</button>
+            </div>
+          </div>
+        </section>
         <!-- 2. Competition Item Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+        <section class="guided-step-panel" data-step-panel="1">
+<div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-400">
@@ -777,8 +854,18 @@
           </div>
         </div>
 
+
+          <div class="step-navigation">
+            <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
+            <div class="step-action-row">
+              <button type="button" class="step-language-button" data-step-language>Lan change / ഭാഷ</button>
+              <button type="button" class="step-next-button" data-step-next>Next →</button>
+            </div>
+          </div>
+        </section>
         <!-- 3. Achievement Selector Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+        <section class="guided-step-panel" data-step-panel="2">
+<div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
@@ -845,8 +932,18 @@
           </div>
         </div>
 
+
+          <div class="step-navigation">
+            <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
+            <div class="step-action-row">
+              <button type="button" class="step-language-button" data-step-language>Lan change / ഭാഷ</button>
+              <button type="button" class="step-next-button" data-step-next>Next →</button>
+            </div>
+          </div>
+        </section>
         <!-- 5. Photograph Upload & Adjustment Section -->
-        <div id="panel-photo-settings" class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <section class="guided-step-panel" data-step-panel="3">
+<div id="panel-photo-settings" class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
@@ -970,6 +1067,19 @@
             </button>
           </div>
         </div>
+          <div class="adjustment-actions">
+            <button type="button" id="btn-guided-full-view"><i class="ph ph-arrows-out-simple"></i> Full View</button>
+            <button type="button" id="btn-guided-export"><i class="ph ph-download-simple"></i> Export</button>
+          </div>
+          <div class="step-navigation">
+            <div class="step-progress-track" aria-hidden="true"><span data-step-progress-fill></span></div>
+            <div class="step-action-row">
+              <button type="button" class="step-language-button" data-step-language>Lan change / ഭാഷ</button>
+              <button type="button" class="step-finish-button" id="btn-guided-finish">Done / പൂർത്തിയാക്കി</button>
+            </div>
+          </div>
+        </section>
+
 
       </div>
 
@@ -3231,6 +3341,67 @@
         setTimeout(renderPoster, 250);
       }
     });
+
+    // Four-stage editor controller. Progress markers remain directly selectable.
+    (() => {
+      const panels = [...document.querySelectorAll('[data-step-panel]')];
+      const steps = [...document.querySelectorAll('[data-step-target]')];
+      const progress = document.getElementById('editing-progress');
+      const fill = document.getElementById('editing-progress-fill');
+      const label = document.getElementById('editing-progress-label');
+      const editor = document.getElementById('panel-editor-controls');
+      if (panels.length !== 4 || steps.length !== 4 || !editor) return;
+      let current = 0;
+      const update = (index, scroll = true) => {
+        current = Math.max(0, Math.min(3, index));
+        panels.forEach((panel, i) => {
+          panel.classList.toggle('is-active', i === current);
+          panel.setAttribute('aria-hidden', String(i !== current));
+        });
+        steps.forEach((button, i) => {
+          button.classList.toggle('is-active', i === current);
+          button.classList.toggle('is-complete', i < current);
+          if (i === current) button.setAttribute('aria-current','step');
+          else button.removeAttribute('aria-current');
+        });
+        const percent = ((current + 1) / 4) * 100;
+        if (fill) fill.style.width = percent + '%';
+        if (label) label.textContent = 'Step ' + (current + 1) + ' of 4';
+        progress?.querySelector('[role="progressbar"]')?.setAttribute('aria-valuenow', String(current + 1));
+        document.querySelectorAll('[data-step-progress-fill]').forEach(node => node.style.width = percent + '%');
+        if (scroll) panels[current].scrollIntoView({behavior:'smooth',block:'start'});
+      };
+      const changeLanguage = () => {
+        const currentLang = document.body.dataset.posterLang || 'ml';
+        document.getElementById(currentLang === 'ml' ? 'btn-lang-en' : 'btn-lang-ml')?.click();
+      };
+      steps.forEach(button => button.addEventListener('click', () => update(Number(button.dataset.stepTarget))));
+      document.querySelectorAll('[data-step-next]').forEach(button => button.addEventListener('click', () => {
+        if (current === 0) {
+          const name = document.getElementById('input-winner-name');
+          if (!name?.value.trim() || ['YOUR NAME','നിങ്ങളുടെ പേര്'].includes(name.value.trim())) {
+            name?.setCustomValidity('Please enter the winner name / വിജയിയുടെ പേര് നൽകുക.');
+            name?.reportValidity(); name?.focus(); return;
+          }
+          name.setCustomValidity('');
+        }
+        if (current === 1) {
+          const item = document.getElementById('input-item-name');
+          if (!item?.value.trim()) {
+            item?.setCustomValidity('Please enter the competition item / മത്സര ഇനം നൽകുക.');
+            item?.reportValidity(); item?.focus(); return;
+          }
+          item.setCustomValidity('');
+        }
+        update(current + 1);
+      }));
+      document.querySelectorAll('[data-step-language]').forEach(button => button.addEventListener('click', changeLanguage));
+      document.getElementById('btn-guided-full-view')?.addEventListener('click', () => document.getElementById('poster-canvas-wrapper')?.click());
+      document.getElementById('btn-guided-export')?.addEventListener('click', () => document.getElementById('btn-main-download')?.click());
+      document.getElementById('btn-guided-finish')?.addEventListener('click', () => update(0));
+      update(0, false);
+    })();
+
   </script>
 </body>
 </html>
