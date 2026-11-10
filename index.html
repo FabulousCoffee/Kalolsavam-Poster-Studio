@@ -421,56 +421,63 @@
     }
 
   
-    /* The right-hand editor is the Function Pill: a single, calm control surface. */
-    @media (min-width: 768px) {
-      #panel-editor-controls {
-        padding: clamp(.75rem, 1.5vw, 1.25rem);
-        border: 1px solid rgba(125, 162, 206, .22);
-        border-radius: 2rem;
-        background: linear-gradient(145deg, rgba(125, 162, 206, .09), rgba(8, 14, 30, .82) 48%, rgba(17, 28, 59, .56));
-        box-shadow: 0 24px 56px -32px rgba(0, 0, 0, .85), inset 0 1px rgba(255,255,255,.06);
-      }
-    }
-
-    /* Reworked split workstation: poster preview on the left, controls on the right. */
-    @media (min-width: 768px) {
-      .studio-layout #panel-poster-preview { order: 1 !important; }
-      .studio-layout #panel-editor-controls { order: 2 !important; }
-      #panel-photo-settings {
-        border-radius: 2.5rem;
-        border-color: rgba(16, 185, 129, 0.28);
-        background: linear-gradient(135deg, rgba(16, 185, 129, 0.07), rgba(13, 22, 45, 0.72) 48%);
-      }
-    }
-
-    /* At tablet widths, restore the preview to the document flow instead of
-       using the compact phone floating-preview treatment. */
-    @media (min-width: 768px) and (max-width: 1023px) {
-      .studio-layout { display: grid !important; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem; }
-      #panel-editor-controls { display: flex !important; flex-direction: column; gap: 1.25rem; min-width: 0; }
-      #panel-poster-preview {
-        position: relative !important; inset: auto !important; top: auto !important; right: auto !important;
-        transform: none !important; width: auto !important; padding: 0 !important; border: 0 !important;
-        border-radius: 0 !important; background: transparent !important; box-shadow: none !important;
-        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-        display: flex !important; flex-direction: column; gap: 1rem; min-width: 0;
-      }
-      #preview-status-bar, #poster-info-card, #poster-preview-container > div:last-child { display: flex !important; }
-      #poster-preview-container {
-        display: flex !important; padding: 1rem !important; overflow: hidden !important;
-        background: rgba(13, 22, 45, 0.68) !important; border: 1px solid rgba(255,255,255,.12) !important;
-        box-shadow: 0 24px 48px -12px rgba(0,0,0,.6) !important;
-      }
-      #poster-canvas-wrapper {
-        width: 100% !important; max-width: 480px !important; border-radius: 1rem !important;
-        overflow: hidden !important; cursor: zoom-in;
-      }
-      #poster-canvas-wrapper > div { display: flex !important; }
-    }
-
     /* Keep the animated motion subtle and respect reduced-motion preferences. */
     @media (prefers-reduced-motion: reduce) {
       .animate-float { animation: none !important; }
+    }
+
+    /* Guided poster workflow and reference-matched pill layout */
+    .editing-progress { width:100%; padding: .75rem .25rem 1rem; }
+    .progress-track { height:5px; border-radius:999px; background:rgba(125,162,206,.22); overflow:hidden; margin:0 1rem -1.1rem; }
+    #editing-progress-fill { display:block; width:25%; height:100%; border-radius:inherit; background:#11a835; transition:width .28s ease; }
+    .progress-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.35rem; position:relative; }
+    .progress-step { min-width:0; display:flex; flex-direction:column; align-items:center; gap:.45rem; color:#94a3b8; background:transparent; border:0; cursor:pointer; }
+    .progress-step > span { width:2rem; height:2rem; border-radius:999px; display:grid; place-items:center; background:#17243d; border:1px solid rgba(125,162,206,.35); font-weight:700; font-size:.8rem; }
+    .progress-step small { font-size:clamp(.58rem,1.1vw,.72rem); line-height:1.2; text-align:center; }
+    .progress-step.is-active > span,.progress-step.is-complete > span { background:#11a835; color:#06130a; border-color:#11a835; }
+    .progress-step.is-active small { color:#e2e8f0; font-weight:700; }
+    .guided-step-panel { display:none; min-width:0; }
+    .guided-step-panel.is-active { display:block; }
+    .function-pill { border-radius:2.4rem; border:1px solid rgba(125,162,206,.36); background:linear-gradient(145deg,rgba(125,162,206,.12),rgba(8,14,30,.88) 55%,rgba(17,28,59,.72)); box-shadow:0 22px 50px -34px rgba(0,0,0,.9),inset 0 1px rgba(255,255,255,.07); }
+    .guided-step-panel.is-active .function-pill { animation: function-pill-float 5s ease-in-out infinite; }
+    .adjustment-pill { border-radius:2.5rem; border-color:rgba(17,168,53,.36); background:linear-gradient(145deg,rgba(17,168,53,.09),rgba(13,22,45,.9) 60%); }
+    .step-navigation { display:flex; align-items:center; justify-content:space-between; gap:.75rem; margin-top:1rem; }
+    .step-navigation button,.adjustment-actions button { min-height:44px; padding:.7rem 1.25rem; border-radius:999px; font-size:.85rem; font-weight:700; }
+    .step-next,.adjustment-actions button:last-child { background:#11a835; color:#06130a; }
+    .step-back { background:rgba(125,162,206,.14); border:1px solid rgba(125,162,206,.28); color:#dbeafe; }
+    .step-back:disabled { opacity:.35; cursor:not-allowed; }
+    .adjustment-actions { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin-top:1rem; padding:1rem; border-radius:2rem; background:rgba(125,162,206,.1); border:1px solid rgba(125,162,206,.28); }
+    .adjustment-actions button { display:flex; align-items:center; justify-content:center; gap:.5rem; background:#11a835; color:#06130a; }
+    .step-complete-label { color:#86efac; font-size:.8rem; }
+    @keyframes function-pill-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-4px); } }
+    @media (prefers-reduced-motion:reduce) { .guided-step-panel.is-active .function-pill { animation:none; } }
+
+    /* Preview left, active function pill right; adjustment tools remain a separate lower pill. */
+    @media (min-width:768px) {
+      .studio-layout #panel-poster-preview { order:1 !important; }
+      .studio-layout #panel-editor-controls { order:2 !important; }
+      #panel-editor-controls { padding:0; border:0; background:transparent; box-shadow:none; }
+    }
+    @media (max-width:1023px) {
+      .studio-layout { display:grid !important; grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr); gap:.7rem; align-items:start; }
+      #panel-editor-controls { display:contents !important; }
+      #panel-editor-controls > .liquid-panel:first-child { grid-column:1/-1; }
+      #editing-progress { grid-column:1/-1; }
+      .guided-step-panel { grid-column:2; min-width:0; }
+      #panel-poster-preview { position:relative !important; inset:auto !important; top:auto !important; right:auto !important; transform:none !important; width:auto !important; max-height:none !important; padding:0 !important; border:0 !important; border-radius:0 !important; background:transparent !important; box-shadow:none !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; display:block !important; grid-column:1; grid-row:3; }
+      #preview-status-bar,#poster-info-card,#poster-preview-container > div:last-child { display:none !important; }
+      #poster-preview-container { display:flex !important; padding:.35rem !important; border-radius:1.5rem !important; background:rgba(125,162,206,.1) !important; }
+      #poster-canvas-wrapper { width:100% !important; max-width:none !important; border-radius:.75rem !important; }
+      #poster-canvas-wrapper > div { display:none !important; }
+      #mobile-bottom-action-bar { display:none !important; }
+      .adjustment-actions { grid-column:1/-1; }
+    }
+    @media (max-width:520px) {
+      .studio-layout { grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr); gap:.5rem; }
+      .progress-step small { font-size:.58rem; }
+      .progress-step > span { width:1.7rem; height:1.7rem; }
+      .guided-step-panel .liquid-panel { padding:.85rem !important; }
+      .step-navigation button,.adjustment-actions button { padding:.65rem .8rem; font-size:.75rem; }
     }
 </style>
 </head>
@@ -597,7 +604,7 @@
       <div id="panel-editor-controls" class="lg:col-span-6 xl:col-span-5 space-y-5 sm:space-y-6 order-1 lg:order-1">
 
         <!-- Banner: Poster Language Version Switcher Card -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-5 border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-obsidian-900/60 to-cyan-500/10" animate-float>
+        <div class="liquid-panel rounded-3xl p-4 sm:p-5 border border-amber-400/30 bg-gradient-to-r from-amber-500/10 via-obsidian-900/60 to-cyan-500/10">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-widest text-amber-300 block">Poster Language Mode</span>
@@ -617,8 +624,19 @@
           </div>
         </div>
 
+        <!-- Guided editing progress: each step is directly selectable. -->
+        <nav id="editing-progress" class="editing-progress" aria-label="Poster editing progress">
+          <div class="progress-track"><span id="editing-progress-fill"></span></div>
+          <div class="progress-steps">
+            <button type="button" class="progress-step is-active" data-step-target="0" aria-current="step"><span>1</span><small>Winner Details</small></button>
+            <button type="button" class="progress-step" data-step-target="1"><span>2</span><small>Item</small></button>
+            <button type="button" class="progress-step" data-step-target="2"><span>3</span><small>Achievement</small></button>
+            <button type="button" class="progress-step" data-step-target="3"><span>4</span><small>Photo Adjustment</small></button>
+          </div>
+        </nav>
+
         <!-- 1. Winner Information & Sub-District Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div class="guided-step-panel" data-step-panel="0"><div class="liquid-panel function-pill rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400">
@@ -707,8 +725,10 @@
           </div>
         </div>
 
+        <div class="step-navigation"><button type="button" class="step-back" data-step-back disabled>Back</button><button type="button" class="step-next" data-step-next>Next <span aria-hidden="true">→</span></button></div></div></div>
+
         <!-- 2. Competition Item Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+        <div class="guided-step-panel" data-step-panel="1"><div class="liquid-panel function-pill rounded-3xl p-4 sm:p-6 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-purple-400/10 border border-purple-400/20 flex items-center justify-center text-purple-400">
@@ -769,8 +789,11 @@
           </div>
         </div>
 
+        <div class="step-navigation"><button type="button" class="step-back" data-step-back>Back</button><button type="button" class="step-next" data-step-next>Next <span aria-hidden="true">→</span></button></div></div></div>
+
+        <div class="guided-step-panel" data-step-panel="2">
         <!-- 3. Achievement Selector Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+        <div class="liquid-panel function-pill rounded-3xl p-4 sm:p-6 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
@@ -808,7 +831,7 @@
         </div>
 
         <!-- 4. Grade Selector Section -->
-        <div class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4">
+        <div class="liquid-panel function-pill rounded-3xl p-4 sm:p-6 space-y-4">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
@@ -837,8 +860,11 @@
           </div>
         </div>
 
+        <div class="step-navigation"><button type="button" class="step-back" data-step-back>Back</button><button type="button" class="step-next" data-step-next>Next <span aria-hidden="true">→</span></button></div></div>
+
+        <div class="guided-step-panel" data-step-panel="3">
         <!-- 5. Photograph Upload & Adjustment Section -->
-        <div id="panel-photo-settings" class="liquid-panel rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div id="panel-photo-settings" class="liquid-panel adjustment-pill rounded-3xl p-4 sm:p-6 space-y-4 sm:space-y-5">
           <div class="flex items-center justify-between pb-3 border-b border-white/10">
             <div class="flex items-center gap-2.5">
               <span class="w-8 h-8 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400">
@@ -961,6 +987,12 @@
               </div>
             </button>
           </div>
+        </div>
+        <div class="adjustment-actions">
+          <button type="button" id="btn-guided-full-view"><i class="ph ph-arrows-out-simple"></i> Full View</button>
+          <button type="button" id="btn-guided-export"><i class="ph ph-download-simple"></i> Export</button>
+        </div>
+        <div class="step-navigation final-step-navigation"><button type="button" class="step-back" data-step-back>Back</button><span class="step-complete-label">Photo adjustments complete</span></div>
         </div>
 
       </div>
@@ -3204,6 +3236,48 @@
       generateDefaultSamplePhoto();
       showToast('Reset Complete', isML ? 'നിങ്ങളുടെ പേര് പുനഃസ്ഥാപിച്ചു' : 'Default settings restored.');
     });
+
+
+    // Four-stage editor navigation. Every progress step is directly selectable.
+    let activeEditingStep = 0;
+    const editingStepPanels = Array.from(document.querySelectorAll('[data-step-panel]'));
+    const editingProgressButtons = Array.from(document.querySelectorAll('[data-step-target]'));
+    const editingProgressFill = document.getElementById('editing-progress-fill');
+
+    function showEditingStep(step, shouldScroll = true) {
+      activeEditingStep = Math.max(0, Math.min(3, Number(step) || 0));
+      editingStepPanels.forEach((panel) => {
+        const active = Number(panel.dataset.stepPanel) === activeEditingStep;
+        panel.classList.toggle('is-active', active);
+        panel.setAttribute('aria-hidden', String(!active));
+      });
+      editingProgressButtons.forEach((button) => {
+        const index = Number(button.dataset.stepTarget);
+        button.classList.toggle('is-active', index === activeEditingStep);
+        button.classList.toggle('is-complete', index < activeEditingStep);
+        if (index === activeEditingStep) button.setAttribute('aria-current', 'step');
+        else button.removeAttribute('aria-current');
+      });
+      if (editingProgressFill) editingProgressFill.style.width = `${(activeEditingStep + 1) * 25}%`;
+      document.querySelectorAll('[data-step-back]').forEach(button => button.disabled = activeEditingStep === 0);
+      if (shouldScroll) {
+        const target = document.querySelector('[data-step-panel="' + activeEditingStep + '"]');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    editingProgressButtons.forEach(button => {
+      button.addEventListener('click', () => showEditingStep(button.dataset.stepTarget));
+    });
+    document.querySelectorAll('[data-step-next]').forEach(button => {
+      button.addEventListener('click', () => showEditingStep(activeEditingStep + 1));
+    });
+    document.querySelectorAll('[data-step-back]').forEach(button => {
+      button.addEventListener('click', () => showEditingStep(activeEditingStep - 1));
+    });
+    document.getElementById('btn-guided-full-view')?.addEventListener('click', () => canvasWrapper.click());
+    document.getElementById('btn-guided-export')?.addEventListener('click', () => btnMainDownload.click());
+    showEditingStep(0, false);
 
     // ==============================================================
     // INITIALIZATION
