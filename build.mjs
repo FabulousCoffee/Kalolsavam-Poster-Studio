@@ -23,8 +23,7 @@ if (html.includes("https://cdn.tailwindcss.com") || html.includes("tailwind.conf
 if (!html.includes('href="./styles.css"')) {
   throw new Error("The application must reference the compiled local stylesheet.");
 }
-if (/<script[^>]+src=["'][^"']*teacher-mode\\.js["']/.test(html) ||
-    /<link[^>]+href=["'][^"']*teacher-mode\\.css["']/.test(html)) {
+if (html.includes("teacher-mode.js") || html.includes("teacher-mode.css")) {
   throw new Error("Legacy Teacher Mode must not be injected into the production page.");
 }
 
